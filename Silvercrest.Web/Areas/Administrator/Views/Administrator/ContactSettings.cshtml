@@ -1,0 +1,206 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.Administrator.ContactSettingsInfo
+@using Silvercrest.Web.Common
+@{
+    ViewBag.Title = "ContactSettings";
+    Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+}
+
+<link href="~/Content/kenodDefault.css?v=@Url.GetVersion()" rel="stylesheet" />
+<script src="~/Scripts/jquery-2.0.3.min.js?v=@Url.GetVersion()"></script>
+<script src="~/Scripts/kendo-ui/kendo.all.min.js?v=@Url.GetVersion()"></script>
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-free pull-right">
+                <a role="button" href="javascript:window.history.go(-1);">
+                    <img src="~/img/return-arrow.png" alt="">
+                </a>
+                @Html.ActionLink("Back to User Status", "ActivateUser", "Administrator", new { Area = "Administrator" }, null)
+            </div>
+        </div>
+    </div>
+</section>
+<section id="title">
+    <div class="container">
+        <div class="row">
+            <h2 id="currentUserFullName">@Model.FullName</h2>
+            <h3>@Model.Email</h3>
+        </div>
+    </div>
+</section>
+<section id="access">
+    <div class="container pt60">
+        <div class="row">
+            <div class="box table-box-wrap" style="overflow:hidden;">
+                <h3>contact settings</h3>
+                <div class="tableHolder">
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "contact_settings_form" }))
+                    {
+                        @Html.ValidationSummary(true)
+                        <table id="table-family-ass" class="table contact_settings">
+                            <colgroup>
+                                <col style="width:94px;" />
+                                <col style="width:358px" />
+                                <col style="width:366px" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td class="col1 col-md-6">
+                                        Email Address / Username (@Model.ContactCode)
+                                    </td>
+                                    <td class="col2 col-md-6">
+                                        @Html.TextBoxFor(x => x.Email, new { @Value = Model.Email, @class = "form-control", id = "currentUserEmail", @placeholder = "Email", @type = "email" })
+                                        @Html.ValidationMessageFor(x => x.Email)
+                                    </td>
+                                    @if (Model.Email == null || Model.Email == string.Empty)
+                                    {
+                                        <td class="col3 last">
+                                            <button class="btn btn-red disActiveButton" style="background-color: #d4d4d4 !important;cursor: default;">Save</button>
+                                        </td>
+                                    }
+
+                                    @if (Model.Email != null && Model.Email != string.Empty)
+                                    {
+                                        <td class="col3 last">
+                                            <button id="saveNewEmail" class="btn btn-red" type="submit">Save</button>
+                                        </td>
+                                    }
+
+                                </tr>
+                                <tr>
+                                    <td class="col1 col-md-6">
+                                        Current Status
+                                    </td>
+                                    <td class="col2 col-md-6">
+                                        @*@Html.DropDownList("IsActive", new SelectList(new[] {
+                                            new SelectListItem { Value = "false", Text = "Activate" },
+                                            new SelectListItem { Value = "true", Text = "Deactivate"}}, "Value", "Text"),
+                                            new { @class = "form-control", id = "selectStatus" })*@
+                                        @Html.RadioButtonFor(m => m.IsActive, true, new { id = "selectedStatus1", @class = "contactSettingsRadioButton" })@Html.Label("Active", new { @class = "contactSettingsLabel" })
+                                        @Html.RadioButtonFor(m => m.IsActive, false, new { id = "selectedStatus2", @class = "contactSettingsRadioButton" })@Html.Label("Inactive", new { @class = "contactSettingsLabel" })
+                                    </td>
+
+                                    @if (Model.Email == null || Model.Email == string.Empty)
+                                    {
+                                        <td class="col3 last">
+                                            <button class="btn btn-red disActiveButton" style="background-color: #d4d4d4 !important;cursor: default;">Save</button>
+                                        </td>
+                                    }
+
+                                    @if (Model.Email != null && Model.Email != string.Empty)
+                                    {
+                                        <td class="col3 last">
+                                            <button id="saveStatusBtn" class="btn btn-red" type="submit">Save</button>
+                                        </td>
+                                    }
+
+                                </tr>
+                                <tr>
+                                    <td class="col1 col-md-6">
+                                        Two-factor Authentication
+                                    </td>
+                                    <td class="col2 col-md-6">
+                                        <select id="twoFactorAuth" class="form-control">
+                                            <option value="0" selected="@((Int16)Model.TwoFactorAuth==0)">Inactive</option>
+                                            <option value="1" selected="@((Int16)Model.TwoFactorAuth==1)">Email</option>
+                                            <option value="2" selected="@((Int16)Model.TwoFactorAuth==2)">Text Message</option>
+                                        </select>
+                                    </td>
+
+                                    @if (Model.Email == null || Model.Email == string.Empty)
+                                    {
+                                        <td class="col3 last">
+                                            <button class="btn btn-red disActiveButton" style="background-color: #d4d4d4 !important;cursor: default;">Save</button>
+                                        </td>
+                                    }
+                                    @if (Model.Email != null && Model.Email != string.Empty)
+                                    {
+                                        <td class="col3 last">
+                                            <button id="twoFactorAuthBtn" class="btn btn-red" type="submit">Save</button>
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td class="col1 col-md-6 phone-number-td">
+                                        <p>Phone Number</p>
+                                        <div>
+                                            (<a target="_blank"
+                                                href="https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers">Format</a>
+                                            <div class="phone-number-eg">e.g.</div> +12125551234)
+                                        </div>
+                                    </td>
+                                    <td class="col2 col-md-6">
+                                        @Html.TextBoxFor(m => m.PhoneNumber, new { id = "changePhoneNumber", @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.PhoneNumber, "", new { @class = "text-danger" })
+                                    </td>
+
+                                    @if (Model.Email == null || Model.Email == string.Empty)
+                                    {
+                                        <td class="col3 last">
+                                            <button class="btn btn-red disActiveButton" style="background-color: #d4d4d4 !important;cursor: default;">Save</button>
+                                        </td>
+                                    }
+                                    @if (Model.Email != null && Model.Email != string.Empty)
+                                    {
+                                        <td class="col3 last">
+                                            <button id="phoneNumberBtn" class="btn btn-red" type="submit">Save</button>
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td class="col1 col-md-6">
+                                        Send Client Portal Setup Email
+                                    </td>
+                                    <td class="col2 col-md-6 contactSettings" style="font-family:copperplate">
+                                        @Model.Email
+                                    </td>
+
+                                    @if (Model.Email == null || Model.Email == string.Empty)
+                                    {
+                                        <td class="col3 last">
+                                            <button class="btn btn-red disActiveButton" style="background-color: #d4d4d4 !important;cursor: default;">Save</button>
+                                        </td>
+                                    }
+
+                                    @if (Model.Email != null && Model.Email != string.Empty)
+                                    {
+                                        <td class="col3 last">
+                                            <button id="activateBtn" class="btn btn-red" type="submit">Send</button>
+                                        </td>
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<input id="contactId" value="@Model.ContactId" type="hidden" />
+<input id="accountName" value="@Model.FullName" type="hidden" />
+
+<div class="popup-holder" style="display:none; margin-top: 300px;" popup id="popupActivateOrDeactivate">
+    <div class="popup">
+        <div class="popup-header">
+            <h2 id="activateMessage">Invalid Name</h2>
+        </div>
+        <div class="popup-content">
+            <p id="errorMessage"></p>
+        </div>
+        <div class="popup-footer">
+            <div class="btn-wrapper">
+                <button class="btn-main btn-close btn-activate">ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/app/Administrator/AdministatorController/ContactSettings.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+

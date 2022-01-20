@@ -1,0 +1,95 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.GenericViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+    ViewBag.Title = "Administrator Home";
+}
+<section id="title">
+    <div class="container container-center">
+        <div class="row">
+            <h2>ADMIN LOGIN</h2>
+        </div>
+    </div>
+</section>
+
+<section id="links">
+    <div class="container container-center">
+        <div class="row">
+            <h3>USER ADMIN TASKS</h3>
+            <a href="/Administrator/Administrator/CreateUser">new user</a>
+            <a href="/Administrator/Administrator/ActivateUser" class="active">activate / deactivate user</a>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    function getCookieData(name) {
+        var pairs = document.cookie.split("; "),
+            count = pairs.length, parts;
+        while (count--) {
+            parts = pairs[count].split("=");
+            if (parts[0] === name)
+                return parts[1];
+        }
+        return 0;
+    }
+
+    function setCookie(name) {
+        //var date = new Date();
+        //date.setTime(date.getTime() + (expireDays * 24 * 60 * 60 * 1000));
+        //var expires = "expires=" + date.toUTCString();
+        //var expires = "expires=Thu, 01 Jan 1970 00:00:01 GMT"; 
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;';
+    }
+
+    function deleteFromCookie() {
+        var cookies = get_cookies_array();
+        for (var name in cookies) {
+            if (name.indexOf("searchFrom") >= 0)
+                setCookie(name);
+        }
+        return 0;
+    }
+
+    function deleteToCookie() {
+        var cookies = get_cookies_array();
+        for (var name in cookies) {
+            if (name.indexOf("searchTo") >= 0)
+                setCookie(name);
+        }
+        return 0;
+    }
+
+
+    function get_cookies_array() {
+
+        var cookies = {};
+
+        if (document.cookie && document.cookie != '') {
+            var split = document.cookie.split(';');
+            for (var i = 0; i < split.length; i++) {
+                var name_value = split[i].split("=");
+                name_value[0] = name_value[0].replace(/^ /, '');
+                cookies[decodeURIComponent(name_value[0])] = decodeURIComponent(name_value[1]);
+            }
+        }
+        return cookies;
+    }
+
+    $(document).ready(function () {
+        window.applicationVersion = '@Url.GetVersion()';
+        var oldVersion = getCookieData("appVersion");
+        if (oldVersion == 0 || window.applicationVersion != oldVersion) {
+            window.sessionStorage.removeItem("selected-filter-entity");
+            window.sessionStorage.removeItem("selected-filter-docType");
+            deleteFromCookie();
+            deleteToCookie();
+            window.sessionStorage.removeItem("kendo-grid-options");
+            window.localStorage.removeItem("alreadyChecked");
+            var expires = "";
+            document.cookie = "appVersion" + "=" + window.applicationVersion + "; " + expires;
+        }
+    });
+</script>

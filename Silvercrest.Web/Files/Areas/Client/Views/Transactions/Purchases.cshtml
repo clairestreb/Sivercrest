@@ -1,0 +1,159 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.Client.Transactions.TransactionsPurchasesViewModel
+
+@{
+    ViewBag.Title = "Purchases";
+}
+<link href="~/Content/kendoStyle.css?v=@Url.GetVersion()" rel="stylesheet" />
+
+<script>
+    kendo.pdf.defineFont({
+        "DejaVu Sans": "//kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans.ttf",
+        "DejaVu Sans|Bold": "//kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Bold.ttf",
+        "DejaVu Sans|Bold|Italic": "//kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+        "DejaVu Sans|Italic": "//kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf"
+    });
+</script>
+
+<script src="//kendo.cdn.telerik.com/2016.3.1118/js/pako_deflate.min.js?v=@Url.GetVersion()"></script>
+<script type="text/javascript" src="~/Scripts/app/Client/AccountsController/AccountController.js?v=@Url.GetVersion()"></script>
+
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-free test"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><span class="arrow-right"></span>View Accounts</a></div>
+            <div class="col-free test"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><span class="arrow-right"></span>View Groups</a></div>
+            @if (Model.PageData.IsGroup == true)
+            {
+                <div class="col-free test"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span class="arrow-right"></span>View Accounts Within Group</a></div>
+            }
+            <div class="col-free pull-right">
+                
+                <a role="button" href="#" onclick="goTo('Transactions'); return false;">
+                    <img src="~/img/return-arrow.png" alt="">Back to Transactions Overview
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="bread-panel">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                <div class="panel panel-default">
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+                        <strong>Accounts</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+
+                        <strong>Groups</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+
+                        <strong>Accounts Within Groups</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="user_info">
+    <div class="container">
+        <div id="info" class="row">
+            <span class="pull-left">
+                @Model.PageData.CustodianAccount
+            </span>
+            <span class="pull-right">
+                @Model.PageData.DateString
+            </span>
+        </div>
+
+    </div>
+
+</section>
+<section id="title">
+    <div class="container">
+        <div class="row">
+            <h2>@Model.PageData.Name</h2>
+            <h3>purchases</h3>
+            <h4 align="center" style="color:red; font-weight:bold; font-family: goudyosSC">@Model.Error</h4>
+        </div>
+    </div>
+</section>
+
+<section id="table-purchases">
+    <article class="container pb100 pt30">
+        <div id="dropdown-wrapper" class="row">
+            <div class="pull-left">
+                <p id="datepickerSet">
+                    <input type="text" id="datepickerStart" placeholder="Start Date" value="@Model.PageData.StartDate">  <span> &nbsp;—&nbsp; </span> <input type="text" id="datepickerEnd" value="@Model.PageData.EndDate" placeholder="End Date">
+                    <a href="#" style="text-decoration:underline;font-size:14px;" onclick="insertDate()">Update</a>
+                </p>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div id="purchasesTable"></div>
+            <div style="display:none" id="purchasesNoGroupTable"></div>
+        </div>
+        <div class="row" style="margin:0 ">
+            <div class="pull-right download-wrapper">
+                <!-- Dave added everything in here -->
+                <div class="btnShadow"></div>
+                <div class="dwnLoadAll">
+                    <div class="btnSlider" style="display: none;">
+                        <div class="btn btn-exl"><a href="" class="k-grid-excel" onclick="getExcel()"><img src="/img/excel.png"><br>EXCEL</a></div>
+                    </div>
+                    <a class="btn btn-download"><span>DOWNLOAD REPORT</span><span class="arrow-down"></span></a>
+                </div>
+            </div>
+        </div>
+
+
+    </article>
+</section>
+<div class="popup-holder" style="display:none; margin-top: 300px;" popup id="popupActivateOrDeactivate">
+    <div class="popup">
+        <div class="popup-header">
+            <h2 id="activateMessage">Invalid Name</h2>
+        </div>
+        <div class="popup-content">
+            <p id="errorMessage"></p>
+        </div>
+        <div class="popup-footer">
+            <div class="btn-wrapper">
+                <button class="btn-main btn-close btn-activate">ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var model = @Html.Raw(Json.Encode(Model));
+</script>
+<script src="~/Scripts/app/Client/TransactionsController/PurchasesInit.js?v=@Url.GetVersion()"></script>

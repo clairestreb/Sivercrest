@@ -1,0 +1,404 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Silvercrest | @ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css?v=@Url.GetVersion()" rel="stylesheet" />
+    <link href="~/Content/kendo-ui/kendo.common.min.css?v=@Url.GetVersion()" rel="stylesheet" />
+    <link href="~/Content/kendo-ui/kendo.bootstrap.min.css?v=@Url.GetVersion()" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.min.css?v=@Url.GetVersion()" rel="stylesheet" />
+    <link href="~/Content/index.css?v=@Url.GetVersion()" rel="stylesheet" />
+    <link href="~/Content/outdatedbrowser.min.css?v=@Url.GetVersion()" rel="stylesheet" />
+    <script src="~/Scripts/outdatedbrowser.min.js?v=@Url.GetVersion()"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.js?v=@Url.GetVersion()"></script>
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css?v=@Url.GetVersion()" rel="stylesheet" />
+    <link href="~/Content/index.css?v=@Url.GetVersion()" rel="stylesheet" />
+    @*<script src="//use.fontawesome.com/3e4d4a068b.js"></script>*@
+
+    <script src="~/Scripts/jquery-2.0.3.min.js?v=@Url.GetVersion()"></script>
+    <script src="~/Scripts/jquery-ui.min.js?v=@Url.GetVersion()"></script>
+    <script src="~/Scripts/bootstrap.min.js?v=@Url.GetVersion()"></script>
+    <script src="~/Scripts/kendo-ui/kendo.all.min.js?v=@Url.GetVersion()"></script>
+    <script src="~/Scripts/jquery.inputmask.bundle.js?v=@Url.GetVersion()"></script>
+    <script src="~/Scripts/index.js?v=@Url.GetVersion()"></script>
+
+    <script type="text/javascript" src="//www.gstatic.com/charts/loader.js?v=@Url.GetVersion()"></script>
+</head>
+<body onload="startTimer();">
+    <input value="@User.IsInRole("Client")" id="isClient" type="hidden" />
+    <input value="@User.Identity.IsAuthenticated" id="isLogged" type="hidden" />
+
+    @RenderBody()
+
+    @if (Request.Cookies["UserRole"] != null)
+    {
+        if (Request.Cookies["UserRole"].Value == "Client")
+        {
+            <div id="email-popup" class="show1">
+                <div class="state1">
+                    <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>    
+                </div>
+                <div class="state2">
+                    <h2>
+                        CONTACT YOUR TEAM
+                    </h2>
+                    <div>
+                        <form id="form1" name="form1" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <span id="messageError"></span>
+                                    <input type="text" name="subject" value="" placeholder="Subject" class="form-control" id="name" style="font-family: goudyosSC; text-transform: none !important;">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <textarea class="form-control" type="text" name="message" placeholder="Enter Your Message" style="font-family: goudyosSC; height:100px; text-transform: none !important;  color:#888;" id="message"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group last">
+                                <div class="col-md-5 pull-left">
+                                    <button onclick="sendMessage()" name="submit" id="submit" class="btn btn-red pull-left">Submit</button>
+                                </div>
+
+                                <div class="col-md-5 pull-right">
+                                    <button id="closePopup" class="btn btn-red pull-right">Close</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="state3">
+                    <p>message sent</p>
+                </div>
+            </div>
+        }
+    }
+
+
+    <footer class="wrapper">
+        <div class="container">
+            <div class="center">
+                <span>Copyright © @DateTime.Now.Year </span>
+                <span>Silvercrest Asset Management Group LLC. </span>
+                <span>All Rights Reserved. </span>
+                <a href="@Url.Action("TermsOfUse", "Home", new { Area = "" })">Terms of Use</a>
+                <a href="http://www.silvercrestgroup.com/privacy-policy" target="_blank">Privacy Policy</a>
+                <a href="@Url.Action("ImportantInformation", "Home", new { Area = "" })">Important Information</a>
+            </div>
+        </div>
+    </footer>
+
+    <div style="display:none" id="TermsOfUseWindow" class="terms-of-use-modal">
+        <div class="container" style="padding:0px 10px">
+            <p>
+                <br /><br /><br />
+
+                <strong>1. Acceptance of the Terms and Conditions</strong><br /><br /><br />
+
+                1.1 Silvercrest Asset Management Group LLC (herein referred to as the “Company,” “we,” “us” or “our”) provides and makes available this web site (the “Web Site”). All use of this Web Site is subject to the terms and conditions contained in this Terms of Use Agreement (the “Agreement”). By accessing, browsing or using this Web Site, you acknowledge that you have read, understood, and agree to be bound by this Agreement. If you do not accept the terms and conditions of this Agreement, do not access, browse or use the Web Site.<br /><br /><br />
+
+                1.2 You understand and agree that we may change this Agreement at any time without prior notice. You may read a current, effective copy of this Agreement at any time by selecting the “Terms of Use” link on the Web Site. If any change to this Agreement is not acceptable to you, your sole remedy is to cease accessing, browsing and using the Web Site. Any use of the Web Site after changes are made to the Agreement shall constitute your acceptance of such revised terms and conditions.<br /><br /><br />
+
+                <strong>2. Use of the Web Site.</strong><br /><br /><br />
+
+                2.1 This Web Site contains material, including but not limited to works of original authorship, software, text, graphics and images (collectively referred to as the “Content”). We may own the Content. Portions of the Content may be made available to us for distribution through arrangements that we have with third parties. The Content is protected by copyright under both United States and foreign laws. Unauthorized use of the Content may result in violation of copyright, trademark, and other laws. Except as to information regarding your securities and positions, you agree not to use the Content except as permitted under this Agreement. No other use is permitted without prior written consent from us. Clients of Silvercrest may print copies of pages on our site for their own lawful, personal, non-commercial use. In so doing, they must retain all copyright and other proprietary notices contained in the original Content. You may not sell, transfer, assign, license, sublicense, or modify the Content or reproduce, display, publicly perform, make a derivative version of, distribute, or otherwise use the Content in any way for any public or commercial purpose. The use or posting of the Content on any other web site or in a networked computer environment for any purpose is expressly prohibited.<br /><br /><br />
+
+                2.2 The trademarks, service marks, and logos of the Company (the “Company Trademarks”) used and displayed on this Web Site are registered and unregistered trademarks or service marks of the Company. Other company, product, and service names located on the Web Site may be trademarks or service marks owned by third parties (the “Third-Party Trademarks”, and, collectively with the Company Trademarks, the “Trademarks”). Nothing on this Web Site should be construed as granting, by implication, estoppel, or otherwise, any license or right to use any Trademark displayed on this Web Site without the prior written consent of the Company specific for each such use. The Trademarks may not be used to disparage the Company or the applicable third-party, the Company’s or third-party’s products or services, or in any manner (using commercially reasonable judgment) that may damage any goodwill in the Trademarks. Use of any Trademarks as part of a link to or from any site is prohibited unless the Company, in advance, in writing, approves the establishment of such a link. All goodwill generated from the use of any Company Trademark shall inure to the Company’s benefit.<br /><br /><br />
+
+                2.3 No user of this Web Site may (a) take any action that imposes an unreasonable load on the Web Site’s infrastructure, (b) use any device, software or routine to interfere or attempt to interfere with the proper working of the Web Site or any activity being conducted on the Web Site, (c) attempt to decipher, decompile, disassemble or reverse engineer any of the software comprising or making up the Web Site, (4) delete or alter any material posted by any other person or entity, or (5) frame or link to any of the materials or information available from the Web Site.<br /><br /><br />
+
+                2.4 The Web Site may contain links to third party web sites (“External Sites”). These links are provided solely as a convenience to you and not as an endorsement by us of the content on such External Sites. The content of such External Sites is developed and provided by others. You should contact the site administrator or Webmaster for those External Sites if you have any concerns regarding such links or any content located on such External Sites.<br /><br /><br />
+
+                We are not responsible for the content of any linked External Sites and do not make any representations regarding the content or accuracy of materials on such External Sites. You should take precautions when downloading files from all web sites to protect your computer from viruses and other destructive programs. If you decide to access linked External Sites, you do so at your own risk.<br /><br /><br />
+
+                <strong>3. Limit of Liability and Warranty.</strong><br /><br /><br />
+
+                3.1 THE COMPANY, ITS AFFILIATES, THEIR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, SUPPLIERS, OR LICENSORS (COLLECTIVELY, THE “COMPANY PARTIES“) MAKE NO WARRANTIES OR REPRESENTATIONS ABOUT THE CONTENT, INCLUDING BUT NOT LIMITED TO ITS ACCURACY, RELIABILITY, COMPLETENESS, TIMELINESS, OR RELIABILITY. THE COMPANY PARTIES SHALL NOT BE SUBJECT TO LIABILITY FOR TRUTH, ACCURACY, OR COMPLETENESS OF ANY INFORMATION CONVEYED TO THE USER OR FOR ERRORS, MISTAKES OR OMISSIONS THEREIN OR FOR ANY DELAYS OR INTERRUPTIONS OF THE DATA OR INFORMATION STREAM FROM WHATEVER CAUSE. YOU AGREE THAT YOU USE THE WEB SITE AND THE CONTENT AT YOUR OWN RISK. THE COMPANY PARTIES DO NOT WARRANT THAT THE WEB SITE WILL OPERATE ERROR-FREE OR THAT THIS WEB SITE, ITS SERVER, OR THE CONTENT ARE FREE OF COMPUTER VIRUSES OR SIMILAR CONTAMINATION OR DESTRUCTIVE FEATURES. IF YOUR USE OF THE WEB SITE OR THE CONTENT RESULTS IN THE NEED FOR SERVICING OR REPLACING EQUIPMENT OR DATA, NO COMPANY PARTY SHALL BE RESPONSIBLE FOR THOSE COSTS. THE WEB SITE AND CONTENT ARE PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS WITHOUT ANY WARRANTIES OF ANY KIND. THE COMPANY PARTIES DISCLAIM ALL WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE WARRANTY OF TITLE, MERCHANTABILITY, NON-INFRINGEMENT OF THIRD PARTIES’ RIGHTS, AND FITNESS FOR PARTICULAR PURPOSE.<br /><br /><br />
+
+                3.2 IN NO EVENT SHALL ANY COMPANY PARTY BE LIABLE FOR ANY DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, INCIDENTAL AND CONSEQUENTIAL DAMAGES, LOST PROFITS, OR DAMAGES RESULTING FROM LOST DATA OR BUSINESS INTERRUPTION) RESULTING FROM THE USE OR INABILITY TO USE THE WEB SITE AND THE CONTENT, WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE), OR ANY OTHER LEGAL THEORY, EVEN IF A COMPANY PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.<br /><br /><br />
+
+                3.3 Some states do not allow exclusion of implied warranties or limitation of liability for incidental or consequential damages, so the above limitations or exclusions may not apply to you. IN SUCH STATES, THE LIABILITY OF THE COMPANY PARTIES SHALL BE LIMITED TO THE GREATEST EXTENT PERMITTED BY LAW.<br /><br /><br />
+
+                <strong>4. Indemnification.</strong> You agree to defend, indemnify, and hold harmless the Company, from and against any claims, actions or demands, including, without limitation, reasonable legal and accounting fees, arising or resulting from your breach of this Agreement or your access to, use or misuse of the Content or Web Site. The Company shall provide notice to you of any such claim, suit, or proceeding and shall assist you, at your expense, in defending any such claim, suit or proceeding. The Company reserves the right to assume the exclusive defense and control of any matter which is subject to indemnification under this section. In such case, you agree to cooperate with any reasonable requests assisting the Company’s defense of such matter.<br /><br /><br />
+
+                <strong>5. Termination of the Agreement.</strong><br /><br /><br />
+
+                5.1 Termination. The Company reserves the right, in its sole discretion, to restrict, suspend, or terminate this Agreement and your access to all or any part of the Web Site or the Content, at any time and for any reason without prior notice or liability. The Company reserves the right to change, suspend, or discontinue all or any part of the Web Site or the Content at any time without prior notice or liability.<br /><br /><br />
+
+                5.2 Survival. If this Agreement is terminated, Sections 2 (Use of the Web Site), 3 (Limit of Liability and Warranty), 4 (Indemnification), 5 (Termination of Agreement), 6 (No Framing), and 9 (Miscellaneous) shall survive the termination of this Agreement.<br /><br /><br />
+
+                <strong>6. No Framing.</strong> Elements of the Web Site are protected by trade dress, trademark, unfair competition, and other state and federal laws and may not be copied or imitated in whole or in part, by any means, including but not limited to, the use of framing or mirrors, except where allowed in Section 2. None of the Content for this Web Site may be retransmitted without express written consent from the Company for each and every instance.<br /><br /><br />
+
+                <strong>7. User Must Comply with Applicable Laws.</strong><br /><br /><br />
+
+                7.1 This Web Site is based in and operated out of the State of New York. We make no claims concerning whether the Content may be downloaded, viewed, or be appropriate for use outside of the United States. If you access the Web Site or the Content from outside of the United States, you do so at your own risk. Whether inside or outside of the United States, you are solely responsible for ensuring compliance with the laws of your specific jurisdiction.<br /><br /><br />
+
+                7.2 The United States controls the export of products and information. You expressly agree to comply with such restrictions and not to export or re-export any of the Content to countries or persons prohibited under the export control laws. By downloading the Content, you are expressly agreeing that you are not in a country where such export is prohibited or are a person or entity for which such export is prohibited. You are solely responsible for compliance with the laws of your specific jurisdiction regarding the import, export, or re-export of the Content.<br /><br /><br />
+
+                <strong>8. U.S. Government Restricted Rights.</strong> The Content is provided with “RESTRICTED RIGHTS.” Use, duplication, or disclosure by the Government is subject to the restrictions contained in 48 CFR 52.227-19 and 48 CFR 252.227-7013 et seq. or its successor. Use of the Web Site or Content by the Government constitutes acknowledgement of our proprietary rights in the Web Site and Content.<br /><br /><br />
+
+                <strong>9. Miscellaneous.</strong><br /><br /><br />
+
+                9.1 This Agreement is governed by the internal substantive laws of the State of New York, without respect to its conflict of laws provisions. You expressly agree to submit to the exclusive personal jurisdiction of the United States District Court for the Southern District of New York.<br /><br /><br />
+
+                9.2 If any provision of this Agreement is found to be invalid by any court having competent jurisdiction, the invalidity of such provision shall not affect the validity of the remaining provisions of this Agreement, which shall remain in full force and effect.<br /><br /><br />
+
+                9.3 Failure of the Company to act on or enforce any provision of the Agreement shall not be construed as a waiver of that provision or any other provision in this Agreement. No waiver shall be effective against the Company unless made in writing, and no such waiver shall be construed as a waiver in any other or subsequent instance.<br /><br /><br />
+
+                9.4 Except as expressly agreed by the Company and you, this Agreement constitutes the entire Agreement between you and the Company with respect to the subject matter, and supercedes all previous or contemporaneous agreements, whether written or oral, between the parties with respect to the subject matter.<br /><br /><br />
+
+                9.5 The section headings are provided merely for convenience and shall not be given any legal import.<br /><br /><br />
+
+                9.6 This Agreement will inure to the benefit of our successors, assigns, licensees, and sublicensees.<br /><br /><br />
+
+                9.7 Any information submitted or provided by you to the Web Site might be publicly accessible. Important and private information should be protected by you. The Company is not liable for protection of privacy of electronic mail or other information transferred through the Internet or any other network that you may use.<br /><br /><br /><br /><br /><br /><br /><br />
+            </p>
+        </div>
+        <div style="text-align:center">
+            <button class="btn btn-red" style="width:15%; display:inline-block; margin-left: auto; margin-right:auto;" onclick="acceptTerms();" type="submit">I Agree</button>
+            <button class="btn btn-red" style="width:10%; display:inline-block;  margin-left: auto; margin-right:auto;" onclick="cancelTerms();" type="submit">Cancel</button>
+        </div>
+        <!--            <button type="button" value="I accept Terms" onclick="acceptTerms()">I accept Terms</button>
+                    <button type="button" value="Cancel" onclick="cancelTerms()">Cancel</button>
+        -->
+    </div>
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="~/Scripts/app/Common/loggedInTimeUpdate.js?v=@Url.GetVersion()"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").mousemove(resetTimer);
+        $("#TermsOfUseWindow").kendoWindow({
+            width: "630px",
+            height: "315px",
+            title: "terms of use",
+            actions: [],
+            visible: false,
+
+        }).data("kendoWindow").center();
+
+        function termsPopup() {
+            $("#TermsOfUseWindow").data("kendoWindow").open();
+        }
+@if (Request.Cookies["IsFirstLogin"].Value == "true")
+{
+    @:termsPopup();
+}
+        outdatedBrowser({
+            bgColor: '#f25648', color: '#ffffff', lowerThan: 'transform', languagePath: ''
+        })
+
+        resizeTermsOfUseWindow();
+    });
+
+    window.onresize = function(event) {
+        resizeTermsOfUseWindow();
+    }
+
+    function resizeTermsOfUseWindow() {
+        var vpw = $(window).width();
+        var vph = $(window).height();
+        var tableHeight = Math.round(0.55*vph);
+        var tableWidth = Math.round(0.75*vpw);
+/*
+        if(tableHeight > 230)
+        {
+            tableHeight = 230;
+        }
+*/
+        //        $(‘#somediv’).css({‘height’: vph + ‘px’});
+        if(tableWidth < 700)
+        {
+            tableWidth = vpw;
+            tableHeight = vph*0.7;
+        }
+//        else
+//        {
+//        }
+
+        $('#TermsOfUseWindow').css({"margin-left": "0"});
+        $('div.k-widget.k-window').css({"margin-left": Math.round((vpw-tableWidth)/2), "left": "0px"});
+        $('div.k-widget.k-window').css({"margin-top": Math.round((vph-tableHeight)/2), "top": "0px"});
+
+
+        $('div.k-widget.k-window').css({"height": tableHeight + "px"});
+        $('div.k-widget.k-window').css({"width": tableWidth + "px"});
+//        $('#TermsOfUseWindow.k-window-content').css({"height": tableHeight + "px"});
+//        $('#TermsOfUseWindow.k-window-content').css({"width": tableWidth + "px"});
+        $('k-window-titlebar.k-header').css({"width": tableWidth + "px"});
+
+        //        $('#TermsOfUseWindow .container').css({"width": tableWidth + "px"});
+
+    }
+
+
+    function acceptTerms() {
+        $.ajax({
+            url: "/Client/Home/AcceptTerms",
+            type: "get",
+            success: function (result) {
+@{Request.Cookies["IsFirstLogin"].Value = "false";}
+                $("#TermsOfUseWindow").data("kendoWindow").close();
+            },
+            error: function (result) {
+            }
+        });
+    }
+
+    function cancelTerms() {
+        logOut();
+    }
+//    $("#fullnameDesk").text(getCookie("FullName"));
+//    $("#fullnameMob").text($("#fullnameDesk").text());
+
+    if ($("#fullnameDesk").text() == "" || $("#isLogged").val() == "") {
+        $("#fullnameDesk").parent().empty();
+        $("#fullnameMob").prev().empty();
+        $("#fullnameMob").empty();
+        //$("a:contains('LOGOUT')").parent().empty();
+        //$("#email-popup").empty();
+    }
+
+    var timeoutTimer;
+    var timerDate;
+    function startTimer() {
+        var timeout = @Session.Timeout *60 * 1000;
+        timeoutTimer = setTimeout("logOut()", timeout);
+        }
+
+        function resetTimer() {
+        timerDate = new Date();
+        clearTimeout(timeoutTimer);
+        startTimer();
+        }
+
+        function logOut() {
+        var url = "/Account/LogOff"
+        window.location.href = url;
+        }
+
+        function updateTime(url) {
+        var now = new Date();
+        if ((now.getTime() - timerDate.getTime()) < 60000) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.send(null);
+        }
+        }
+
+        function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+        }
+
+        function sendMessage() {
+
+        var sender = "";
+        if ($('#fullnameDesk').length) {
+        sender = $("#fullnameDesk").text();
+        }
+        else {
+        sender = $("#newId1").text();
+        }
+
+        if ($("#name").val() != "" && $("#message").val() != "") {
+        $.ajax({
+        url: "/Client/Team/SendEmails",
+        type: "post",
+        data: {
+        subject: $("#name").val(),
+        message: $("#message").val(),
+        senderName: sender,
+        },
+        success: function (result) {
+        $("#name").val("");
+        $("#message").val("");
+        $("#modalHeader").text("Message has been sent");
+        $("#myModal").toggle();
+        },
+        error: function (result) {
+        $("#name").val("");
+        $("#message").val("");
+        }
+        });
+        }
+        }
+
+
+        function sendTeamMessage() {
+
+        if ($("#team_name").val() != "" && $("#team_message").val() != "") {
+        $.ajax({
+        url: "/Client/Team/SendEmails",
+        type: "post",
+        data: {
+        subject: $("#team_name").val(),
+        message: $("#team_message").val(),
+        senderName: $("#fullnameDesk").text(),
+        },
+        success: function (result) {
+        $("#team_name").val("");
+        $("#team_message").val("");
+        $("#modalHeader").text("Message has been sent");
+        $("#myModal").toggle();
+        },
+        error: function (result) {
+        $("#team_name").val("");
+        $("#team_message").val("");
+        $("#modalHeader").text("Message failed");
+        $("#myModal").toggle();
+        }
+        });
+        //            document.getElementById("form1").reset();
+        }
+        }
+        var $buoop = { vs: { i: 10, f: -4, o: -4, s: 8, c: -4 }, api: 4 };
+        function $buo_f() {
+        var e = document.createElement("script");
+        e.src = "//browser-update.org/update.min.js?v=@Url.GetVersion()";
+        document.body.appendChild(e);
+        };
+        try { document.addEventListener("DOMContentLoaded", $buo_f, false) }
+        catch (e) { window.attachEvent("onload", $buo_f) }
+
+        function Encrypt(value) {
+        var s;
+        $.ajax({
+        url: '/Home/Encrypt?input=' + value,
+        async: false,
+        type: 'GET',
+        dataType: "text",
+        success: function (result) {
+        s = result;
+        },
+        error: function (result) {
+        return "";
+        }
+        });
+        return s;
+        }
+        function Decrypt(value) {
+        $.ajax({
+        url: '/Home/Decrypt?input=' + value,
+        type: 'GET',
+        dataType: "text",
+        success: function (result) {
+        return result;
+        }
+        });
+        }
+</script>
+

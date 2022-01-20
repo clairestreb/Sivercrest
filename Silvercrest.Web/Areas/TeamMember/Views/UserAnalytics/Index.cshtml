@@ -1,0 +1,88 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.TeamMember.UserAnalyticsViewModel
+@using Silvercrest.Web.Common
+@{
+    Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+    ViewBag.Title = "User Analytics";
+}
+
+<script src="~/Scripts/jquery-2.0.3.min.js?v=@Url.GetVersion()"></script>
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-free pull-right">
+                <a role="button" href="javascript:window.history.go(-1);">
+                    <img src="~/img/return-arrow.png" alt="">
+                </a>
+                @{
+                    if (!(bool)Model.IsFromClientAnalytics)
+                    {
+                        if (Model.FamilyId == 0)
+                        {
+                            @Html.ActionLink("Back to Contact Lookup", "ManagerContactList", "Manager", new { Area = "TeamMember" }, null)
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Back to Relationship Overview", "Index", "Relationship", new { Area = "TeamMember", familyIdQuery = Hash.GetEncryptedValue(Model.FamilyId.ToString()), firmUserGroupIdQuery = Hash.GetEncryptedValue(Model.FirmUserGroupId.ToString()) }, null)
+                        }
+                    }
+                    else
+                    { @Html.ActionLink("Back to Client Analytics Overview", "ClientAnalyticsList", "Manager", new { Area = "TeamMember" }, null) }
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+<section id="title">
+    <div class="container container-center">
+        <div class="row">
+            <h2>@Model.UserName</h2>
+            <h3>Client Analytics Detail</h3>
+
+        </div>
+    </div>
+</section>
+<section id="split">
+    <div class="container container-center pb80">
+        <div class="row">
+            <table id="table-spit">
+                <tr class="row even">
+                    <td class="col1"><div>email</div></td>
+                    <td class="col2 last"><div>@Model.Email</div></td>
+                </tr>
+                <tr class="row odd">
+                    <td class="col1"><div>last login</div></td>
+                    <td class="col2 last"><div>@Model.LastLogin</div></td>
+                </tr>
+                <tr class="row even">
+                    <td class="col1"><div>Average Login Frequency</div></td>
+                    <td class="col2 last"><div>@Model.LoginFrequency</div></td>
+                </tr>
+                <tr class="row odd">
+                    <td class="col1"><div>Average Time Spent</div></td>
+                    <td class="col2 last"><div class="logged-in-time">@Model.LoggedInTime</div></td>
+                </tr>
+                <tr class="row even">
+                    <td class="col1"><div>Most Viewed Page</div></td>
+                    <td class="col2 last"><div>@Model.ViewedPage</div></td>
+                </tr>
+                <tr class="row odd">
+                    <td class="col1"><div>Most Viewed Account</div></td>
+                    <td class="col2 last"><div>@Model.ViewedAccount</div></td>
+                </tr>
+                <tr class="row even">
+                    <td class="col1"><div>Most Viewed Group</div></td>
+                    <td class="col2 last"><div>@Model.ViewedGroup</div></td>
+                </tr>
+            </table>
+        </div>
+        @{
+            if (@Model.LastLogin != null)
+            {
+                <a href="@Url.Action("LoginHistory", new { webUserIdQuery = Model.WebUserId, familyIdQuery= Hash.GetEncryptedValue(Model.FamilyId.ToString()) })" class="btn btn-red center">View Full Login History</a>
+            }
+        }
+    </div>
+</section>
+

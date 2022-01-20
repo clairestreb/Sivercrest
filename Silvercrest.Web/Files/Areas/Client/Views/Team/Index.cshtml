@@ -1,0 +1,83 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.Client.ClientTeamListViewModel
+@{
+    ViewBag.Title = "Team";
+    //    if (Request.Cookies["IsSecondaryClient"].Value == "true")
+    //    { Layout = "~/Views/Shared/_LayoutSecondaryClient.cshtml"; }
+}
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css?v=@Url.GetVersion()">
+<script src="https://use.fontawesome.com/3e4d4a068b.js?v='@Url.GetVersion()'"></script>
+<script src="~/Scripts/jquery-2.0.3.min.js?v=@Url.GetVersion()"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/index.css?v=@Url.GetVersion()">
+
+<section id="title">
+    <div class="container">
+        <div class="row">
+            <h2>Client Team</h2>
+        </div>
+    </div>
+</section>
+
+<section id="profiles">
+
+    <div class="container pt60 pb60 photoWrap">
+        @foreach (var c in @Model.teamModels)
+        {
+            <div class="photoItem col-xs-12 col-sm-3">
+                <img src="/img/@c.Photo" style="max-height: 245px;" />
+                <h5 style="margin-bottom: 3px !important"><strong>@c.Name</strong></h5>
+                <span style="display: block;"> @c.Email</span>
+                <span style="display: block;"> @c.PhoneNumber</span>
+            </div>
+        }
+
+    </div>
+</section>
+<section id="contact">
+    <div class="container container-center">
+        <div class="row">
+            <h3>
+                SEND US A MESSAGE
+            </h3>
+            <form id="form1" name="form1" class="form-horizontal" role="form">
+
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="text" name="subject" value="" placeholder="Subject" class="form-control" id="team_name" style="text-transform: none !important; color:#333">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <textarea class="form-control" type="text" name="message" placeholder="Enter Your Message" style="text-transform: none !important;height:200px; resize:vertical;  color:#333" id="team_message"></textarea>
+                    </div>
+                </div>
+                <input type="button" onclick="sendTeamMessage()" name="submit" id="team_submit" class="btn btn-red mt20 pull-right" value="Submit"/>
+            </form>
+
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="modalHeader"></h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#navigatino-item-active ul li:nth-child(4)").addClass('active');
+        $("#bs-example-navbar-collapse-1 ul li:nth-child(4)").addClass('active');
+    })
+</script>
+

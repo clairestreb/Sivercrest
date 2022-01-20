@@ -1,0 +1,241 @@
+﻿@model Silvercrest.ViewModels.Client.Documents.DocumentsViewModel
+@using Silvercrest.Web.Helpers.Assembly
+@{
+    ViewBag.Title = "Documents";
+    //    if (Request.Cookies["IsSecondaryClient"].Value == "true")
+    //    { Layout = "~/Views/Shared/_LayoutSecondaryClient.cshtml"; }
+}
+
+@*<script src="~/Scripts/jquery-2.0.3.min.js"></script>*@
+<script src="~/Scripts/jquery.unobtrusive-ajax.js?v=@Url.GetVersion()"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js?v=@Url.GetVersion()"></script>
+<link href="~/Content/kendoStyle.css?v=@Url.GetVersion()" rel="stylesheet" />
+<link href="~/Content/documents.css?v=@Url.GetVersion()" rel="stylesheet" />
+@*<script src="~/Scripts/jquery-2.0.3.min.js"></script>*@
+<script src="~/Scripts/kendo-ui/kendo.all.min.js?v=@Url.GetVersion()"></script>
+<script src="//kendo.cdn.telerik.com/2016.3.1028/js/jszip.min.js?v=@Url.GetVersion()"></script>
+<script src="//kendo.cdn.telerik.com/2016.3.1118/js/pako_deflate.min.js?v=@Url.GetVersion()"></script>
+<body style="overflow:scroll">
+    <input id="Category" type="hidden" value="Statements" />
+    <section id="title">
+
+        <div class="container">
+            <div class="row">
+                <h2>Documents</h2>
+            </div>
+        </div>
+    </section>
+    <section id="documents">
+        <div class="container pb100 pt30">
+            <br />
+            <div class="row">
+                <div class="col-md-2 col-xs-12">
+                    <div class="sideNav">
+                        @*@using (Html.BeginForm("UploadFile", "Documents", FormMethod.Post, new { enctype = "multipart/form-data", id = "formFile" }))
+                            {
+                                <div class="btn btn-red center inputWrapper">
+                                    Upload New File
+                                    <input class="fileInput hiddenInput" type="file" onchange="this.form.submit()" name="uploadFile" />
+                                    <input class="hidden" type="text" name="contactId" value="@Model.contactId" />
+                                </div>
+                            }*@
+                        @using (Ajax.BeginForm("UploadFile", "Documents", new AjaxOptions { HttpMethod = "POST" }, new { enctype = "multipart/form-data", id = "formFile" } ))
+                        {
+                            <div class="btn btn-red center inputWrapper">
+                                Upload New File
+                                <input class="fileInput hiddenInput" type="file" name="uploadFile" id="fileInputControl" />
+                                <input class="hidden" type="text" name="contactId" value="@Model.contactId"/>
+                            </div>
+                        }
+                        <hr />
+                        <br />
+                        @*<p class="subHeader">Select Year</p>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <span class="arrow-down redArrow"></span>
+                                    <span id="dropDownMenu1Text">All</span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="year">
+                                    <li><a href="#" onclick="sortByYear('All');">All</a></li>
+                                    @foreach (var item in Model.Year)
+                                    {
+                                        <li><a href="#" onclick="sortByYear(@item);">@item</a></li>
+                                    }
+                                </ul>
+                            </div>*@
+                    </div>
+                    <br />
+                    <p class="subHeader" style="margin-bottom:5px;">Document Type</p>
+                    <div class="sideNav sideBorder">
+                        <ul class="links" id="DocumentTypeUl">
+                            <li>
+                                <a href="#" onclick="sortByDocumentType('All');" class="red" id="All">All Documents</a>
+                            </li>
+                            @foreach (var item in Model.DocumentType)
+                            {
+                                <li>
+                                    <a href="#" onclick="sortByDocumentType('@item.Replace(" ", "_")');" class="red" id="@item.Replace(" ", "_")">@item</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                    @*<p class="subHeader" style="margin-bottom:5px;">Document Type</p>
+                        <div class="sideNav sideBorder">
+                            <ul class="links" id="DocumentTypeUl">
+                                <li>
+                                    <a href="#" onclick="sortByDocumentType('All');" class="red linkSelected" id="All">All Documents</a>
+                                </li>
+                                @foreach (var item in Model.DocumentType)
+                                {
+                                    <li>
+                                        <a href="#" onclick="sortByDocumentType('@item');" class="red">@item</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>*@
+                </div>
+                <div class="col-md-10 col-xs-12">
+                    <div class="dropdown selectAccount clearfix">
+                        <div class="col-md-6">
+                            <p class="subHeader">Select Account or Group</p>
+                            <button class="btn btn-default dropdown-toggle two" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span class="arrow-down redArrow"></span>
+                                <span id="dropDownMenu2Text">All Accounts</span>
+                            </button>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li><a href="#" onclick="sortByEntityName('All');">All Accounts</a></li>
+                                @{
+                                    int count = 0;
+                                }
+
+                                @foreach (var item in Model.EntityName)
+                                {
+                                    if (Model.IsGroup[count] == true)
+                                    {
+                                        var text = item.ToString();
+                                        <li><a href="#" onclick="sortByEntityName(text);"><strong>@item</strong></a></li>
+                                    }
+                                    if (Model.IsGroup[count] == false)
+                                    {
+                                        var text = item.ToString();
+                                        <li><a href="#" onclick="sortByEntityName(text)">@item</a></li>
+                                    }
+                                    count++;
+                                }
+                            </ul>
+                        </div>
+                        <div class="col-md-6" style="display:flex; justify-content:flex-end;">
+                            <div id="dropdown-wrapper" class="clearfix">
+                                <p class="subHeader">Select Date Range</p>
+                                <p id="datepickerSet">
+                                    <input type="text" id="datepickerStart" placeholder="Start Date" value="@Model.StartDate" /> <span> &nbsp;—&nbsp; </span>
+                                    <input type="text" id="datepickerEnd" placeholder="End Date" value="@Model.EndDate" />
+                                    <a href="#" style="text-decoration:underline;font-size:14px;" onclick="insertDates()">Update</a>    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div id="documentsTable" class="tablemarg"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <div class="popup-holder" style="display:none; margin-top: 300px;" popup id="popupActivateOrDeactivate">
+        <div class="popup">
+            <div class="popup-header">
+                <h2 id="activateMessage">Invalid Name</h2>
+            </div>
+            <div class="popup-content">
+                <p id="errorMessage"></p>
+            </div>
+            <div class="popup-footer">
+                <div class="btn-wrapper">
+                    <button class="btn-main btn-close btn-activate">ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-holder" style="display:none; margin-top: 300px;" popup id="popupDeleteConfirm">
+        <div class="popup">
+            <div class="popup-header">
+                <h2 id="confirmHeaderMessage">Delete Document</h2>
+            </div>
+            <div class="popup-content">
+                <p id="confirmBodyMessage"></p>
+            </div>
+            <div class="popup-footer" style="display:flex; justify-content:center;">
+                <div class="btn-wrapper" style="text-align:center;  display:inline-block;  border-right: thin ridge #f6eee0;">
+                    <button class="btn-main btn-close btn-activate ok" style="display:inline;   text-align:center;">Delete</button>
+                </div>
+                <div class="btn-wrapper" style="text-align:center;  display:inline-block;  /*border-right: thin ridge #f6eee0;*/">
+                    <button class="btn-main btn-close btn-activate cancel" style="display:inline;">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="~/Scripts/app/Client/DocumentsController/DocumentsInit.js?v=@Url.GetVersion()"></script>
+<script type="text/javascript" src="~/Scripts/app/Client/DocumentsController/DocFunc.js?v=@Url.GetVersion()"></script>
+
+<script>
+    var model = @Html.Raw(Json.Encode(Model))
+
+        function getFile() {
+        document.getElementById("upfile").click();
+    }
+    $(document).ready(function () {
+
+    $("#navigatino-item-active ul li:nth-child(5)").addClass('active');
+        $("#bs-example-navbar-collapse-1 ul li:nth-child(5)").addClass('active');
+
+    })
+
+
+    $('#fileInputControl').change(function () {
+        var dataString = new FormData($("#formFile").get(0));
+        $.ajax({
+            url: '@Url.Action("UploadFile", "Documents")',
+            data: dataString,
+            contentType: false,
+            processData: false,
+            type: "POST",
+            dataType: "html",
+            success: function (data) {
+                showPopup("Document Upload Successful", true, "Success", true); return;
+            },
+            error: function (data) {
+                showPopup("Document Upload Failed", true, "Error", true); return;
+            }
+        });
+
+    });
+
+
+    function showPopup(message, topPosition, messageType, pageReload) {
+        $("#errorMessage").text(message);
+        $("#activateMessage").text(messageType);
+
+        if (topPosition == true)
+            $("#popupActivateOrDeactivate").css("margin-top", "270px");
+        if (topPosition == false)
+            $("#popupActivateOrDeactivate").css("margin-top", "610px");
+
+        if (pageReload == false) {
+            $("#popupActivateOrDeactivate button").on('click', closeResultMsgPopup);
+        }
+        else {
+            $("#popupActivateOrDeactivate button").on('click', refresh);
+        }
+        $("#popupActivateOrDeactivate").show();
+        $("#popupActivateOrDeactivate").css("visibility", "visible");
+        $(".overlay").show();
+    }
+
+</script> 

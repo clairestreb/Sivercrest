@@ -1,0 +1,452 @@
+﻿/*Kendo grid style*/
+
+.k-grid {
+    font-family: 'copperplate';
+}
+
+
+.entityGroup {
+    padding-left: 45px !important;
+}
+.k-grid td{
+    border-style: solid;
+    border-width: 0 2px 0 2px;
+    border-color: #d5c6a9;
+    padding: .4em .6em;
+    overflow: hidden;
+    line-height: 1.6em;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+}
+
+div.k-grid-header, div.k-grid-footer {
+    background: #f6eee0;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #fff;
+    zoom: 1;
+    z-index:1;
+}
+
+.k-grid-header th.k-header > .k-link {
+    display: block;
+    /*min-height: 25px;*/
+    line-height: 10px;
+    margin: -0.5em -0.6em -0.4em -0.6em;
+    padding: 1.2em .6em .4em .6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.k-grid-header .k-header {
+    color: #163574;
+    background-color: #f6eee0;
+    background-image: none;
+}
+
+
+.k-link:link, .k-link:visited, .k-nav-current.k-state-hover .k-link {
+    color: #163574;
+    font-size: 12px;
+    line-height: 10px;
+}
+
+.k-grid-content > table > tbody > tr {
+    background: #e9dfcd;
+}
+
+.k-grid-content {
+    max-height: 600px;
+}
+
+.k-grid tr td {
+    border-bottom: 0px solid #fff;
+}
+
+.k-grid table tr.row.red > td, .k-grid table tr.red > td {
+    background-color: #dfd4bf;
+}
+
+.k-grid table tr.row.red > td a, .k-grid table tr.red > td a {
+    color: #841e36;
+}
+
+.k-grid table tr.row.tab > td.col1, .k-grid table tr.tab > td.col1 {
+    padding-left: 30px;
+}
+
+.k-grid table tr.row.tab2 > td.col1, .k-grid table tr.tab2 > td.col1 {
+    padding-left: 45px;
+}
+
+.k-grid table tr.row.blue > td, .k-grid table tr.blue > td {
+    color: #163574;
+    background-color: #dfd4bf;
+}
+
+.k-grid table .col1 {
+    font-size: 14px;
+}
+
+#table-purchases .groupingOne td {
+    background-color: #e9dfcd;
+}
+
+#table-purchases .k-grid .col2 {
+    background-color: #dfd4bf;
+}
+
+#table-purchases .k-grouping-row p {
+    margin: 0;
+    padding-left: 5px;
+}
+
+#table-purchases .groupingSecond td {
+    background-color: #dfd4bf;
+    color: #163574;
+}
+#table-purchases .k-grid .col2.first {
+    text-align: left;
+    padding-left: 40px;
+}
+
+#table-purchases .k-group-footer.row.black.tab.footerSecond td:first-child {
+    padding-left: 40px;
+}
+#table-purchases .k-group-footer.row.black.tab.footerSecond td {
+    background-color: #dfd4bf;
+    color: #163574;
+}
+
+#table-sales .k-grid-header {
+    border-bottom: thin solid white;
+}
+
+    #table-sales .k-grid-header th {
+        padding-bottom: 4px;
+    }
+
+    #table-sales .k-grid-header:first-child div {
+        font-size: 10px;
+    }
+
+    #table-sales .k-grid-header th.col2 div:nth-child(2), #table-sales .k-grid-header th.col2 div:nth-child(3), #table-sales .k-grid-header th.col2 div:nth-child(4), #table-sales .k-grid-header th.col2 .col-xs-6, #table-sales .k-grid-header th.col3 .col-xs-4, #table-sales .k-grid-header th.col3 .col-xs-8, #table-sales .k-grid-header th.col4 .col-xs-4, #table-sales .k-grid-header th.col4 .col-xs-3, #table-sales .k-grid-header th.col4 .col-xs-5, #table-sales .k-grid-header th.col5 div:nth-child(3) {
+        padding-top: 10px;
+    }
+
+    #table-sales .k-grid-header th.col1 div {
+        padding-top: 22px;
+        text-transform: uppercase;
+    }
+
+    #table-sales .k-grid-header td {
+        border-top: thin solid white;
+        vertical-align: middle;
+    }
+
+#table-sales .k-grid .row .black .tab2 td div {
+    font-family: "goudyosSC";
+    text-transform: uppercase;
+    line-height: 13px;
+    height: 100%;
+}
+
+#table-sales .k-grid .blue .col2, #table-sales .k-grid .blue .col3, #table-sales .k-grid .blue .col4, #table-sales .k-grid .blue .col5, #table-sales .k-grid .black .col2, #table-sales .k-grid .black .col3, #table-sales .k-grid .black .col4, #table-sales .k-grid .black .col5 {
+    text-align: center;
+}
+
+#table-sales .k-grid .col1 div {
+    padding: 0px;
+}
+
+    #table-sales .k-grid .col1 div small {
+        display: block;
+        text-transform: capitalize;
+    }
+
+#table-sales .k-grid .col1 {
+    padding-left: 15px;
+}
+
+#table-sales .k-grid .col2 {
+    background-color: #dfd4bf;
+}
+
+#table-sales .groupingOne td{
+    background-color: #e9dfcd;
+}
+
+#table-sales .groupingSecond td{
+    background-color: #dfd4bf;
+    color: #163574;
+}
+
+#table-sales .k-group-footer.row.black.tab2.footerSecond td:first-child{
+    padding-left: 40px;
+}
+#table-sales .k-group-footer.row.black.tab2.footerSecond td{
+    background-color: #dfd4bf;
+    color: #163574;
+}
+
+#table-sales .k-group-footer td{
+    color: #163574;
+}
+
+#table-sales .k-group-footer.row.black.tab2.footerSecond td div{
+    font-family: "goudyosSC";
+}
+
+#table-sales .k-grouping-row p {
+    margin: 0;
+    padding-left:5px;
+}
+
+#table-sales .k-grid .col2 {
+    font-size: 9pt;
+    width: 150px;
+    font-family: "goudyosSC";
+}
+
+#table-sales .k-grid .col2.first {
+    text-align: left;
+    padding-left: 40px;
+}
+
+#table-sales .k-footer-template td{
+    color: #163574;
+}
+
+#table-sales .k-footer-template td div{
+    color: #163574;
+    font-family: "goudyosSC";
+}
+
+#table-sales .k-grid .col3 {
+    width: 140px;
+}
+
+#table-sales .k-grid .col4 {
+    width: 200px;
+}
+
+#table-sales .k-grid .col5 {
+    width: 150px;
+}
+
+#table-sales .k-grid tr.blue.tab .col1 .col-xs-10 {
+    padding-left: 15px;
+}
+
+#table-sales .k-grid tr.black.tab2 .col1 .col-xs-10, #table-sales .k-grid tr.blue.tab2 .col1 .col-xs-10 {
+    padding-left: 30px;
+}
+
+#table-sales .k-grid td.col1 .col-xs-2 {
+    text-align: center;
+    line-height: 42px;
+}
+
+#table-sales .k-grid table.test tr.row.header td div, #table-cash .k-grid table.test tr.row.header td div {
+    padding-top: 0px !important;
+    font-size: 13px;
+    font-family: "goudyosSC";
+    padding-left: 0px;
+}
+
+#table-sales .k-grid table.test tr.row.header .col1 div:first-child, #table-cash .k-grid table.test tr.row.header .col1 div:first-child {
+    font-family: "copperplate";
+    font-size: 12px;
+    text-align: left;
+    margin-top: -2px;
+}
+
+
+span.k-i-arrow-n {
+    /*display:none;*/
+}
+
+.k-i-collapse {
+     display:none;
+}
+
+span.k-i-arrow-s {
+    /*display:none;*/
+}
+
+.k-grid table .col2, .k-grid table .col3, .k-grid table .col4, .k-grid table .col5{
+    text-align: center;
+}
+
+.k-grid table tr.row.red.link .col1, .k-grid table tr.red.link .col1 {
+    -moz-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+    -webkit-transition: all 0.8s ease;
+    transition: all 0.8s ease;
+    cursor: pointer;
+}
+
+.k-grid table tr.row.red.link .col1 a, .k-grid table tr.red.link .col1 a {
+    text-decoration: underline;
+}
+
+.k-grid table tr.row.red.link .col1:hover, .k-grid table tr.red.link .col1:hover {
+    background-color: #841e36;
+    color: white !important;
+}
+
+.k-grid table tr.row.red.link .col1:hover div, .k-grid table tr.row.red.link .col1:hover a, .k-grid table tr.red.link .col1:hover div, .k-grid table tr.red.link .col1:hover a {
+    color: white !important;
+}
+
+.k-grid-header th.k-header, .k-filter-row th {
+    border-width: 2px;
+    border-color: #d5c6a9;
+    border-top: 1px;
+    border-bottom: thin solid white;
+}
+
+.k-grid-content-locked, .k-grid-content, .k-pager-wrap {
+    background: #e9dfcd;
+
+}
+/*End kendo grid style*/
+.k-input, input.k-textbox, textarea.k-textbox, input.k-textbox:hover, textarea.k-textbox:hover, .k-textbox > input, .k-multiselect-wrap {
+    background-color: #dfd4bf;
+    color: #555;
+    border-radius: 4px;
+}
+
+.k-textbox:hover, .k-tiles li.k-state-hover {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+.k-group, .k-toolbar, .k-grouping-header, .k-pager-wrap, .k-group-footer td, .k-grid-footer, .k-footer-template td, .k-widget .k-status, .k-calendar th, .k-dropzone-hovered, .k-widget.k-popup {
+    background-color: #f6eee0;
+}
+
+#table-family tr.k-footer-template td {
+    color: #163574;
+    background-color: #f6eee0;
+}
+
+.k-state-hover > .k-select {
+    background-color: #dfd4bf;
+}
+
+.k-autocomplete.k-state-hover, .k-picker-wrap.k-state-hover, .k-numeric-wrap.k-state-hover, .k-dropdown-wrap.k-state-hover {
+    background-color: #fff;
+}
+
+.k-dropdown .k-state-hover .k-input {
+    color: #555;
+}
+
+.k-dropdown .k-input, .k-selectbox .k-input {
+    background: #dfd4bf;
+}
+
+.k-autocomplete.k-state-default, .k-picker-wrap.k-state-default, .k-numeric-wrap.k-state-default, .k-dropdown-wrap.k-state-default {
+    background-image: url(textures/highlight.png);
+    background-image: none,-webkit-linear-gradient(top,#dfd4bf 0,#dfd4bf 100%);
+    background-image: none,-moz-linear-gradient(top,#dfd4bf 0,#dfd4bf 100%);
+    background-image: none,-o-linear-gradient(top,#dfd4bf 0,#dfd4bf 100%);
+    background-image: none,linear-gradient(to bottom,#dfd4bf 0,#dfd4bf 100%);
+    background-position: 50% 50%;
+    background-color: #dfd4bf;
+    border-color: #dfd4bf #dfd4bf #dfd4bf;
+}
+
+.k-state-selected, .k-state-selected:link, .k-state-selected:visited, .k-list > .k-state-selected, .k-list > .k-state-highlight, .k-panel > .k-state-selected, .k-button:active, .k-ghost-splitbar-vertical, .k-ghost-splitbar-horizontal, .k-draghandle.k-state-selected:hover, .k-scheduler .k-scheduler-toolbar .k-state-selected, .k-marquee-color {
+    color: #555;
+    background-color: #aab5cc;
+    border-color: #aab5cc #aab5cc #aab5cc;
+}
+
+.k-header, .k-grid-header, .k-toolbar, .k-dropdown-wrap, .k-picker-wrap, .k-numeric-wrap, .k-grouping-header, .k-pager-wrap, .k-textbox, .k-button, .k-draghandle, .k-autocomplete, .k-state-highlight, .k-tabstrip-items .k-item {
+    /*#841e36
+            background-image: url(textures/highlight.png);*/
+    background-image: none,-webkit-linear-gradient(top,#841e36 0,#841e36 100%);
+    background-image: none,-moz-linear-gradient(top,#841e36 0,#841e36 100%);
+    background-image: none,-o-linear-gradient(top,#841e36 0,#841e36 100%);
+    background-image: none,linear-gradient(to bottom,#841e36 0,#841e36 100%);
+    background-position: 50% 50%;
+    background-color: #841e36;
+    color: #fff;
+}
+
+    .k-textbox, .k-autocomplete.k-header, .k-dropdown-wrap.k-state-active, .k-picker-wrap.k-state-active, .k-numeric-wrap.k-state-active {
+        border-color: #dfd4bf #dfd4bf #dfd4bf;
+    }
+
+    .k-block, .k-button, .k-textbox, .k-drag-clue, .k-touch-scrollbar, .k-window, .k-window-titleless .k-window-content, .k-window-action, .k-inline-block, .k-grid .k-filter-options, .k-grouping-header .k-group-indicator, .k-autocomplete, .k-multiselect, .k-combobox, .k-dropdown, .k-dropdown-wrap, .k-datepicker, .k-timepicker, .k-colorpicker, .k-datetimepicker, .k-numerictextbox, .k-picker-wrap, .k-numeric-wrap, .k-colorpicker.k-list-container, .k-calendar-container, .k-calendar td, .k-calendar .k-link, .k-treeview .k-in, .k-editor-inline, .k-tooltip, .k-tile, .k-slider-track, .k-slider-selection, .k-upload {
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-device-pixel-ratio:2) {
+    .k-icon:not(.k-loading), .k-grouping-dropclue, .k-drop-hint, .k-callout, .k-tool-icon, .k-tool-icon.k-state-hover, .k-tool-icon.k-state-active, .k-tool-icon.k-state-active.k-state-hover, .k-tool-icon.k-state-selected, .k-tool-icon.k-state-selected.k-state-hover, .k-column-menu .k-sprite {
+        background-size: 338px 345px;
+    }
+}
+
+.k-i-funnel, .k-filter {
+    background-position: -31px -78px;
+}
+
+.k-dropdown .k-input, .k-dropdown .k-state-focused .k-input, .k-menu .k-popup {
+    color: #555;
+}
+
+.k-state-hover, .k-state-hover:hover {
+    color: #fff;
+    background-color: #aab5cc;
+    border-color: #aab5cc #aab5cc #aab5cc;
+    background-image: none;
+}
+
+
+.k-grid-header .k-header .k-link {
+    position: relative;
+}
+
+    .k-grid-header .k-header .k-link > .k-icon {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        width: 100%;
+        background-image: none; /* remove Kendo's sprite image */
+        font-family: FontAwesome;
+        color: #0177bf;
+        font-size: 16px;
+        line-height: 10px;
+    }
+
+        .k-grid-header .k-header .k-link :before {
+            
+            font-family: FontAwesome;
+            content: '\f0dd'; /* FontAwesome down arrow */
+            position: absolute;
+        top: 10px;
+        left: 20px;
+        color: #163574;
+        }
+
+        .k-grid-header .k-header .k-link:before {
+            font-family: FontAwesome;
+            content: '\f0dd'; /* FontAwesome up arrow */
+            position: absolute;
+        top: 25px;
+        left: 49%;
+        color: #163574;
+
+        }
+
+#WithdrawalsGrid .k-grid-header th.k-header {
+   display: none;
+}

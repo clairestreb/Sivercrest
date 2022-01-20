@@ -1,0 +1,36 @@
+﻿@using Silvercrest.ViewModels.Main.AccountViewModels
+@using Silvercrest.Web.Helpers.Assembly
+
+@model VerifyTwoFactorTokenViewModel
+@{ ViewBag.Title = "TwoFactAuth";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml"; }
+
+<script type="text/javascript" src="~/Scripts/app/Client/AccountsController/TwoFactAuth.js?v=@Url.GetVersion()"></script>
+@using (Html.BeginForm("VerifyTwoFactorToken", "Account", Model, FormMethod.Post, new { @class = "", id = "UserLoginForm", role = "form" }))
+{
+<fieldset>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="form-group required">
+        @Html.LabelFor(m => m.VerifyTwoFactorToken, new { @class = "" })
+
+        @Html.TextBoxFor(m => m.VerifyTwoFactorToken, new { @class = "form-control", maxlength = "50", required = "required" })
+        @Html.ValidationMessageFor(m => m.VerifyTwoFactorToken, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.IsTrustedDevice, new { @class = "" }) Trust this device and skip this step in the future.<i class="fa fa-info-circle" style="cursor: pointer; color: #163574; " data-toggle="tooltip" data-original-title="Check this box if this device is one that Silvercrest should associate with your account and trust for future use. Do not check this box if this is a public or shared device."></i>
+    </div>
+    @if (Model.IsTokenError)
+    {
+<div class="form-group">
+    Code is incorrect
+</div>}
+    <div style="display:none;">
+        <input type="hidden" name="_method" value="POST">
+    </div>
+
+    <button type="submit" class="btn btn-default btn-red block-on-small">Verify</button>
+</fieldset>}
+

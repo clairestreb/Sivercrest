@@ -1,0 +1,1640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54A03D5C-F148-49FD-AB6E-9E3DA97E0B72}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Silvercrest.DataAccess</RootNamespace>
+    <AssemblyName>Silvercrest.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Account.cs" />
+    <Compile Include="Common\HoldingsCache.cs" />
+    <Compile Include="Common\Security.cs" />
+    <Compile Include="Common\Tax_Lot.cs" />
+    <Compile Include="IdentityStore\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityStore\RoleStore.cs" />
+    <Compile Include="IdentityStore\UserEntity.cs" />
+    <Compile Include="IdentityStore\UserRoleEntity.cs" />
+    <Compile Include="IdentityStore\UserStore.cs" />
+    <Compile Include="Mappers\AccountMapper.cs" />
+    <Compile Include="Mappers\AnalyticsMapper.cs" />
+    <Compile Include="Mappers\ClientAdoMapper.cs" />
+    <Compile Include="Mappers\ContactMapper.cs" />
+    <Compile Include="Mappers\DocumentMapper.cs" />
+    <Compile Include="Mappers\GroupAdoMapper.cs" />
+    <Compile Include="Mappers\GroupMapper.cs" />
+    <Compile Include="Mappers\HoldingsAdoMapper.cs" />
+    <Compile Include="Mappers\ManagerMapper.cs" />
+    <Compile Include="Mappers\QuestionMapper.cs" />
+    <Compile Include="Mappers\UserMapper.cs" />
+    <Compile Include="Model\Account.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Attribute.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Benchmark.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Class.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Close_Reason.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Group.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Group_Member.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Investment_Objective.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Performance.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Returns.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Snapshot.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Strategy_Override.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Transaction.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Account_User_Group.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AggregatedCounter.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AggregatedCounter1.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Allocation_Risk_Profile.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\APX_Portfolio_Statement.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetRole.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUser.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUserClaim.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUserLogin.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Asset_Allocation_Target.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Asset_Class_Equivalent.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Asset_Manager.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AUM_Fund_Mapping.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AUM_Revenue_Source.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AUM_SAMG_Manager_Mapping.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Benchmark.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Benchmark_Performance.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Benchmark_Returns.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Book_Blank_Page.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Book_Request.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Book_Request_Detail.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Branch_Office.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Classification.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Classification_Sort.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contact.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contact_Address.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contact_Default_Mapping.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contact_Detail_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contact_Phone.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Counter.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Counter1.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Country.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Currency.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Current_Positions.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Custom_Comment.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\C__MigrationHistory.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\database_firewall_rules.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Document_Delivery_Frequency.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Document_Delivery_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Document_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DW_Monitor.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entity_Document.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entity_Document_Delivery.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entity_Group.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entity_Grouping.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entity_Group_Rule.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Exchange.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Family_Group.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Fee_Snapshot.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Firm_Title.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Firm_User.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Firm_User_Group.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Firm_User_Group_Attribute.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Firm_User_Group_Member.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FX_Rate.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Account_Performance_CY_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Account_Performance_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Allocation_Detail2_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Allocation_Detail_By_Account_List2_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Allocation_Detail_By_Account_List_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Allocation_Detail_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Allocation_Detail_Test_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_All_Entities_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_AUM_Account_Values_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_AUM_All_Eligible_Accounts_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_AUM_Eligible_Accounts_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_AUM_FI_Allocation_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_AUM_Flows_By_Month_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_AUM_Manager_Fees_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_AUM_Monthly_Flows_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_AUM_Position_Detail_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Contact_Document_Details_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Contact_Mailing_Address_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Currency_Codes_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_EQSTRAT_AUM_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Exec_Price_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Generate_Statement_List_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_Account_Participation_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_All_User_Group_Codes_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_Amortization_Accretion_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_Entity_Group_Membership_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_Extract_Dates_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_FX_Rates_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_Positions_By_Account_Group_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_Positions_By_Account_List_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_Positions_By_Account_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_Transactions_By_Account_List_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_Transactions_By_Settle_Date_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_Transactions_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Get_Web_Strategy_Documents_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Investment_Progress_Monthly_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Investment_Progress_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Investment_Progress_Universal_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Market_Index_Returns_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_AlternativesBreakdown_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_AppraisalType_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_CovUncov_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_Currency_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_GainType_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_History_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_IncExpTypes_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_MgrCode_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_NumBenchmarks_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_PerfLayer_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_PerfType_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_Periods_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_Period_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_RankBy_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_ReportTitle_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_ReportType_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_RtnType_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_Source_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_StratPortReturn_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_TaxLots_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_TenYrsBack_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_TotalBM_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_TranInterAcct_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_TranType_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_TrdStlDate_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_PARAM_YieldType_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Periods_To_Date_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Portfolio_Details_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Portfolio_Names_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Portfolio_Performance_CY_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Portfolio_Performance_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Principal_Income_Cash_Securities_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Relevant_Document_Delivery_Frequencies_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Split_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Account_Cache_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Account_Group_Cache_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Contacts_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Contact_Address_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Contact_Phone_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Investment_Progress_Stg_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Price_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_RealizedGL_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Security_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Transactions_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Transactions_Temp_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Transaction_Activity_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Transaction_Comments_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_SSIS_Transaction_Comments_Temp_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Statement_Upload_Queue_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_STM_Next_Print_Entry_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_STM_Statement_Status_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Transaction_Comments2_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Transaction_Comments_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_Accounts_Within_Group_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_All_Contact_Entities_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_Client_Groups_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_Contact_Accounts_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_Contact_Entities_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_Contact_Entity_Default_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_Current_Positions_By_Account_List_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_Entity_Account_List_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_Entity_Details_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_Entity_Exists_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_Firm_User_Group_Attributes_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_User_Details_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\f_Web_User_Roles_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Generic_Attribute.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GICS_Sector_Translate.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Hash.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Hash1.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Holding_Duration.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Intraday_DW_Refresh.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Intra_Month_Data_Tracker.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\InvestCloud_Contact.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Investment_Action.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Investment_Goal.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Investment_Objective_Item.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Investment_Objective_Section.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Investment_Progress.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Investment_Progress_IM.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Investment_Progress_Post.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Investment_Progress_Pre.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Investment_Progress_Stg.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Job.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Job1.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\JobParameter.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\JobParameter1.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\JobQueue.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\JobQueue1.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\KeyValuePairs_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\List.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\List1.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Mapping_Account.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Market_Index.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Market_Index_Return.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Month_End_Checklist.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Month_End_Checklist_Status.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Performance_Alternatives.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Portfolio_Benchmark.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Portfolio_Investment_Objective.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Portfolio_Performance.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Portfolio_Returns.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Price.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\procCopyTemplate_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_AUM_And_Flow_Summary_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_AUM_By_Asset_Class_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_AUM_Model_Tracker_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_AUM_Raw_Data_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_AUM_Summary_By_Type_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_EQSTRAT_All_Gained_Lost_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_EQSTRAT_EASE_Data_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_EQSTRAT_Strategy_Gained_Lost_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Flows_For_Billing_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_OBJ_Entities_By_Manager_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_AllocationDetail_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_AllocationDetail_Test_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_AllocationDetail_Top_Strategies_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Allocation_History_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Amortization_Accretion_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Appraisal_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_AssetGrowth_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Asset_Allocation_Review_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Best_Worst_Performers_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Custom_Comments_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Entity_Performance_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_EQ_Exposure_By_Sector2_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_EQ_Exposure_By_Sector_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_EQ_Top_Holdings_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_FI_Exposure_By_Maturity_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_FI_Exposure_By_Quality_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_FI_Exposure_By_Sector_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Get_Portfolio_List_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Income_Expenses_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Investment_Action_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Investment_Progress_1_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Investment_Progress_2_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Investment_Progress_3M_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Investment_Progress_3_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Investment_Progress_Detail_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Investment_Progress_Monthly_35_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Investment_Progress_Monthly_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Investment_Progress_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Investment_Progress_Universal_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Options_Positions_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Perf_Recon_Status_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_PortfolioPerf_By_AssetClass_Strategy_Cons_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_PortfolioPerf_By_AssetClass_Strategy_CY_Cons_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_PortfolioPerf_By_AssetClass_Strategy_CY_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_PortfolioPerf_By_AssetClass_Strategy_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_PortfolioPerf_By_AssetClass_Strategy_TEST_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Portfolio_Allocation_Margin_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Portfolio_Allocation_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Portfolio_Investment_Progress_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Realized_GainLoss_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Returns_Based_Allocation_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_SAMG_Strategy_Tracker_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_SC_Randomized_Brokers_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Security_Xref_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Statement_Of_Objectives_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Tax_Loss_Harvest_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Top8_Strategies_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_TransactionsT_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Transactions_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_RPT_Transaction_Comments_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_SSIS_Account_Returns_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_SSIS_Investment_Progress_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_SSIS_Portfolio_Returns_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_SSIS_RealizedGL_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_SSIS_Tax_Lots_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_SSIS_Transactions_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_SSIS_Transaction_Comments_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_STM_All_Contact_Documents_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_STM_Contact_Documents_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_STM_Get_Next_Request_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_STM_Get_Request_Details_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_STM_Get_Valid_Templates_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_STM_Printable_Address_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_STM_Statements_Per_Contact_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_STM_Statement_Delivery_Status_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_STM_Statement_Status_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_VLD_Account_Strategy_Benchmark_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_VLD_Document_Delivery_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_VLD_Investment_Progress_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_VLD_Model_Portfolio_By_Sector_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_Allocation_By_AssetClass_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_Cash_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_Client_Groups_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_Client_Home_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_Contributions_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_New_Client_Home_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_OtherAssets_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_Position_Rollups_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_Purchases_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_Relationship_Details_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_Sales_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_WebMulti_Transaction_Home_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Account_Nicknames_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Allocation_By_Asset_Class_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Client_Group_Accounts_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Client_Team_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Contact_Entities_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Contact_List_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Current_Account_Access_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Documents_By_Contact_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Get_Next_Email_Alert_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Non_Access_Accounts_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Positions_By_Asset_Class_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Purchases_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_RealizedGL_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Relationships_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Relationship_Accounts_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Relationship_Contacts_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Tax_Lots_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Team_Contacts_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Team_Contact_Analytics_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Transactions_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Users_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\p_Web_Valid_FileName_Result.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Realized_GainLoss.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Recon_Status.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Related_Party.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Relationship.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Report.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Report_Formula.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Report_Param.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Report_Param_Access.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Report_Param_Mapping.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Revenue_Snapshot.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Role.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SAMG_Strategy.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Schema.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Schema1.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Scheme.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Security.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Security_Attribute.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Security_Classification.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Security_Snapshot.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Security_Strategy.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Security_Supplement.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Security_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Security_Type_Sort.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Security_Variant.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Server.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Server1.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Set.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Set1.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SilvercrestContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SilvercrestContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SilvercrestContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SilvercrestContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SilvercrestContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Small_Cap_Broker.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Small_Cap_Broker_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Small_Cap_Randomized_Brokers.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Small_Cap_Randomized_Broker_Types.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Small_Cap_Trade.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMA_Strategy.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Source.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Account.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Account_Attribute.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Account_Benchmark.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Account_Class.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Account_Group.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Account_Group_Member.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Account_Performance.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Account_Returns.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Account_Transaction.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Account_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Account_User_Group.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Asset_Manager.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Benchmark.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Benchmark_Performance.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Benchmark_Returns.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Classification.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Classification_Sort.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Contact.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Contact_Address.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Contact_Default_Mapping.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Contact_Detail_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Contact_Phone.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Country.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Currency.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Custom_Comment.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Entity_Grouping.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Exchange.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Family_Group.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Fee_Snapshot.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Firm_User.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Firm_User_Group.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_FX_Rate.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Intraday_DW_Refresh.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Investment_Action.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Investment_Progress.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_IShares.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Market_Index_Return.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Performance_Alternatives.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Portfolio_Benchmark.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Portfolio_Performance.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Portfolio_Returns.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Price.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Realized_GainLoss.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Recon_Status.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Related_Party.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Relationship.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Revenue_Snapshot.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Role.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Security.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Security_Attribute.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Security_Classification.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Security_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Security_Variant.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Source.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_State.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Statement_Delivery_Queue.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Tax_Lot.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Tax_Lot_Pre.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Transaction_Activity.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Transaction_Comment.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Transaction_Exited_Assets.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Staging_Transaction_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\State.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\State1.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\State2.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Statement_Delivery_Queue.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Statement_Queue.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Statement_Upload_Queue.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Strategy.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Strategy_Allocation_Target.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Strategy_Drilldown.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Strategy_Rollup.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Strategy_Translate.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Tax_Lot.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Tax_Lot_Snapshot.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Template.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Template_Report.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Template_Report_Detail.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Thomson_Reuters.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Transaction_Activity.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Transaction_Comment.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Transaction_Comment_Aligned.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Transaction_Exited_Assets.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Transaction_Inter_Account.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Transaction_Snapshot.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Transaction_Snapshot2.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Transaction_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User_Group_Member.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User_Group_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Account_Group.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Account_Group_Member.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Account_Nickname.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Application_Parameters.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Contact_Default_Entity.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Document.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Document_Deleted.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Document_Favorite.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Document_Type.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Email_Alerts.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Email_Alert_Documents.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Encryption_Dictionary.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Login_Session_Record.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Page_Visit_Record.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Role.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Secondary_Team.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Security_Answer.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Security_Question.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Strategy_Document.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Strategy_Document_Favorite.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Supplemental_Access.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_User_Role.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_User_Settings.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Web_Zip_File.cs">
+      <DependentUpon>SilvercrestContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\AnalyticsRepository.cs" />
+    <Compile Include="Repositories\ApplicationUserRepository.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Repositories\ContactRepository.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DocumentRepository.cs" />
+    <Compile Include="Repositories\GroupRepository.cs" />
+    <Compile Include="Repositories\HoldingsRepository.cs" />
+    <Compile Include="Repositories\ManagerRepository.cs" />
+    <Compile Include="Repositories\QuestionRepository.cs" />
+    <Compile Include="Repositories\ManagerAdoRepository.cs" />
+    <Compile Include="Repositories\TransactionsRepository.cs" />
+    <Compile Include="Repositories\WebApplicationParametersRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Model\SilvercrestContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SilvercrestContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\SilvercrestContext.edmx.diagram">
+      <DependentUpon>SilvercrestContext.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Silvercrest.Entities\Silvercrest.Entities.csproj">
+      <Project>{219dc282-435f-4f5f-9ecd-10009a430a9c}</Project>
+      <Name>Silvercrest.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Silvercrest.Utilities\Silvercrest.Utilities.csproj">
+      <Project>{09e24fd3-70eb-4eb4-a9d7-193ff89cbfb9}</Project>
+      <Name>Silvercrest.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Silvercrest.ViewModels\Silvercrest.ViewModels.csproj">
+      <Project>{dbff25d0-ed2b-4f84-a6e6-72f3790f54b4}</Project>
+      <Name>Silvercrest.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="IdentityStore\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\SilvercrestContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SilvercrestContext.edmx</DependentUpon>
+      <LastGenOutput>SilvercrestContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\SilvercrestContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SilvercrestContext.edmx</DependentUpon>
+      <LastGenOutput>SilvercrestContext.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

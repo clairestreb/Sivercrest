@@ -1,0 +1,146 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.TeamMember.TeamMemberFamiliesViewModel
+@using Silvercrest.Web.Common
+@{
+    Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+    ViewBag.Title = "Manager Home";
+}
+<script src="~/Scripts/jquery.tablesorter.js?v=@Url.GetVersion()"></script>
+<script src="~/Scripts/app/TeamMember/Home/index.js?v=@Url.GetVersion()"></script>
+@Html.Hidden("hidden", Model.Managers.Count)
+@{var i = 0; var id = "";}
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-free"><span class="arrow-right"></span><a href="@Url.Action("ManagerContactList", "Manager", new { Area = "TeamMember" })">Contact Lookup</a></div>
+            <div class="col-free"><span class="arrow-right"></span><a href="@Url.Action("ClientAnalyticsList", "Manager", new { Area = "TeamMember" })">Client Analytics Overview</a></div>
+        </div>
+    </div>
+</section>
+
+@foreach (var manager in Model.Managers)
+{
+    i++;
+    id = "tableManager" + i;
+    <section id="title">
+        <div class="container container-center">
+            <div class="row" id="settingsHeaderRow" i>
+                @*@Url.Action("Index", "Access", new { Area = "TeamMember", contactIdQuery = Hash.GetEncryptedValue(user.ContactId.ToString()), familyIdQuery = Hash.GetEncryptedValue(Model.FamilyId.ToString()), firmUserGroupIdQuery = Hash.GetEncryptedValue(Model.FirmUserGroupId.ToString()) })*@
+                <div id="settingsTitleDiv">
+                        <h2 id="@Model.contactFullName" class="hideText">
+                            @manager[0].Manager
+                            @*<a href="@Url.Action("Index", "TeamSettings", new { Area = "TeamMember", firmUserGroupIdQuery = Hash.GetEncryptedValue(manager[0].FirmUserGroupId.ToString())})">
+                                    <i id="teamMemberPageSettingIcon" class="fa fa-cog"></i>
+                                </a>*@
+                        </h2>
+                </div>
+                <a id="teamMemberPageSettingReference" href="@Url.Action("Index", "TeamSettings", new { Area = "TeamMember", firmUserGroupIdQuery = Hash.GetEncryptedValue(manager[0].FirmUserGroupId.ToString())})">
+                    <i class="fa fa-cog"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="">
+        <div class="container container-center">
+            <div class="row">
+                <table id="@id" class="table manager">
+                    <thead>
+                        <tr id="manager" class="row header">
+                            <th class="col1">
+                                <h3 onclick="checkSort();">Relationship</h3>
+                                <span class="arrow-down" style="display:none"></span>
+                            </th>
+                            <th class="col2 last">
+                                <h3 onclick="checkSort();">Reported Value</h3>
+                                <span class="arrow-down" style="display:none"></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var family in manager)
+                        {
+                            <tr id="linksrow" class="row red link tab">
+                                <td class="col1" align="center">
+                                    <a href="@Url.Action("Index", "Relationship", new { Area = "TeamMember", familyIdQuery = Hash.GetEncryptedValue(family.RelationshipId.ToString()), firmUserGroupIdQuery = Hash.GetEncryptedValue(family.FirmUserGroupId.ToString()) })">@family.Relationship</a>
+                                </td>
+                                <td class="col2 last" width="50%">@Convert.ToDouble(family.RelationshipValue).ToString("N0", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+}
+
+
+<script>
+    $(document).ready(function () {
+        window.applicationVersion = '@Url.GetVersion()';
+        var oldVersion = getCookieData("appVersion");
+        if (oldVersion == 0 || window.applicationVersion != oldVersion) {
+            window.sessionStorage.removeItem("selected-filter-entity");
+            window.sessionStorage.removeItem("selected-filter-docType");
+            deleteFromCookie();
+            deleteToCookie();
+            window.sessionStorage.removeItem("kendo-grid-options");
+            window.localStorage.removeItem("alreadyChecked");
+            var expires = "";
+            document.cookie = "appVersion" + "=" + window.applicationVersion + "; " + expires;
+        }
+    })
+
+    function getCookieData(name) {
+        var pairs = document.cookie.split("; "),
+            count = pairs.length, parts;
+        while (count--) {
+            parts = pairs[count].split("=");
+            if (parts[0] === name)
+                return parts[1];
+        }
+        return 0;
+    }
+
+    function setCookie(name, value, expireDays) {
+        var date = new Date();
+        date.setTime(date.getTime() + (expireDays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + "; " + expires;
+    }
+
+    function deleteFromCookie() {
+        var cookies = get_cookies_array();
+        for (var name in cookies) {
+            if (name.indexOf("searchFrom") >= 0)
+                setCookie(name, "", -1);
+        }
+        return 0;
+    }
+
+    function deleteToCookie() {
+        var cookies = get_cookies_array();
+        for (var name in cookies) {
+            if (name.indexOf("searchTo") >= 0)
+                setCookie(name, "", -1);
+        }
+        return 0;
+    }
+
+    function get_cookies_array() {
+
+        var cookies = {};
+
+        if (document.cookie && document.cookie != '') {
+            var split = document.cookie.split(';');
+            for (var i = 0; i < split.length; i++) {
+                var name_value = split[i].split("=");
+                name_value[0] = name_value[0].replace(/^ /, '');
+                cookies[decodeURIComponent(name_value[0])] = decodeURIComponent(name_value[1]);
+            }
+        }
+        return cookies;
+    }
+
+</script>

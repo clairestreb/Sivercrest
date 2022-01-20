@@ -1,0 +1,553 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@{
+    ViewBag.Title = "Home Page";
+}
+<link href="~/Content/kendoStyle.css?v=@Url.GetVersion()" rel="stylesheet" />
+<script src="~/Scripts/jquery-2.0.3.min.js?v=@Url.GetVersion()"></script>
+<script src="~/Scripts/kendo-ui/kendo.all.min.js?v=@Url.GetVersion()"></script>
+<script src="http://kendo.cdn.telerik.com/2016.3.1028/js/jszip.min.js?v='@Url.GetVersion()'"></script>
+
+<script>
+    kendo.pdf.defineFont({
+        "DejaVu Sans": "//kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans.ttf",
+        "DejaVu Sans|Bold": "//kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Bold.ttf",
+        "DejaVu Sans|Bold|Italic": "//kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+        "DejaVu Sans|Italic": "//kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf"
+    });
+</script>
+
+<script src="//kendo.cdn.telerik.com/2016.3.1118/js/pako_deflate.min.js?v=@Url.GetVersion()"></script>
+<section id="title">
+    <div class="container">
+        <div class="row">
+            <h2>JOHN SMITH</h2>
+            <h3>OVERVIEW</h3>
+        </div>
+    </div>
+</section>
+<section id="graph">
+    <div class="container pb70 pt65">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="pieChartContainer chartLeft">
+                    <div class="title">ALLOCATION BY ASSET CLASS</div>
+                    <div class="chart-wrapper-flex">
+                        <div id="piechart"></div>
+                        <div class="legend-wrapper">
+                            <div class="legendCenter" id="legend"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="pieChartContainer">
+                    <div class="title">ALLOCATION BY STRATEGY</div>
+                    <div class="chart-wrapper-flex">
+                        <div id="piechart2"></div>
+                        <div class="legend-wrapper">
+                            <div class="legendCenter" id="legend2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="table1">
+    <article class="container pb50">
+        <div class="row">
+            <div id="grid" class="pdf-page">
+
+            </div>
+
+            <div class="row" style="margin:0 ">
+                <div class="pull-right download-wrapper">
+                    <!-- Dave added everything in here -->
+                    <div class="btnShadow"></div>
+                    <div class="dwnLoadAll">
+                        <div class="btnSlider" style="display: none;">
+                            <div class="btn btn-pdf"><a href="" class="export-pdf" onclick="getPDF('.pdf-page')"><img src="~/img/pdf.png"><br>PDF</a></div>
+                            <div class="btn btn-exl"><a href="" class="k-grid-excel" onclick="getExcel()"><img src="~/img/excel.png"><br>EXCEL</a></div>
+                        </div>
+                        <a class="btn btn-download"><span>DOWNLOAD REPORT</span><span class="arrow-down"></span></a>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+
+            <br />
+            <table class="table">
+                <tbody>
+                    <tr class="row header">
+                        <th class="col1"></th>
+                        <th class="col2">
+                            <div>&nbsp;</div>
+                            <div class="col-xs-3">CASH &amp;<br />MONEY FUNDS<span class="arrow-down"></span></div>
+                            <div class="col-xs-3">FIXED<br />INCOME<span class="arrow-down"></span></div>
+                            <div class="col-xs-3">EQUITIES<span class="arrow-down"></span></div>
+                            <div class="col-xs-3">OTHER<br />ASSETS<span class="arrow-down"></span></div>
+                        </th>
+                        <th class="col3">
+                            <div>&nbsp;</div>
+                            <div>MARKET<br />VALUE<span class="arrow-down"></span></div>
+                        </th>
+                        <th class="col4">
+                            <div>PERCENT OF:</div>
+                            <div class="col-xs-6">ASSET CLASS<span class="arrow-down"></span></div>
+                            <div class="col-xs-6">TOTAL<span class="arrow-down"></span></div>
+                        </th>
+                        <th class="col5 last">
+                            <div>&nbsp;</div>
+                            <div class="col-xs-6">ANNUAL<br />INCOME<span class="arrow-down"></span></div>
+                            <div class="col-xs-6">ESTIMATED CURRENT YIELD<span class="arrow-down"></span></div>
+                        </th>
+                    </tr>
+                    <tr class="row subheader">
+                        <td class="col1">CASH & MONEY FUNDS</td>
+                        <td class="col2">
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row blue">
+                        <td class="col1">CASH & MONEY FUNDS</td>
+                        <td class="col2">
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row black tab">
+                        <td class="col1">John Smith</td>
+                        <td class="col2">
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row subheader">
+                        <td class="col1">FIXED INCOME</td>
+                        <td class="col2">
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row blue">
+                        <td class="col1">GLOBAL EX-U.S. BONDS</td>
+                        <td class="col2">
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row black tab">
+                        <td class="col1">John Smith</td>
+                        <td class="col2">
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row blue">
+                        <td class="col1">TAX EXEMPT INVESTMENT GRADE</td>
+                        <td class="col2">
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row black tab">
+                        <td class="col1">John Smith</td>
+                        <td class="col2">
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row subheader">
+                        <td class="col1">Equities</td>
+                        <td class="col2">
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row blue">
+                        <td class="col1">U.S MULTI CAP VALUE</td>
+                        <td class="col2">
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row black tab">
+                        <td class="col1">John Smith</td>
+                        <td class="col2">
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row blue">
+                        <td class="col1">EMERGING/FRONTIER MARKETS</td>
+                        <td class="col2">
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row black tab">
+                        <td class="col1">John Smith</td>
+                        <td class="col2">
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">-</div>
+                            <div class="col-xs-3">000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0</div>
+                            <div class="col-xs-6">100.0</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">000,000,000</div>
+                            <div class="col-xs-6">000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row header">
+                        <td class="col1">TOTAL VALUE</td>
+                        <td class="col2">
+                            <div class="col-xs-3">$000,000,000</div>
+                            <div class="col-xs-3">$000,000,000</div>
+                            <div class="col-xs-3">$000,000,000</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            $000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">100.0%</div>
+                            <div class="col-xs-6">100.0%</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">$000,000,000</div>
+                            <div class="col-xs-6">$000,000,000</div>
+                        </td>
+                    </tr>
+                    <tr class="row header">
+                        <td class="col1">TOTAL PERCENT</td>
+                        <td class="col2">
+                            <div class="col-xs-3">100.0%</div>
+                            <div class="col-xs-3">100.0%</div>
+                            <div class="col-xs-3">100.0%</div>
+                            <div class="col-xs-3">-</div>
+                        </td>
+                        <td class="col3">
+                            $000,000,000
+                        </td>
+                        <td class="col4">
+                            <div class="col-xs-6">-</div>
+                            <div class="col-xs-6">-</div>
+                        </td>
+                        <td class="col5 last">
+                            <div class="col-xs-6">-</div>
+                            <div class="col-xs-6">-</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="pull-right download-wrapper">
+                <!-- Dave added everything in here -->
+                <div class="btnShadow"></div>
+                <div class="dwnLoadAll">
+                    <div class="btnSlider">
+                        <div class="btn btn-pdf"><a href=""><img src="../img/pdf.png"><br>PDF</a></div>
+                        <div class="btn btn-exl"><a href=""><img src="../img/excel.png"><br>EXCEL</a></div>
+                    </div>
+                    <a class="btn btn-download"><span>DOWNLOAD REPORT</span><span class="arrow-down"></span></a>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </article>
+</section>
+<section id="table2">
+    <article class="container pb100">
+        <div class="row">
+            <h3>ACCOUNTS AND GROUPS</h3>
+        </div>
+        <div class="row">
+            <table class="table">
+                <tbody>
+                    <tr class="row header">
+                        <th class="col1">
+                            <div>ACCOUNTS</div>
+                            <span class="arrow-down"></span>
+                        </th>
+                        <th class="col2">
+                            <div>MARKET VALUE</div>
+                            <span class="arrow-down"></span>
+                        </th>
+                        <th class="col3 last">
+                            <div>PERCENT OF TOTAL</div>
+                            <span class="arrow-down"></span>
+                        </th>
+                    </tr>
+                    <tr class="row subheader">
+                        <td class="col1">ACCOUNTS</td>
+                        <td class="col2">&nbsp;</td>
+                        <td class="col3 last">&nbsp;</td>
+                    </tr>
+                    <tr class="row red link tab">
+                        <td class="col1"><a href="portal-3-holdings.html">JOHN SMITH ACCOUNT 1</a></td>
+                        <td class="col2">000,000,000</td>
+                        <td class="col3 last">100.0</td>
+                    </tr>
+                    <tr class="row red link tab">
+                        <td class="col1"><a href="portal-3-holdings.html">JOHN SMITH ACCOUNT 2</a></td>
+                        <td class="col2">000,000,000</td>
+                        <td class="col3 last">100.0</td>
+                    </tr>
+                    <tr class="row red link tab">
+                        <td class="col1"><a href="portal-3-holdings.html">JOHN SMITH ACCOUNT 3</a></td>
+                        <td class="col2">000,000,000</td>
+                        <td class="col3 last">100.0</td>
+                    </tr>
+                    <tr class="row header">
+                        <td class="col1">TOTAL</td>
+                        <td class="col2">$000,000,000</td>
+                        <td class="col3 last">100.0%</td>
+                    </tr>
+                    <tr class="row subheader">
+                        <td class="col1">GROUPS</td>
+                        <td class="col2">&nbsp;</td>
+                        <td class="col3 last">&nbsp;</td>
+                    </tr>
+                    <tr class="row red link tab">
+                        <td class="col1"><a href="portal-3-holdings.html">JOHN SMITH GROUP 1</a></td>
+                        <td class="col2">000,000,000</td>
+                        <td class="col3 last">100.0</td>
+                    </tr>
+                    <tr class="row red link tab">
+                        <td class="col1"><a href="portal-3-holdings.html">JOHN SMITH GROUP 2</a></td>
+                        <td class="col2">000,000,000</td>
+                        <td class="col3 last">100.0</td>
+                    </tr>
+                    <tr class="row red link tab">
+                        <td class="col1"><a href="portal-3-holdings.html">JOHN SMITH GROUP 3</a></td>
+                        <td class="col2">000,000,000</td>
+                        <td class="col3 last">100.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="pull-right download-wrapper">
+                <!-- Dave added everything in here -->
+                <div class="btnShadow"></div>
+                <div class="dwnLoadAll">
+                    <div class="btnSlider">
+                        <div class="btn btn-pdf"><a href=""><img src="~/img/pdf.png"><br>PDF</a></div>
+                        <div class="btn btn-exl"><a href=""><img src="~/img/excel.png"><br>EXCEL</a></div>
+                    </div>
+                    <a class="btn btn-download"><span>DOWNLOAD REPORT</span><span class="arrow-down"></span></a>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>		<div class="row">
+            <div class="pull-left">
+                <a href="portal-2-groups.html" class="btn btn-red"><span>Edit Groups</span></a>
+            </div>
+        </div>
+
+    </article>
+</section>
+<script>
+    $(document).ready(function () {
+        $("#grid").kendoGrid({
+
+            dataSource: {
+                type: "odata",
+                transport: {
+                    read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+                },
+                pageSize: 20
+            },
+
+            sortable: true,
+
+            columns: [
+                { field: "ContactName", title: "ACCOUNTS" },
+                { field: "ContactTitle", title: "MARKET VALUE" },
+                { field: "Country", title: "PERCENT OF TOTAL" },
+            ]
+        });
+    })
+
+    function getPDF(selector) {
+        kendo.drawing.drawDOM($(selector)).then(function (group) {
+            kendo.drawing.pdf.saveAs(group, "Invoice.pdf");
+        });
+    }
+    function getExcel() {
+        $("#grid").getKendoGrid().saveAsExcel();
+    }
+
+</script>
+
+@section Script{
+    <script type="text/javascript" src=@Url.Content("~/Scripts/chart_home.js")></script>
+}

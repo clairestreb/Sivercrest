@@ -1,0 +1,204 @@
+﻿
+@using System.Linq
+@using Silvercrest.Web.Helpers.Assembly
+@{
+    ViewBag.Title = "Edit Groups";
+}
+@model Silvercrest.ViewModels.Client.Groups.GroupsViewModel
+<input id="ContactId" type="hidden" value="@Model.ContactId" />
+<input id="FullName" type="hidden" value="@Model.FullName" />
+<input id="Groups" type="hidden" value="AcctGrp_@Model.GroupIds.FirstOrDefault()" />
+<input id="AllGroups" type="hidden" value="@Model.getAllGroups()" />
+
+
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-free pull-right">
+                
+                <a href="javascript:window.history.go(-1);">
+                    <img src="~/img/return-arrow.png" alt="">Back to Custom Features
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="title">
+    <div class="container">
+        <div class="row">
+            <h2>@Model.FullName</h2>
+        </div>
+    </div>
+</section>
+<section id="selector">
+    <div class="container pb30">
+        <div class="row">
+            <h2>GROUP MANAGEMENT</h2>
+            <div class="col1">
+                <h3>SELECT GROUP TO EDIT</h3>
+                <div class="pad0 wide-links scroll">
+                    @foreach (var groupId in Model.GroupIds)
+                    {
+
+                        <a href="#" onclick="Selector(this); return false;" id="AcctGrp_@groupId">@Model.Groups[groupId]</a>
+
+                    }
+                </div>
+            </div>
+            <div class="col2">
+                <h3>EDIT GROUP NAME</h3>
+                <div class="form-set form-group">
+                    <div class="input-group">
+                        <input class="form-control" id="editGroupName" maxlength="100" name="GroupsNames" placeholder="ENTER NAME HERE" type="text" />
+
+                        <div class="input-group-addon">  <i class="fa fa-caret-right" aria-hidden="true"></i> </div>
+                    </div>
+                </div>
+
+                <h3>SELECT ACCOUNTS</h3>
+                <div class="scroll">
+                    <ul>
+                        @foreach (var account in Model.Accounts)
+                        {
+                            <li>
+                                @if (account.IsGroupMember == true)
+                                {
+                                    <span class="xtoggle active" id="@account.AccountId">x</span>
+                                }
+                                @if (account.IsGroupMember == false)
+                                {
+                                    <span class="xtoggle" id="@account.AccountId">x</span>
+                                }
+                                <span id="AcctGrp_@account.AccountGroupId">@account.AccountName</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <br />
+                <button class="btn btn-red" style="width:32%; display:inline; float:left" onclick="showConfirm(); return false;" type="submit">Delete Group</button>
+                <button class="btn btn-red" style="width:64%; display:inline; float:right;" onclick="UpdateGroup(); return false;" type="submit">Update Group</button>
+                <!--
+                                         <div border="0">
+                                             <button class="btn btn-red pt30" style="width:33%; display:inline;" onclick="DeleteGroup()">Delete Group</button>
+                                             <button class="btn btn-red pt30" style="width:66%; display:inline;" onclick="UpdateGroup(); return false;" type="submit">Update Group</button>
+                                         </div>
+                 -->
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="selector2">
+    <div class="container pb120 pt60">
+        <div class="row">
+            <h2>CREATE NEW GROUP</h2>
+            <div class="col1" style="width: 100%; height: 457px;">
+                <h3>NEW GROUP NAME</h3>
+                <div class="form-set form-group">
+                    <div class="input-group">
+                        <input id="groupName" type="text" class="form-control" placeholder="ENTER NAME HERE" min="1">
+                        <div class="input-group-addon">  <i class="fa fa-caret-right" aria-hidden="true"></i> </div>
+                    </div>
+                </div>
+                <h3>SELECT ACCOUNTS</h3>
+                <div class="scroll">
+                    <ul>
+                        @foreach (var groupAccount in Model.GroupAccounts)
+                        {
+                            <li>
+                                <span class="xtoggle" id="@groupAccount.Key">x</span>
+                                <span>@groupAccount.Value</span>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+                <br />
+                <button class="btn btn-red" onclick="CreateGroup()">Create Group</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+<div id="email-popup" class="show1">
+    <div class="state1">
+        <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+    </div>
+    <div class="state2">
+        <h2>
+            CONTACT YOUR TEAM
+        </h2>
+        <div>
+            <form id="form1" name="form1" class="form-horizontal" method="post" role="form" action="">
+                <div class="form-group">
+                    <div class="col-sm-12 ">
+                        <input type="name" name="name" value="" placeholder="Name" class="form-control" id="name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="eMail" name="eMail" value="" placeholder="Subject" class="form-control" id="name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <textarea class="form-control" name="message" placeholder="Enter Your Message" style="height:100px;  color:#888"></textarea>
+                    </div>
+                </div>
+                <div class="form-group last">
+
+                    <div class="col-sm-5 pull-left">
+                        <button type="submit" name="submit" id="submit" class="btn btn-red pull-left">Submit</button>
+                    </div>
+                    <div class="col-md-5 pull-right">
+                        <button type="submit" id="close" class="btn btn-gray pull-right">Close</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="state3">
+        <p>message sent</p>
+    </div>
+</div>
+-->
+
+<div class="popup-holder" style="display:none; margin-top: 300px;" popup id="popupActivateOrDeactivate">
+    <div class="popup">
+        <div class="popup-header">
+            <h2 id="activateMessage">Invalid Name</h2>
+        </div>
+        <div class="popup-content">
+            <p id="errorMessage"></p>
+        </div>
+        <div class="popup-footer">
+            <div class="btn-wrapper">
+                <button class="btn-main btn-close btn-activate">ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup-holder" style="display:none; margin-top: 300px;" popup id="popupDeleteConfirm">
+    <div class="popup">
+        <div class="popup-header">
+            <h2 id="confirmHeaderMessage">Delete Group</h2>
+        </div>
+        <div class="popup-content">
+            <p id="confirmBodyMessage"></p>
+        </div>
+        <div class="popup-footer" style="display:flex; justify-content:center;">
+            <div class="btn-wrapper" style="text-align:center;  display:inline-block;  border-right: thin ridge #f6eee0;">
+                <button class="btn-main btn-close btn-activate ok" style="display:inline;   text-align:center;">yes</button>
+            </div>
+            <div class="btn-wrapper" style="text-align:center;  display:inline-block;  /*border-right: thin ridge #f6eee0;*/">
+                <button class="btn-main btn-close btn-activate cancel" style="display:inline;">cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="~/Scripts/app/Client/GroupController/GroupSubmit.js?v=@Url.GetVersion()"></script>

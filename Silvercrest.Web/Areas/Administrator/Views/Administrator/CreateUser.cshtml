@@ -1,0 +1,116 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.SetupUserViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+    ViewBag.Title = "Setup User";
+}
+<link href="~/Content/kendoStyleAutocomplete.css?v=@Url.GetVersion()" rel="stylesheet" />
+<style>
+     ui-autocomplete {
+         max-height: 100px;
+         overflow-y: auto;
+         /* prevent horizontal scrollbar */
+         overflow-x: hidden;
+     }
+     /* IE 6 doesn't support max-height
+    * we use height instead, but this forces the menu to always be this tall
+    */
+     * html .ui-autocomplete {
+         height: 100px;
+     }
+</style>
+
+<script src="~/Scripts/app/Administrator/AdministatorController/CreateUser.js?v=@Url.GetVersion()"></script>
+<script>
+    jQuery(document).ready(function () {
+        var button = '#createUser';
+        var contact = '#contact';
+        var Email = document.getElementById('email');
+        var contact = document.getElementById('contact');
+        jQuery(button).click(function () {
+            if (Email.value == "") {
+                var element = $('.errorEmail');
+                element.css('display', 'block');
+                return false;
+            }
+            else {
+                var element = $('.errorEmail');
+                element.css('display', 'none');
+            }
+            if (contact.value == "") {
+                var element2 = $('.errorcontact');
+                element2.css('display', 'block');
+                return false;
+            }
+            else {
+                var element = $('.errorcontact');
+                element.css('display', 'none');
+            }
+        });
+    });
+</script>
+<div class="wrapper">
+    <section id="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-free pull-right">
+                    
+                    <a href="@Url.Action("Index", "Administrator", new { Area = "Administrator" })">
+                        <img src="~/img/return-arrow.png" alt="">Back to Admin Tasks
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="title">
+        <div class="container">
+            <div class="row">
+                <h2>User Admin Tasks</h2>
+                <h3>NEW USER SET-UP</h3>
+            </div>
+        </div>
+    </section>
+    <section id="new-user">
+        <div class="container pt60">
+            <div class="box">
+                <div class="form-group edge-to-edge pt20 pb20 clearfix">
+                    <div class="col-xs-12 col-sm-5 mb-sm-20">
+                        <input id="email" type="text" class="form-control" placeholder="Email" style="font-family: copperplate; text-transform: uppercase">
+                        <p class="errorEmail">Email can not be empty</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 mb-sm-20">
+                        <input type="text" id="contact" class="form-control" placeholder="Contact">
+                        <p class="errorcontact">Select contact</p>
+                        <input type="text" id="selectedContactId" class="form-control hidden">
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                        <button type="submit" name="submit" id="createUser" class="btn btn-red pull-right">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="popup-holder" style="display:none;" popup id="popupSendEmail">
+    <div class="popup">
+        <div class="popup-header">
+            <h2 id="emailPopupMessage">Email was sent</h2>
+        </div>
+        <div class="popup-content">
+            <p id="emailPopupBodyMessage">Your e-mail was sent</p>
+        </div>
+        <div class="popup-footer">
+            <div class="btn-wrapper">
+                <button class="btn-main btn-close btn-activate" onclick="closePopup()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

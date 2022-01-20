@@ -1,0 +1,14 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<h2 align="center" class="text-danger">An error occurred while processing your request @Model.Exception.Message</h2>
+<h3 style="text-align: center">Please, return to <a href="" onclick="returnHome()">homepage</a></h3>
+<p>Stack trace: @Model.Exception.StackTrace</p>
+<script>
+    function returnHome() {
+        window.location.replace("/Client/Home");
+    }
+</script>

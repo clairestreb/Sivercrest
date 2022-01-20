@@ -1,0 +1,167 @@
+﻿@*@model Silvercrest.ViewModels.Client.Holdings.Index.TopSectionViewModel*@
+@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.Client.Holdings.HoldingsCashViewModel
+
+@{
+    ViewBag.Title = "Cash";
+}
+<link href="~/Content/kendoStyle.css?v=@Url.GetVersion()" rel="stylesheet" />
+<script src="//kendo.cdn.telerik.com/2016.3.1028/js/jszip.min.js?v=@Url.GetVersion()"></script>
+<script src="//kendo.cdn.telerik.com/2016.3.1118/js/pako_deflate.min.js?v=@Url.GetVersion()"></script>
+<script>
+                var model = @Html.Raw(Json.Encode(Model));
+</script>
+<script type="text/javascript" src="~/Scripts/app/Client/AccountsController/AccountController.js?v=@Url.GetVersion()"></script>
+<input id="contactId" type="hidden" value="@Model.PageData.ClientId" />
+<input id="entityId" type="hidden" value="@Model.PageData.EntityId" />
+<input id="isGroup" type="hidden" value="@Model.PageData.IsGroup.ToString()" />
+<input id="isClientGroup" type="hidden" value="@Model.PageData.IsClientGroup.ToString()" />
+
+
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-free"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><span class="arrow-right"></span>View Accounts</a></div>
+            <div class="col-free"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><span class="arrow-right"></span>View Groups</a></div>
+            @if (Model.PageData.IsGroup == true)
+            {
+                <div class="col-free"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span class="arrow-right"></span>View Accounts Within Group</a></div>
+            }
+            <div class="col-free pull-right">
+                <a role="button" href="#" onclick="goTo('Holdings/ViewAccount');return false;">
+                    <img src="~/img/return-arrow.png" alt="">Back to Holdings Overview
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="bread-panel">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                <div class="panel panel-default">
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+                        <strong>Accounts</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+
+                        <strong>Groups</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+
+                        <strong>Accounts Within Groups</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="user_info">
+    <div class="container">
+        <div id="info" class="row">
+            <span class="pull-left">
+                @Model.PageData.CustodianAccount
+            </span>
+            <span class="pull-right">
+                @Model.PageData.DateString
+            </span>
+        </div>
+
+    </div>
+</section>
+<section id="title">
+    <div class="container">
+        <div class="row">
+            <h2>@Model.PageData.Name</h2>
+            <h3>CASH &amp; MONEY FUNDS HOLDINGS</h3>
+        </div>
+    </div>
+</section>
+<section id="table3">
+    <article class="container pb60">
+        <div class="row">
+            <table class="table table-no-borders">
+                <tbody>
+                    <tr class="row header">
+                        <td class="col1"></td>
+                        <td class="col2">Total <br />Market Value</td>
+                        <td class="col3">Cash &amp; Money Funds<br />Market Value</td>
+                    </tr>
+                    <tr class="row blue">
+                        <td class="col1">@Model.PageData.Name</td>
+                        <td class="col2">
+                            @Model.PageData.TotalMarketValue.ToString("N0", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
+
+
+                        </td>
+                        <td class="col3">
+                            @Model.PageData.MarketValue.ToString("N0", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+</section>
+<section id="table-cash">
+    <article class="container pb100">
+
+        <div class="row">
+
+            <div id="cashTable" class="pdf-page">
+            </div>
+
+            <div class="row" style="margin:0 ">
+                <div class="pull-right download-wrapper">
+                    <!-- Dave added everything in here -->
+                    <div class="btnShadow"></div>
+                    <div class="dwnLoadAll">
+                        <div class="btnSlider" style="display: none;">
+                            <div class="btn btn-exl"><a href="" class="k-grid-excel" onclick="getExcel()"><img src="/img/excel.png"><br>EXCEL</a></div>
+                        </div>
+                        <a class="btn btn-download"><span>DOWNLOAD REPORT</span><span class="arrow-down"></span></a>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+            </div>
+
+
+
+        </div>
+
+    </article>
+</section>
+<script src="~/Scripts/app/Client/HoldingsController/CashInit.js?v=@Url.GetVersion()"></script>
+<script>
+    $(document).ready(function () {
+        $("#navigatino-item-active ul li:nth-child(2)").addClass('active');
+        $("#bs-example-navbar-collapse-1 ul li:nth-child(2)").addClass('active');
+    })
+</script>

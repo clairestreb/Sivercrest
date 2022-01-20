@@ -1,0 +1,108 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.Client.Transactions.TransactionsViewModel
+
+@{
+    ViewBag.Title = "Transactions";
+}
+<script src="~/Scripts/jquery-2.0.3.min.js?v=@Url.GetVersion()"></script>
+<script type="text/javascript" src="~/Scripts/app/Client/AccountsController/AccountController.js?v=@Url.GetVersion()"></script>
+
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-free"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><span class="arrow-right"></span>View Accounts</a></div>
+            <div class="col-free"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><span class="arrow-right"></span>View Groups</a></div>
+            @if (Model.PageData.IsGroup == true)
+            {
+                <div class="col-free"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span class="arrow-right"></span>View Accounts Within Group</a></div>
+            }
+
+        </div>
+    </div>
+</section>
+<section id="bread-panel">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                <div class="panel panel-default">
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+                        <strong>Accounts</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+
+                        <strong>Groups</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+
+                        <strong>Accounts Within Groups</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="user_info">
+    <div class="container">
+        <div id="info" class="row">
+            <span class="pull-left">
+                @Model.PageData.CustodianAccount
+            </span>
+            <span class="pull-right">
+                Data as of @Model.PageData.DateString
+            </span>
+        </div>
+
+    </div>
+
+</section>
+<section id="title">
+    <div class="container container-center">
+        <div class="row">
+            <h2>@Model.PageData.Name</h2>
+        </div>
+    </div>
+</section>
+
+<section id="links">
+    <div class="container container-center">
+        <div class="row">
+            <h3>Transaction reports</h3>
+            <a href="#" onclick="goTo('Transactions/Purchases'); return false;" class="link">Purchases</a>
+            <a href="#" onclick="goTo('Transactions/Sales'); return false;">Sales</a>
+            <a href="#" onclick="goTo('Transactions/Contributions'); return false;">Contributions and Withdrawals</a>
+
+        </div>
+    </div>
+
+</section>
+
+<script>
+        $(document).ready(function () {
+    $("#navigatino-item-active ul li:nth-child(3)").addClass('active');
+    $("#bs-example-navbar-collapse-1 ul li:nth-child(3)").addClass('active');
+        })
+        var model = @Html.Raw(Json.Encode(Model));
+</script>

@@ -1,0 +1,96 @@
+﻿
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+@using Silvercrest.Web.Common
+<header class="wrapper">
+    <div class="container main-header">
+        @*<img src="~/img/logo.png" alt="">*@
+        <div class="user hidden-xs">
+            Welcome,&nbsp;<em id="fullnameDesk">@Model.contactFullName</em><br />
+            @if (Request != null && Request.Cookies != null)
+			{
+				if (Request.Cookies["UserRole"] != null)
+				{
+					if (Request.Cookies["UserRole"].Value == "SuperUser" || Request.Cookies["UserRole"].Value == "TeamMember")
+					{
+				       <a href="@Url.Action("Index", "Manager", new { Area = "TeamMember" })">Manager Home</a><br />
+					}
+					if (Request.Cookies["UserRole"].Value == "SuperUser" || Request.Cookies["UserRole"].Value == "Administrator")
+					{
+						<a href="@Url.Action("Index", "Administrator", new { Area = "Administrator" })">Admin Home</a><br />
+					}
+				}
+			}
+            <a id="userSettings" href="@Url.Action("Index", "UserSettings", new { Area = "Client", mainContactIdQuery = Hash.GetEncryptedValue(Request.Cookies["MainContactId"].Value), contactIdQuery =Hash.GetEncryptedValue(Request.Cookies["MainContactId"].Value) })">Account Settings</a><br />
+
+            @using Microsoft.AspNet.Identity
+            @if (Request.IsAuthenticated || !Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a>
+                }
+            }
+        </div>
+    </div>
+</header>
+<nav class="navbar navbar-default visible-xs" role="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed nav-button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand">Welcome,&nbsp;</span><span id="fullnameMob" class="navbar-brand">@Model.contactFullName</span>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav ">
+                    @if (Request.Cookies["UserRole"] != null)
+                    {
+                        if (Request.Cookies["UserRole"].Value == "SuperUser" || Request.Cookies["UserRole"].Value == "TeamMember")
+                        {
+                            <li><a href="@Url.Action("Index", "Manager", new { Area = "TeamMember" })">Manager Home</a></li>
+                        }
+                        if (Request.Cookies["UserRole"].Value == "SuperUser" || Request.Cookies["UserRole"].Value == "Administrator")
+                        {
+                            <li><a href="@Url.Action("Index", "Administrator", new { Area = "Administrator" })">Admin Home</a></li>
+                        }
+                    }
+                    @*<li class="without_hover"><a class="cursor-def" href="#">HOME</a></li>
+                        <li class="without_hover"><a class="cursor-def" href="#">HOLDINGS</a></li>
+                        <li class="without_hover"><a class="cursor-def" href="#">TRANSACTIONS</a></li>
+                        <li class="without_hover"><a class="cursor-def" href="#">TEAM</a></li>
+                        <li class="without_hover"><a class="cursor-def" href="#">DOCUMENTS</a></li>*@
+                    <li><a href="@Url.Action("Index", "UserSettings", new { Area = "Client", mainContactIdQuery = Hash.GetEncryptedValue(Request.Cookies["MainContactId"].Value), contactIdQuery =Hash.GetEncryptedValue(Request.Cookies["MainContactId"].Value) })"> Account Settings</a></li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<nav class="desktop hidden-xs wrapper">
+    <div class="container nav-tablet">
+        <div class="row" id="navigatino-item-active">
+            <ul class="nav navbar-nav">
+                <li class="without_hover"><a class="cursor-def" href="#">HOME</a></li>
+                <li class="without_hover"><a class="cursor-def" href="#">HOLDINGS</a></li>
+                <li class="without_hover"><a class="cursor-def" href="#">TRANSACTIONS</a></li>
+                <li class="without_hover"><a class="cursor-def" href="#">TEAM</a></li>
+                <li class="without_hover"><a class="cursor-def" href="#">DOCUMENTS</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper pb100">@RenderBody()</div>
+@RenderSection("Script", required: false)
+
+

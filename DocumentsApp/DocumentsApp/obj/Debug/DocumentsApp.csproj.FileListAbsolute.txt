@@ -1,0 +1,11 @@
+E:\Project_2\VisualStudio\Silvercrest\DocumentsApp\DocumentsApp\bin\Debug\DocumentsApp.exe.config
+E:\Project_2\VisualStudio\Silvercrest\DocumentsApp\DocumentsApp\bin\Debug\DocumentsApp.exe
+E:\Project_2\VisualStudio\Silvercrest\DocumentsApp\DocumentsApp\bin\Debug\DocumentsApp.pdb
+E:\Project_2\VisualStudio\Silvercrest\DocumentsApp\DocumentsApp\bin\Debug\Newtonsoft.Json.dll
+E:\Project_2\VisualStudio\Silvercrest\DocumentsApp\DocumentsApp\bin\Debug\Renci.SshNet.dll
+E:\Project_2\VisualStudio\Silvercrest\DocumentsApp\DocumentsApp\bin\Debug\Newtonsoft.Json.xml
+E:\Project_2\VisualStudio\Silvercrest\DocumentsApp\DocumentsApp\bin\Debug\Renci.SshNet.xml
+E:\Project_2\VisualStudio\Silvercrest\DocumentsApp\DocumentsApp\obj\Debug\DocumentsApp.csproj.AssemblyReference.cache
+E:\Project_2\VisualStudio\Silvercrest\DocumentsApp\DocumentsApp\obj\Debug\DocumentsApp.csproj.CoreCompileInputs.cache
+E:\Project_2\VisualStudio\Silvercrest\DocumentsApp\DocumentsApp\obj\Debug\DocumentsApp.exe
+E:\Project_2\VisualStudio\Silvercrest\DocumentsApp\DocumentsApp\obj\Debug\DocumentsApp.pdb

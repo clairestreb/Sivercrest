@@ -1,0 +1,40 @@
+﻿@model Silvercrest.ViewModels.Client.IndexInitViewModel
+    @using Silvercrest.Web.Common
+@{
+    ViewBag.Title = "Custom Features";
+}
+
+<!--
+<section id="user_info">
+    <div class="container">
+        <div id="info" class="row">
+            <span class="pull-left">
+                @Model.CustodianAccount
+            </span>
+            <span class="pull-right">
+                Data as of @Model.Date
+            </span>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="title">
+    <div class="container container-center">
+        <div class="row">
+            <h2>@Model.Name</h2>
+        </div>
+    </div>
+</section>
+-->
+<section id="links">
+    <div class="container container-center">
+        <div class="row">
+            <h3>Custom features</h3>
+            <a href="@Url.Action("Index", "Group", new { Area = "Client", contactIdQuery = Hash.GetEncryptedValue(Model.ContactId.ToString()) })"><span taban>manage groups</span></a>
+            <a href="@Url.Action("AssignNicknames", "Home", new { Area = "Client", contactIdQuery = Hash.GetEncryptedValue(Model.ContactId.ToString()) })"><span taban>edit nicknames</span></a>
+        </div>
+    </div>
+
+</section>

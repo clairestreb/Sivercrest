@@ -1,0 +1,387 @@
+﻿@using Silvercrest.ViewModels.Client.UserSettings
+@model IndexViewModel
+
+@{
+    if (!Model.ShowCustomizeSection) // or other custom logic
+    {
+        Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+    }
+}
+
+@{
+    ViewBag.Title = "User settings";
+}
+<input id="isClient" value="@User.IsInRole("Client")" type="hidden" />
+<input id="defaultGroup" value="@Model.defaultGroup" type="hidden" />
+<input id="CurrentUnsupervisedValue" value="@Model.CurrentUnsupervisedValue" type="hidden" />
+
+<section id="title">
+    <div class="container container-center">
+        <div class="row">
+            <h2 id="fullName">@Model.FullName</h2>
+            <h3>Account Settings</h3>
+        </div>
+    </div>
+</section>
+
+<section id="update-password">
+    <div class="container container-center pt60 pb100">
+        <div class="box">
+            @if ((Model.ShowCustomizeSection) && (Request.Cookies["IsSecondaryClient"].Value != "true"))
+            {
+                <div class="row" style="padding-bottom:2em">
+                    <div class="col-xs-12">
+                        <h3>Default Group</h3>
+                        <div class="form-group required">
+
+                            @Html.DropDownListFor(m => m.GroupList, new SelectList(Model.GroupList, "CompositeGroupId", "Name"), new { @class = "form-control", id = "group", })
+                        </div>
+                        @Html.ValidationSummary("", new { @class = "text-danger", id = "validationMessageGroup" })
+                    </div>
+                    <div class="no-padding-right col-xs-12 col-sm-5">
+                        <button type="submit" onclick="onClickGroup();" name="submit" id="submit2" class="btn btn-red pull-right">Submit</button>
+                    </div>
+                </div>
+                <text><hr /></text>
+                <div class="row" style="padding-bottom:2em">
+                    <div class="col-xs-12">
+                        <h3>Unsupervised Assets</h3>
+                        <div class="form-group required">
+
+                            @Html.DropDownList("UnsupervisedList", new SelectList(new List<Object>{
+                       new { value = "False" , text = "Exclude"  },
+                       new { value = "True" , text = "Include" },
+                    }, "value", "text"), new { @class = "form-control", id = "unsupervised", })
+                        </div>
+                        @Html.ValidationSummary("", new { @class = "text-danger", id = "validationMessageAsset" })
+                    </div>
+                    <div class="no-padding-right col-xs-12 col-sm-5">
+                        <button type="submit" onclick="onClickAssets();" name="submit" id="submit2" class="btn btn-red pull-right">Submit</button>
+                    </div>
+                </div>
+            }
+            <text><hr /></text>
+            @if (Model.ShowSecuritySection)
+            {
+                <div class="row" id="formPassword" style="padding-bottom:2em">
+                    <div class="col-xs-12">
+                        <h3>Password Change</h3>
+                        <div class="form-group">
+                            <div class="no-padding-left">
+                                <label class="control-label">Current Password</label><sup>*</sup>
+                                @Html.PasswordFor(m => m.CurrentPassword, new { @class = "form-control", id = "currentPassword", placeholder = "Current Password" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="no-padding-left col-xs-12 col-sm-7">
+                                <label class="control-label">New Password</label><sup>*</sup>
+                                @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control", id = "password", placeholder = "New Password" })
+                                <br />
+                            </div>
+                            <div class="no-padding-right col-xs-12 col-sm-5">
+                                <p class="small pass-info" style="font-family:goudyossc">
+                                    Password must be at least 8 characters in length, and contain at least one number, one lowercase, and one uppercase letter.
+                                </p>
+                            </div>
+                            <div class="no-padding-left col-xs-12 col-sm-7">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", id = "passwordCheck", placeholder = "Re-enter new password" })
+                                <br>
+                                @Html.ValidationSummary("", new { @class = "text-danger", id = "validationMessagePassword" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="no-padding-right col-xs-12 col-sm-5">
+                        <button type="submit" onclick="onClickPassword();" name="submit" id="submit1" class="btn btn-red pull-right">Submit</button>
+                    </div>
+                </div>
+                <text><hr /></text>
+                <div class="row" id="formQuestions">
+                    <div class="col-xs-12">
+                        <h3>security questions reset</h3>
+                        <div class="form-group">
+                            <div class="no-padding-left">
+                                <label class="control-label">Current Password</label><sup>*</sup>
+                                @Html.PasswordFor(m => m.CurrentPassword, new { @class = "form-control", id = "currentPassword2", placeholder = "Current Password" })
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            @Html.LabelFor(m => m.SecretQuestionsId1, new { @class = "control-label" })<sup>*</sup>
+
+                            @Html.DropDownListFor(m => m.SecretQuestionsId1, new SelectList(Model.SecretQuestions, "Id", "Question"), new { @class = "form-control", id = "firstQuest" })
+                        </div>
+                        <div class="form-group required">
+                            @Html.LabelFor(m => m.QuestionAnswer1, new { @class = "control-label" })<sup>*</sup>
+
+                            @Html.TextBoxFor(m => m.QuestionAnswer1, new { @class = "form-control", id = "firstAnswer" })
+
+                        </div>
+                        <div class="form-group required">
+                            @Html.LabelFor(m => m.SecretQuestionsId2, new { @class = "control-label" })<sup>*</sup>
+
+                            @Html.DropDownListFor(m => m.SecretQuestionsId2, new SelectList(Model.SecretQuestions, "Id", "Question"), new { @class = "form-control", id = "secondQuest" })
+                        </div>
+                        <div class="form-group required">
+                            @Html.LabelFor(m => m.QuestionAnswer2, new { @class = "control-label" })<sup>*</sup>
+
+                            @Html.TextBoxFor(m => m.QuestionAnswer2, new { @class = "form-control", id = "secondAnswer" })
+                        </div>
+                        <div class="form-group required">
+                            @Html.LabelFor(m => m.SecretQuestionsId3, new { @class = "control-label" })<sup>*</sup>
+
+                            @Html.DropDownListFor(m => m.SecretQuestionsId3, new SelectList(Model.SecretQuestions, "Id", "Question"), new { @class = "form-control", id = "thirdQuest" })
+                        </div>
+                        <div class="form-group required">
+                            @Html.LabelFor(m => m.QuestionAnswer3, new { @class = "control-label" })<sup>*</sup>
+
+                            @Html.TextBoxFor(m => m.QuestionAnswer3, new { @class = "form-control", id = "thirdAnswer" })
+
+                        </div>
+                        @Html.ValidationSummary("", new { @class = "text-danger", id = "validationMessageQuestions" })
+                    </div>
+                    <div class="no-padding-right col-xs-12 col-sm-5">
+                        <button type="submit" onclick="onClickQuestions();" name="submit" id="submit2" class="btn btn-red pull-right">Submit</button>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<div class="popup-holder" style="display:none; margin-top: 300px;" popup id="popupActivateOrDeactivate">
+    <div class="popup">
+        <div class="popup-header">
+            <h2 id="activateMessage">Invalid Name</h2>
+        </div>
+        <div class="popup-content">
+            <p id="errorMessage"></p>
+        </div>
+        <div class="popup-footer">
+            <div class="btn-wrapper">
+                <button class="btn-main btn-close btn-activate">ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    if ($("#isClient").val() == "") {
+        $("a").filter(function () {
+            return $(this).text() === "HOME";
+        }).attr("href", "#");
+        $("a:contains('HOLDINGS')").attr("href", "#");
+        $("a:contains('TRANSACTIONS')").attr("href", "#");
+        $("a:contains('TEAM')").attr("href", "#");
+        $("a:contains('DOCUMENTS')").attr("href", "#");
+    }
+
+    $(document).ready(function () {
+        $("#firstQuest").val(-1);
+        $("#secondQuest").val(-1);
+        $("#thirdQuest").val(-1);
+        $("#group").val($("#defaultGroup").val());
+        $("#unsupervised").val($("#CurrentUnsupervisedValue").val());
+
+        $("#firstQuest").change(firstQuestionChange);
+        $("#secondQuest").change(secondQuestionChange);
+        $("#thirdQuest").change(thirdQuestionChange);
+
+    });
+    var firstQuest = -1;
+    var secondQuest = -1;
+    var thirdQuest = -1;
+
+    function firstQuestionChange(e) {
+        $("#secondQuest").children().eq(firstQuest - 1).css("display", "");
+        $("#thirdQuest").children().eq(firstQuest - 1).css("display", "");
+
+        firstQuest = e.target.value;
+        $("#secondQuest").children().eq(e.target.value - 1).css("display", "none");
+        $("#thirdQuest").children().eq(e.target.value - 1).css("display", "none");
+
+        if (thirdQuest != -1) {
+            $("#firstQuest").children().eq(thirdQuest - 1).css("display", "none");
+            $("#secondQuest").children().eq(thirdQuest - 1).css("display", "none");
+        }
+        if (secondQuest != -1) {
+            $("#thirdQuest").children().eq(secondQuest - 1).css("display", "none");
+            $("#firstQuest").children().eq(secondQuest - 1).css("display", "none");
+        }
+    }
+    function secondQuestionChange(e) {
+        $("#firstQuest").children().eq(secondQuest - 1).css("display", "");
+        $("#thirdQuest").children().eq(secondQuest - 1).css("display", "");
+
+        secondQuest = e.target.value;
+        $("#firstQuest").children().eq(e.target.value - 1).css("display", "none");
+        $("#thirdQuest").children().eq(e.target.value - 1).css("display", "none");
+        if (firstQuest != -1) {
+            $("#secondQuest").children().eq(firstQuest - 1).css("display", "none");
+            $("#thirdQuest").children().eq(firstQuest - 1).css("display", "none");
+        }
+        if (thirdQuest != -1) {
+            $("#secondQuest").children().eq(thirdQuest - 1).css("display", "none");
+            $("#firstQuest").children().eq(thirdQuest - 1).css("display", "none");
+        }
+
+    }
+    function thirdQuestionChange(e) {
+        $("#firstQuest").children().eq(thirdQuest - 1).css("display", "");
+        $("#secondQuest").children().eq(thirdQuest - 1).css("display", "");
+
+        thirdQuest = e.target.value;
+        $("#firstQuest").children().eq(e.target.value - 1).css("display", "none");
+        $("#secondQuest").children().eq(e.target.value - 1).css("display", "none");
+        if (firstQuest != -1) {
+            $("#thirdQuest").children().eq(firstQuest - 1).css("display", "none");
+            $("#secondQuest").children().eq(firstQuest - 1).css("display", "none");
+        }
+        if (secondQuest != -1) {
+            $("#thirdQuest").children().eq(secondQuest - 1).css("display", "none");
+            $("#firstQuest").children().eq(secondQuest - 1).css("display", "none");
+        }
+
+    }
+    function onClickAssets() {
+        var divPosition = $('#validationMessageAsset').offset();
+        $.ajax({
+            url: "/UserSettings/UpdateAsset",
+            dataType: "json",
+            method: "Post",
+            data: {
+                fullName: $('#fullName').text(),
+                contactIdQuery: getUrlParam("contactIdQuery"),
+                newUnsupervisedValue: $('#unsupervised').val()
+            },
+            success: function (data) {
+                $("#validationMessagePassword").children().children().html('').css("display", "block");
+                $("#validationMessageQuestions").children().children().html('').css("display", "block");
+                $("#validationMessageAsset").children().children().html(data.result).css("display", "block");
+                ClearAllField();
+            }
+        });
+    }
+
+
+    function onClickGroup() {
+        var divPosition = $('#validationMessageQuestions').offset();
+        $.ajax({
+            url: "/UserSettings/UpdateGroup",
+            dataType: "json",
+            method: "Post",
+            data: {
+                selectedGroup: $('#group').val(),
+                fullName: $('#fullName').text(),
+                contactIdQuery: getUrlParam("contactIdQuery"),
+                defaultGroupValue: $('#defaultGroup').val()
+            },
+            success: function (data) {
+                $("#validationMessagePassword").children().children().html('').css("display", "block");
+                $("#validationMessageQuestions").children().children().html('').css("display", "block");
+                $("#validationMessageGroup").children().children().html(data.result).css("display", "block");
+                ClearAllField();
+            }
+        });
+    }
+
+    function onClickPassword() {
+        if ($('#currentPassword').val() == "") {
+            $("#validationMessageQuestions").children().children().html('').css("display", "block");
+            $("#validationMessagePassword").children().children().html("Please enter current password").css("display", "block");
+            window.scrollTo(0, 300);
+            return false;
+        }
+        if ($('#password').val() == "") {
+            $("#validationMessageQuestions").children().children().html('').css("display", "block");
+            $("#validationMessagePassword").children().children().html("Please enter new password").css("display", "block");
+            window.scrollTo(0, 300);
+            return false;
+        }
+        if ($('#passwordCheck').val() == "") {
+            $("#validationMessageQuestions").children().children().html('').css("display", "block");
+            $("#validationMessagePassword").children().children().html("Please re-enter new password").css("display", "block");
+            window.scrollTo(0, 300);
+            return false;
+        }
+
+        $.ajax({
+            url: "/UserSettings/ChangePassword",
+            dataType: "json",
+            method: "Post",
+            data: {
+                currentPassword: $('#currentPassword').val(),
+                newPassword: $('#password').val(),
+                confirmPassword: $('#passwordCheck').val(),
+                defaultGroupValue: $('#defaultGroup').val()
+            },
+            success: function (data) {
+                $("#validationMessagePassword").children().children().html(data.result).css("display", "block");
+                $("#validationMessageQuestions").children().children().html('').css("display", "block");
+                window.scrollTo(0, 300);
+                ClearAllField();
+            }
+        });
+    }
+
+    function onClickQuestions() {
+        var divPosition = $('#validationMessageQuestions').offset();
+        if ($('#currentPassword2').val() == "") {
+            $("#validationMessagePassword").children().children().html("").css("display", "block");
+            $("#validationMessageQuestions").children().children().html("Please enter current password ").css("display", "block");
+            $("#validationMessageGroup").children().children().html("").css("display", "block");
+            window.scrollTo(0, divPosition.top);
+            return false;
+        }
+        if ($("#firstQuest").val() == null || $("#secondQuest").val() == null ||
+            $("#thirdQuest").val() == null) {
+            $("#validationMessageGroup").children().children().html("").css("display", "block");
+            $("#validationMessagePassword").children().children().html("").css("display", "block");
+            $("#validationMessageQuestions").children().children().html("All questions are mandatory, please select all three.").css("display", "block");
+            window.scrollTo(0, divPosition.top);
+            return false;
+        }
+        if ($("#firstAnswer").val() == "" ||
+            $("#secondAnswer").val() == "" || $("#thirdAnswer").val() == "") {
+            $("#validationMessageGroup").children().children().html("").css("display", "block");
+            $("#validationMessagePassword").children().children().html("").css("display", "block");
+            $("#validationMessageQuestions").children().children().html("All answers are mandatory, please enter all three. ").css("display", "block");
+            window.scrollTo(0, divPosition.top);
+            return false;
+        }
+
+        $.ajax({
+            url: "/UserSettings/ChangeQuestions",
+            dataType: "json",
+            method: "Post",
+            data: {
+                currentPassword: $('#currentPassword2').val(),
+                SecretQuestionsId1: $('#firstQuest').val(),
+                SecretQuestionsId2: $('#secondQuest').val(),
+                SecretQuestionsId3: $('#thirdQuest').val(),
+                QuestionAnswer1: $('#firstAnswer').val(),
+                QuestionAnswer2: $('#secondAnswer').val(),
+                QuestionAnswer3: $('#thirdAnswer').val(),
+                defaultGroupValue: $('#defaultGroup').val()
+            },
+            success: function (data) {
+                $("#validationMessageGroup").children().children().html("").css("display", "block");
+                $("#validationMessagePassword").children().children().html("").css("display", "block");
+                $("#validationMessageQuestions").children().children().html(data.result).css("display", "block");
+                ClearAllField();
+            }
+        });
+    }
+
+    function ClearAllField() {
+        $('#currentPassword').val('');
+        $('#password').val('');
+        $('#passwordCheck').val('');
+        $('#firstQuest').val('');
+        $('#secondQuest').val('');
+        $('#thirdQuest').val('');
+        $('#firstAnswer').val('');
+        $('#secondAnswer').val('');
+        $('#thirdAnswer').val('');
+    }
+
+
+
+</script>

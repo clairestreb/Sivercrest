@@ -1,0 +1,43 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.TeamMember.LoginHistoryViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+    ViewBag.Title = "Login History";
+}
+@Html.HiddenFor(model => model.WebUserId, new { @id = "webUserId" })
+<link href="~/Content/kenodDefault.css?v=@Url.GetVersion()" rel="stylesheet" />
+<script src="~/Scripts/app/TeamMember/UserAnalytics/loginHistory.js?v=@Url.GetVersion()"></script>
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-free pull-right">
+                
+                <!--                <a href="@Url.Action("Index", "UserAnalytics", new { Area = "TeamMember", @contactId = @Model.ContactId, @familyId = @Model.FamilyId })">Back to Client Analytics Detail</a>-->
+                <a href="javascript:window.history.go(-1);">
+                    <img src="~/img/return-arrow.png" alt="">Back to Client Analytics Detail
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="title">
+    <div class="container container-center">
+        <div class="row">
+            <h2>@Model.ContactFullName</h2>
+            <h3>Client Login History</h3>
+        </div>
+    </div>
+</section>
+<section id="find-user">
+    <div class="container container-center pt30">
+        <div class="row">
+            <h3>Login records</h3>
+        </div>
+        <div class="row">
+            <div class="box">
+                <div id="loginHistoryGrid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

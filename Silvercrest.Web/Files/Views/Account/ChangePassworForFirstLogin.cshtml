@@ -1,0 +1,151 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@using Silvercrest.ViewModels.Main.AccountViewModels
+@using System.Linq
+@model ChangePasswordViewModel
+@{
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+    ViewBag.Title = "User Setup";
+}
+<script src="~/Scripts/jquery-2.0.3.min.js?v=@Url.GetVersion()"></script>
+
+@using (Html.BeginForm("ChangePassworForFirstLogin", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "form" }))
+{
+    <fieldset>
+        @Html.AntiForgeryToken()
+        <h4>Please choose a new password and setup 3 security questions</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger", id = "validationMessage" })
+        <div class="form-group required">
+            @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="form-group required" style="display:none">
+            @Html.LabelFor(m => m.OldPassword, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.OldPassword, new { @class = "form-control", style = "text-transform: none;", id = "passwordOld", @readonly = "readonly", @type = "password" })
+        </div>
+        <div class="form-group required">
+            @Html.LabelFor(m => m.NewPassword, new { @class = "control-label" })
+            @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control", id = "password", style = "text-transform: none;" })
+            <span id="result"></span>
+            @Html.ValidationMessageFor(m => m.NewPassword, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group required">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", id = "passwordcheck", style = "text-transform: none;" })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group required">
+            @Html.LabelFor(m => m.SecretQuestionsId1, new { @class = "control-label" })
+
+            @Html.DropDownListFor(m => m.SecretQuestionsId1, new SelectList(Model.SecretQuestions, "Id", "Question"), new { @class = "form-control", id = "firstQuest" })
+            @Html.ValidationMessageFor(m => m.SecretQuestionsId1, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group required">
+            @Html.LabelFor(m => m.QuestionAnswer1, new { @class = "control-label" })
+
+            @Html.TextBoxFor(m => m.QuestionAnswer1, new { @class = "form-control", id = "firstAnswer" })
+            @Html.ValidationMessageFor(m => m.QuestionAnswer1, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group required">
+            @Html.LabelFor(m => m.SecretQuestionsId2, new { @class = "control-label" })
+
+            @Html.DropDownListFor(m => m.SecretQuestionsId2, new SelectList(Model.SecretQuestions, "Id", "Question"), new { @class = "form-control", id = "secondQuest" })
+            @Html.ValidationMessageFor(m => m.SecretQuestionsId2, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group required">
+            @Html.LabelFor(m => m.QuestionAnswer2, new { @class = "control-label" })
+
+            @Html.TextBoxFor(m => m.QuestionAnswer2, new { @class = "form-control", id = "secondAnswer" })
+            @Html.ValidationMessageFor(m => m.QuestionAnswer2, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group required">
+            @Html.LabelFor(m => m.SecretQuestionsId3, new { @class = "control-label" })
+
+            @Html.DropDownListFor(m => m.SecretQuestionsId3, new SelectList(Model.SecretQuestions, "Id", "Question"), new { @class = "form-control", id = "thirdQuest" })
+            @Html.ValidationMessageFor(m => m.SecretQuestionsId3, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group required">
+            @Html.LabelFor(m => m.QuestionAnswer3, new { @class = "control-label" })
+
+            @Html.TextBoxFor(m => m.QuestionAnswer3, new { @class = "form-control", id = "thirdAnswer" })
+            @Html.ValidationMessageFor(m => m.QuestionAnswer3, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-default btn-red">Save</button>
+        </div>
+    </fieldset>
+}
+<script>
+    $(document).ready(function () {
+        $("#firstQuest").val(-1);
+        $("#secondQuest").val(-1);
+        $("#thirdQuest").val(-1);
+
+
+        $("#firstQuest").change(firstQuestionChange);
+        $("#secondQuest").change(secondQuestionChange);
+        $("#thirdQuest").change(thirdQuestionChange);
+
+    });
+    var firstQuest = -1;
+    var secondQuest = -1;
+    var thirdQuest = -1;
+
+    function firstQuestionChange(e) {
+        $("#secondQuest").children().eq(firstQuest - 1).css("display", "");
+        $("#thirdQuest").children().eq(firstQuest - 1).css("display", "");
+
+        firstQuest = e.target.value;
+        $("#secondQuest").children().eq(e.target.value - 1).css("display", "none");
+        $("#thirdQuest").children().eq(e.target.value - 1).css("display", "none");
+
+        if (thirdQuest != -1) {
+            $("#firstQuest").children().eq(thirdQuest - 1).css("display", "none");
+            $("#secondQuest").children().eq(thirdQuest - 1).css("display", "none");
+        }
+        if (secondQuest != -1) {
+            $("#thirdQuest").children().eq(secondQuest - 1).css("display", "none");
+            $("#firstQuest").children().eq(secondQuest - 1).css("display", "none");
+        }
+    }
+    function secondQuestionChange(e) {
+        $("#firstQuest").children().eq(secondQuest - 1).css("display", "");
+        $("#thirdQuest").children().eq(secondQuest - 1).css("display", "");
+
+        secondQuest = e.target.value;
+        $("#firstQuest").children().eq(e.target.value - 1).css("display", "none");
+        $("#thirdQuest").children().eq(e.target.value - 1).css("display", "none");
+        if (firstQuest != -1) {
+            $("#secondQuest").children().eq(firstQuest - 1).css("display", "none");
+            $("#thirdQuest").children().eq(firstQuest - 1).css("display", "none");
+        }
+        if (thirdQuest != -1) {
+            $("#secondQuest").children().eq(thirdQuest - 1).css("display", "none");
+            $("#firstQuest").children().eq(thirdQuest - 1).css("display", "none");
+        }
+
+    }
+    function thirdQuestionChange(e) {
+        $("#firstQuest").children().eq(thirdQuest - 1).css("display", "");
+        $("#secondQuest").children().eq(thirdQuest - 1).css("display", "");
+
+        thirdQuest = e.target.value;
+        $("#firstQuest").children().eq(e.target.value - 1).css("display", "none");
+        $("#secondQuest").children().eq(e.target.value - 1).css("display", "none");
+        if (firstQuest != -1) {
+            $("#thirdQuest").children().eq(firstQuest - 1).css("display", "none");
+            $("#secondQuest").children().eq(firstQuest - 1).css("display", "none");
+        }
+        if (secondQuest != -1) {
+            $("#thirdQuest").children().eq(secondQuest - 1).css("display", "none");
+            $("#firstQuest").children().eq(secondQuest - 1).css("display", "none");
+        }
+
+    }
+
+</script>

@@ -1,0 +1,57 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "Silvecrest | Maintenance";
+
+}
+
+    <head>
+        <title>@ViewBag.Title</title>
+        <link rel="stylesheet" type="text/css" href="~/Content/index.css">
+    </head>
+<style>
+    body {
+        margin: 0 !important;
+        overflow: hidden!important;
+    }
+
+    .site-logo-wrapper {
+        margin-bottom: 8rem;
+    }
+
+    .error-page-wrapper {
+        text-align: center;
+        background-color: #e8d9b9;
+        min-height: 100vh;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .error-page-wrapper p {
+            font-family: 'goudyosSC', sans-serif;
+            font-size: 32px;
+        }
+
+    .error-msg-text {
+        width: 40%;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="error-page-wrapper">
+            <div class="site-logo-wrapper">
+                @*<img src="~/img/logo.png" />*@
+            </div>
+            <div class="error-msg-text">
+                <p>
+                    We sincerely apologize for the inconvenience.
+                </p>
+                <p>The client site is currently undergoing scheduled maintenance and upgrades, but will return shortly.</p>
+                <p>Thank you for your patience.</p>
+            </div>
+        </div>
+    </div>
+</div>

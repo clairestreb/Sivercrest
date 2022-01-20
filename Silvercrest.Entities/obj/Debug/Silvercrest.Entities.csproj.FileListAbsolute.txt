@@ -1,0 +1,17 @@
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\Silvercrest.Entities.dll
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\Silvercrest.Entities.pdb
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\EntityFramework.dll
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\EntityFramework.SqlServer.dll
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\Silvercrest.Utilities.dll
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\Silvercrest.Utilities.pdb
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\EntityFramework.xml
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\EntityFramework.SqlServer.xml
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\obj\Debug\Silvercrest.Entities.csproj.AssemblyReference.cache
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\obj\Debug\Silvercrest.Entities.csproj.CoreCompileInputs.cache
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\obj\Debug\Silvercrest.Entities.csproj.CopyComplete
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\obj\Debug\Silvercrest.Entities.dll
+E:\Project_2\VisualStudio\Silvercrest\Silvercrest.Entities\obj\Debug\Silvercrest.Entities.pdb

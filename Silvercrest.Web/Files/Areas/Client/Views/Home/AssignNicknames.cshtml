@@ -1,0 +1,74 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.Client.NicknamesClientViewModel
+@{
+    ViewBag.Title = "AssignNicknames";
+}
+<link href="~/Content/kenodDefault.css?v=@Url.GetVersion()" rel="stylesheet" />
+<script src="~/Scripts/app/Client/HomeController/AssignNicknamesIndex.js?v=@Url.GetVersion()"></script>
+<link href="~/Content/kendoStyle.css?v=@Url.GetVersion()" rel="stylesheet" />
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-free pull-right">
+                
+                <a href="javascript:window.history.go(-1);">
+                    <img src="~/img/return-arrow.png" alt="">Back to Custom Features
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="find-user">
+    <div class="container pb100">
+        <div class="row">
+            <h3>Account Nicknames</h3>
+            <div id="NicknamesGrid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="modalHeader"></h4>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup-holder" style="display:none;" popup id="popupSendEmail">
+    <div class="popup">
+        <div class="popup-header">
+            <h2 id="emailPopupMessage">Email was sended</h2>
+        </div>
+        <div class="popup-content">
+            <p id="emailPopupBodyMessage">Your e-mail was sended</p>
+        </div>
+        <div class="popup-footer">
+            <div class="btn-wrapper">
+                <button class="btn-main btn-close btn-activate" onclick="closePopup()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    var model = @Html.Raw(Json.Encode(Model));
+</script>
+
+<script id="name-template" type="text/x-kendo-template">
+    <input type="text" data-role="textbox" data-text-field="text" />
+</script>
+<script id="button-template" type="text/x-kendo-template">
+    <input type="button" class="btn btn-red" style="max-width: 200px;font-size: 14px;width: 100%;padding: 0px;margin:0px;" data-role="submit" value="Save" onclick="submitNickname(this);" />
+</script>

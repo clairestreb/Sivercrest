@@ -1,0 +1,62 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.TeamMember.TeamMemberRelationshipViewModel
+@using Silvercrest.Web.Common
+@{
+    Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+    ViewBag.Title = "Relationship";
+}
+
+
+<section id="title" class="single">
+    <div class="container">
+        <div class="row">
+            <h2>@Model.ContactsByFamily[0].Relationship</h2>
+        </div>
+    </div>
+</section>
+<section id="table-family">
+    <div class="container pb60 pt30">
+        <div class="row">
+            <h3>@Model.ContactsByFamily[0].Relationship Accounts</h3>
+            <div id="UserGrid"></div>
+            @Html.Hidden("familyId", @Model.FamilyId)
+            @Html.Hidden("firmUserGroupId", @Model.FirmUserGroupId)
+        </div>
+    </div>
+
+</section>
+<section id="table-family-ass" class="table-family-ass">
+    <div class="container pb70">
+        <div class="row">
+            <h3>Users Associated with @Model.ContactsByFamily[0].Relationship Relationship</h3>
+            <div id="table-wrapper">
+                <div id="table-scroll">
+                    <table id="table-family-ass" class="table">
+                        @foreach (var user in Model.ContactsByFamily)
+                        {
+                            var gray = (bool)user.IsWebUser ? "" : "gray";
+                            <tr class="row subheader @gray ">
+                                <td class="col1"><a href="@Url.Action("Index", "Access", new { Area = "TeamMember", contactIdQuery = Hash.GetEncryptedValue(user.ContactId.ToString()), familyIdQuery = Hash.GetEncryptedValue(Model.FamilyId.ToString()), firmUserGroupIdQuery = Hash.GetEncryptedValue(Model.FirmUserGroupId.ToString()) })">@user.DisplayName</a></td>
+                                <td class="col2"><div>@user.Email</div></td>
+                                <td class="col3"><a href="@Url.Action("Index", "UserAnalytics", new { Area = "TeamMember", contactIdQuery = Hash.GetEncryptedValue(user.ContactId.ToString()), familyIdQuery = Hash.GetEncryptedValue(Model.FamilyId.ToString()), firmUserGroupIdQuery = Hash.GetEncryptedValue(Model.FirmUserGroupId.ToString()) })">view analytics</a></td>
+                                <!--<td class="col4">settings</td>-->
+                                <td class="col4 last"><a href="@Url.Action("Index", "Home", new { Area = "Client", contactIdQuery = Hash.GetEncryptedValue(user.ContactId.ToString()), allow = true })" target="_blank">client view</a></td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var model = @Html.Raw(Json.Encode(Model));
+</script>
+
+@section Script{
+    <link href="~/Content/kendoStyle.css?v=@Url.GetVersion()" rel="stylesheet" />
+    <script src="//kendo.cdn.telerik.com/2016.3.1028/js/jszip.min.js?v=@Url.GetVersion()"></script>
+    <script src="//kendo.cdn.telerik.com/2016.3.1118/js/pako_deflate.min.js?v=@Url.GetVersion()"></script>
+    <script src="//kendo.cdn.telerik.com/2016.3.1118/js/pako_deflate.min.js?v=@Url.GetVersion()"></script>
+    <script src="~/Scripts/app/TeamMember/Relationship/RelationshipIndex.js?v=@Url.GetVersion()"></script>
+}

@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a7208848ef53447ead34df2238b3d5bb" Name="Diagram1">
+        <EntityTypeShape EntityType="SLVR_DEVModel.AggregatedCounter" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Counter" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Hash" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Job" Width="1.5" PointX="8.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.JobParameter" Width="1.5" PointX="11" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.JobQueue" Width="1.5" PointX="5.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.List" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Schema" Width="1.5" PointX="13.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Server" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Set" Width="1.5" PointX="9.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.State" Width="1.5" PointX="11" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.C__MigrationHistory" Width="1.5" PointX="11.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account" Width="1.5" PointX="3" PointY="150.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Attribute" Width="1.5" PointX="8.25" PointY="162.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Benchmark" Width="1.5" PointX="11.25" PointY="163.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Class" Width="1.5" PointX="0.75" PointY="147.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Close_Reason" Width="1.5" PointX="0.75" PointY="150.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Group" Width="1.5" PointX="6" PointY="154.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Group_Member" Width="1.5" PointX="14.25" PointY="156.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Investment_Objective" Width="1.5" PointX="5.25" PointY="164.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Performance" Width="1.5" PointX="14.25" PointY="160.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Snapshot" Width="1.5" PointX="9" PointY="152.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Strategy_Override" Width="1.5" PointX="8.25" PointY="166.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Transaction" Width="1.5" PointX="17.25" PointY="154.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Type" Width="1.5" PointX="0.75" PointY="160.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_User_Group" Width="1.5" PointX="11.25" PointY="167.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Allocation_Risk_Profile" Width="1.5" PointX="6" PointY="111.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.APX_Portfolio_Statement" Width="1.5" PointX="20.25" PointY="172" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.AspNetRole" Width="1.5" PointX="6" PointY="138.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.AspNetUserClaim" Width="1.5" PointX="10.5" PointY="135.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.AspNetUserLogin" Width="1.5" PointX="10.5" PointY="132.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.AspNetUser" Width="1.5" PointX="8.25" PointY="144.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Asset_Allocation_Target" Width="1.5" PointX="12.75" PointY="128.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Asset_Class_Equivalent" Width="1.5" PointX="29.25" PointY="150.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Asset_Manager" Width="1.5" PointX="0.75" PointY="163.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.AUM_Fund_Mapping" Width="1.5" PointX="13.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.AUM_Revenue_Source" Width="1.5" PointX="3.75" PointY="146.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.AUM_SAMG_Manager_Mapping" Width="1.5" PointX="6" PointY="103.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Benchmark" Width="1.5" PointX="9" PointY="201.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Benchmark_Performance" Width="1.5" PointX="26.25" PointY="171.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Benchmark_Returns" Width="1.5" PointX="29.25" PointY="169" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Book_Blank_Page" Width="1.5" PointX="15.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Book_Request" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Book_Request_Detail" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Branch_Office" Width="1.5" PointX="1.5" PointY="135.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Classification" Width="1.5" PointX="4.5" PointY="120.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Classification_Sort" Width="1.5" PointX="6.75" PointY="119.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Contact" Width="1.5" PointX="6" PointY="145" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Contact_Address" Width="1.5" PointX="11.25" PointY="147.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Contact_Detail_Type" Width="1.5" PointX="9" PointY="118.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Contact_Phone" Width="1.5" PointX="11.25" PointY="142.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Country" Width="1.5" PointX="9.75" PointY="114.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Currency" Width="1.5" PointX="18" PointY="128.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Current_Positions" Width="1.5" PointX="20.25" PointY="152.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Custom_Comment" Width="1.5" PointX="17.25" PointY="161.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Document_Delivery_Frequency" Width="1.5" PointX="26.25" PointY="134.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Document_Delivery_Type" Width="1.5" PointX="26.25" PointY="130.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Document_Type" Width="1.5" PointX="15.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.DW_Monitor" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Entity_Document" Width="1.5" PointX="14.25" PointY="147.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Entity_Document_Delivery" Width="1.5" PointX="28.5" PointY="141.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Entity_Group" Width="1.5" PointX="13.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Entity_Group_Rule" Width="1.5" PointX="16" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Entity_Grouping" Width="1.5" PointX="2.25" PointY="121.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Exchange" Width="1.5" PointX="9.75" PointY="185.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Family_Group" Width="1.5" PointX="0.75" PointY="167" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Fee_Snapshot" Width="1.5" PointX="5.25" PointY="203.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Firm_Title" Width="1.5" PointX="12" PointY="125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Firm_User" Width="1.5" PointX="21" PointY="123.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Firm_User_Group" Width="1.5" PointX="3.75" PointY="134.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Firm_User_Group_Attribute" Width="1.5" PointX="8.25" PointY="133.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Firm_User_Group_Member" Width="1.5" PointX="14.25" PointY="142.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.FX_Rate" Width="1.5" PointX="20.25" PointY="127.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Generic_Attribute" Width="1.5" PointX="6" PointY="172.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Holding_Duration" Width="1.5" PointX="24" PointY="175.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Intra_Month_Data_Tracker" Width="1.5" PointX="6.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Intraday_DW_Refresh" Width="1.5" PointX="8.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Investment_Action" Width="1.5" PointX="20.25" PointY="147" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Investment_Goal" Width="1.5" PointX="3" PointY="165.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Investment_Objective_Item" Width="1.5" PointX="3" PointY="169.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Investment_Objective_Section" Width="1.5" PointX="10.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Investment_Progress" Width="1.5" PointX="17.25" PointY="166.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Investment_Progress_IM" Width="1.5" PointX="17.25" PointY="139.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Investment_Progress_Pre" Width="1.5" PointX="20.25" PointY="163" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Mapping_Account" Width="1.5" PointX="5.25" PointY="168.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Market_Index" Width="1.5" PointX="11.25" PointY="209.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Market_Index_Return" Width="1.5" PointX="13.5" PointY="209.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Month_End_Checklist" Width="1.5" PointX="13.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Month_End_Checklist_Status" Width="1.5" PointX="16" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Performance_Alternatives" Width="1.5" PointX="23.25" PointY="151.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Portfolio_Benchmark" Width="1.5" PointX="23.25" PointY="139.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Portfolio_Investment_Objective" Width="1.5" PointX="23.25" PointY="171.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Portfolio_Performance" Width="1.5" PointX="26.25" PointY="137.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Portfolio_Returns" Width="1.5" PointX="14.25" PointY="137.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Price" Width="1.5" PointX="6" PointY="160.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Realized_GainLoss" Width="1.5" PointX="23.25" PointY="143.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Recon_Status" Width="1.5" PointX="5.25" PointY="253.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Related_Party" Width="1.5" PointX="20.25" PointY="143.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Relationship" Width="1.5" PointX="0.75" PointY="170.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Report" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Report_Formula" Width="1.5" PointX="17.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Report_Param" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Report_Param_Access" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Report_Param_Mapping" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Revenue_Snapshot" Width="1.5" PointX="6" PointY="133.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Role" Width="1.5" PointX="18" PointY="124.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.SAMG_Strategy" Width="1.5" PointX="6.75" PointY="122.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Scheme" Width="1.5" PointX="2.25" PointY="124.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Security" Width="1.5" PointX="12" PointY="152" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Security_Attribute" Width="1.5" PointX="29.25" PointY="160.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Security_Classification" Width="1.5" PointX="29.25" PointY="146.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Security_Snapshot" Width="1.5" PointX="32.25" PointY="160.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Security_Strategy" Width="1.5" PointX="29.25" PointY="165" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Security_Type" Width="1.5" PointX="9.75" PointY="189.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Security_Type_Sort" Width="1.5" PointX="12" PointY="188.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Security_Variant" Width="1.5" PointX="12" PointY="191.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.SMA_Strategy" Width="1.5" PointX="5.25" PointY="141" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Small_Cap_Broker" Width="1.5" PointX="17.25" PointY="179.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Small_Cap_Broker_Type" Width="1.5" PointX="15" PointY="179.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Small_Cap_Trade" Width="1.5" PointX="14.25" PointY="169.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Source" Width="1.5" PointX="0.75" PointY="154.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Tax_Lot_Pre" Width="1.5" PointX="12.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.State1" Width="1.5" PointX="9.75" PointY="197.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Statement_Delivery_Queue" Width="1.5" PointX="14.25" PointY="152.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Statement_Queue" Width="1.5" PointX="17.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Statement_Upload_Queue" Width="1.5" PointX="28.5" PointY="130.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Strategy" Width="1.5" PointX="3" PointY="141.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Strategy_Allocation_Target" Width="1.5" PointX="8.25" PointY="138" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Strategy_Drilldown" Width="1.5" PointX="5.25" PointY="114.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Strategy_Rollup" Width="1.5" PointX="5.25" PointY="176.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Strategy_Translate" Width="1.5" PointX="5.25" PointY="179.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Tax_Lot" Width="1.5" PointX="26.25" PointY="151.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Tax_Lot_Snapshot" Width="1.5" PointX="23.25" PointY="163.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Template" Width="1.5" PointX="12" PointY="120.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Template_Report" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Template_Report_Detail" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Transaction_Comment" Width="1.5" PointX="8.25" PointY="170.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Transaction_Comment_Aligned" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Transaction_Exited_Assets" Width="1.5" PointX="18.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Transaction_Inter_Account" Width="1.5" PointX="21" PointY="134.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Transaction_Snapshot" Width="1.5" PointX="26.25" PointY="143.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Transaction_Snapshot2" Width="1.5" PointX="26.25" PointY="163.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Transaction_Type" Width="1.5" PointX="24" PointY="134.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.User_Group_Member" Width="1.5" PointX="23.25" PointY="125.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.User_Group_Type" Width="1.5" PointX="9" PointY="206" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Account_Group" Width="1.5" PointX="8.25" PointY="178.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Account_Group_Member" Width="1.5" PointX="10.5" PointY="172.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Account_Nickname" Width="1.5" PointX="14.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Contact_Default_Entity" Width="1.5" PointX="8.25" PointY="181.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Document" Width="1.5" PointX="6" PointY="129.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Document_Deleted" Width="1.5" PointX="6" PointY="106.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Document_Favorite" Width="1.5" PointX="8.25" PointY="141" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Document_Type" Width="1.5" PointX="3.75" PointY="130" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Email_Alert_Documents" Width="1.5" PointX="16" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Email_Alerts" Width="1.5" PointX="13.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Encryption_Dictionary" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Login_Session_Record" Width="1.5" PointX="10.5" PointY="128.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Page_Visit_Record" Width="1.5" PointX="10.5" PointY="176.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Role" Width="1.5" PointX="15" PointY="129" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Secondary_Team" Width="1.5" PointX="23" PointY="129.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Security_Answer" Width="1.5" PointX="16.5" PointY="135.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Security_Question" Width="1.5" PointX="14.25" PointY="132.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Strategy_Document" Width="1.5" PointX="9" PointY="122.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Strategy_Document_Favorite" Width="1.5" PointX="11.25" PointY="139" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Supplemental_Access" Width="1.5" PointX="14.25" PointY="166.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_User_Role" Width="1.5" PointX="17.25" PointY="147.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_User_Settings" Width="1.5" PointX="8.25" PointY="194.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Zip_File" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.AggregatedCounter1" Width="1.5" PointX="2.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Counter1" Width="1.5" PointX="4.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Hash1" Width="1.5" PointX="19.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Job1" Width="1.5" PointX="8.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.JobParameter1" Width="1.5" PointX="11" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.JobQueue1" Width="1.5" PointX="19.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.List1" Width="1.5" PointX="19.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Schema1" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Server1" Width="1.5" PointX="20.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Set1" Width="1.5" PointX="20.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.State2" Width="1.5" PointX="11" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Account_Returns" Width="1.5" PointX="20.25" PointY="138.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Contact_Default_Mapping" Width="1.5" PointX="6.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.GICS_Sector_Translate" Width="1.5" PointX="20.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.InvestCloud_Contact" Width="1.5" PointX="8.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Investment_Progress_Post" Width="1.5" PointX="21.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Investment_Progress_Stg" Width="1.5" PointX="21.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Security_Supplement" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Small_Cap_Randomized_Broker_Types" Width="1.5" PointX="16.5" PointY="175.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Small_Cap_Randomized_Brokers" Width="1.5" PointX="19.5" PointY="175.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Account" Width="1.5" PointX="0.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Account_Attribute" Width="1.5" PointX="2.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Account_Benchmark" Width="1.5" PointX="22.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Account_Class" Width="1.5" PointX="22.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Account_Group" Width="1.5" PointX="14.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Account_Group_Member" Width="1.5" PointX="16.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Account_Performance" Width="1.5" PointX="18.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Account_Returns" Width="1.5" PointX="23.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Account_Transaction" Width="1.5" PointX="23.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Account_Type" Width="1.5" PointX="23.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Account_User_Group" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Asset_Manager" Width="1.5" PointX="24.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Benchmark" Width="1.5" PointX="4.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Benchmark_Performance" Width="1.5" PointX="6.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Benchmark_Returns" Width="1.5" PointX="8.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Classification" Width="1.5" PointX="10.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Classification_Sort" Width="1.5" PointX="24.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Contact" Width="1.5" PointX="25.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Contact_Address" Width="1.5" PointX="25.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Contact_Default_Mapping" Width="1.5" PointX="25.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Contact_Detail_Type" Width="1.5" PointX="23.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Contact_Phone" Width="1.5" PointX="25.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Country" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Currency" Width="1.5" PointX="26.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Custom_Comment" Width="1.5" PointX="20.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Entity_Grouping" Width="1.5" PointX="27.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Exchange" Width="1.5" PointX="27.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Family_Group" Width="1.5" PointX="12.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Fee_Snapshot" Width="1.5" PointX="14.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Firm_User" Width="1.5" PointX="27.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Firm_User_Group" Width="1.5" PointX="27.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_FX_Rate" Width="1.5" PointX="27.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Intraday_DW_Refresh" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Investment_Action" Width="1.5" PointX="2.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Investment_Progress" Width="1.5" PointX="4.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_IShares" Width="1.5" PointX="6.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Market_Index_Return" Width="1.5" PointX="28.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Performance_Alternatives" Width="1.5" PointX="8.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Portfolio_Benchmark" Width="1.5" PointX="16.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Portfolio_Performance" Width="1.5" PointX="22.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Portfolio_Returns" Width="1.5" PointX="27.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Price" Width="1.5" PointX="29.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Realized_GainLoss" Width="1.5" PointX="29.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Recon_Status" Width="1.5" PointX="29.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Related_Party" Width="1.5" PointX="29.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Relationship" Width="1.5" PointX="24.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Revenue_Snapshot" Width="1.5" PointX="29.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Role" Width="1.5" PointX="30.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Security" Width="1.5" PointX="10.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Security_Attribute" Width="1.5" PointX="30.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Security_Classification" Width="1.5" PointX="18.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Security_Type" Width="1.5" PointX="31.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Security_Variant" Width="1.5" PointX="31.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Source" Width="1.5" PointX="12.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_State" Width="1.5" PointX="31.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Statement_Delivery_Queue" Width="1.5" PointX="31.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Tax_Lot" Width="1.5" PointX="31.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Transaction_Activity" Width="1.5" PointX="32.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Transaction_Comment" Width="1.5" PointX="14.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Transaction_Exited_Assets" Width="1.5" PointX="0.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Staging_Transaction_Type" Width="1.5" PointX="33.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Thomson_Reuters" Width="1.5" PointX="33.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Transaction_Activity" Width="1.5" PointX="29.25" PointY="154.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.Web_Application_Parameters" Width="1.5" PointX="33.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SLVR_DEVModel.database_firewall_rules" Width="1.5" PointX="33.75" PointY="16.75" IsExpanded="true" />
+        <AssociationConnector Association="SLVR_DEVModel.FK_HangFire_JobParameter_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.FK_HangFire_State_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_account_class" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_account_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_asset_manager" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_attribute_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_benchmark_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_close_reason" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_custodian" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_family_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_group_member_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_inv_objective_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_performance_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_relationship" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_returns_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_user_group_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_acct_strategy_override_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_current_positions_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_custom_comment_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_feesnap_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_action_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_progress_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_progress_IM_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_progress_pre_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_mapping_account_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_perf_alternatives_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_realized_gainloss_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_recon_status_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_related_party_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_sma_strategy_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_tax_lot__snap_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_tax_lot_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transaction_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transaction_activity_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transaction_comment_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transactionsnap_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transactionsnap_account2" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_acct_grp_mem_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_supp_access_account" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_attribute_generic_attribute" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_benchmark_benchmark" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_benchmark_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_accountsnap_account_class" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_accountsnap_close_reason" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_group_firm_user_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_group_member_account_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_group_source" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_apx_port_stmt_account_grp" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_benchmark_account_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_inv_objective_account_grp" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_performance_account_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_returns_account_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_inv_objective_inv_goal" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_inv_objective_inv_obj_item" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_performance_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_performance_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_accountsnap_account_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_accountsnap_asset_manager" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_accountsnap_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_accountsnap_custodian" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_accountsnap_family_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_accountsnap_relationship" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_acct_strategy__override_strategy" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transaction_security_1" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transaction_transaction_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_user_group_user_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_user_group_user_group_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_strat_alloc_tgt_alloc_rsk_pfl" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_apx_port_stmt_firm_user_grp" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_aspnetusers_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_login_sess_rec_aspnetusers" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_page_visit_rec_aspnetusers" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_security_ans_aspnetusers" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_aa_target_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_aa_target_investment_goal" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_ac_equiv_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_ac_equiv_classification2" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_ac_equiv_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_revsnap_rev_source" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_aum_samg_mgr_mapping_firm_usr_grp" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_benchmark_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_benchmark_performance_benchmark" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_benchmark_returns_benchmark" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_market_index_benchmark" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_benchmark_benchmark" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_benchmark_performance_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_benchmark_returns_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_book_request_detail_book_request" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_book_request_document_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_book_request_template" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_book_request_report" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_book_request_report_param" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_firm_user_group_branch_office" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_returns_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_classification_entity_grouping_1" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_classification_entity_grouping_2" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_classification_scheme" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_classification_sort_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_progress_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_progress_IM_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_progress_pre_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_benchmark_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_performance_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_returns_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_samg_strategy_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_classification_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_strategy_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_tax_lot_snap_classification" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_contact_contact_address" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_contact_contact_phone" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_contact_firm_user_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_contact_source" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_entity_document_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_fugm_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_related_party_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_statement_delivery_queue_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_acct_grp_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_contact_def_entity_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_doc_fav_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_strat_doc_fav_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_supp_access_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_user_role_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_user_settings_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_contact_address_detail_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_contact_phone_detail_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_exchange_country" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_country_dom" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_snap_country_dom" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_account_returns_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_fx_rate_currency_from" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_fx_rate_currency_to" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_progress_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_progress_IM_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_progress_pre_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_performance_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_returns_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_realized_gainloss_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_currency_dom" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_currency_exch" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_snap_currency_dom" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_snap_currency_exch" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_tax_lot_snap_currency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_current_positions_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_custom_comment_source" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_entity_document_delivery_delivery_frequency" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_entity_document_delivery_delivery_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_statement_delivery_queue_document_delivery_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_statement_upload_queue_document_delivery_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_entity_document_delivery_account_document" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_entity_document_template" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_entity_group_rule_entity_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_exchange" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_snap_exchange" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_fg_family_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_revsnap_family_grp" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_tran_inter_acct_fg" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_fugm_firm_title" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_user_group_member_user" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_fuga_Fug" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_fugm_fug" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_primary_fug" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_revsnap_firm_user_grp" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_secondary_fug" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_tran_inter_acct_fug" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_user_group_member_user_group" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_fuga_ga" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_attribute_generic_attribute" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_tax_lot_holding_duration" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_action_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_action_source" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_action_transaction_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_inv_objective_inv_goal" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_portfolio_inv_objective_inv_obj_item" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_investment_progress_pre_source" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_mapping_account_source" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_market_index_return_market_index" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_Month_End_Checklist_Status_ME_Checklist" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_perf_alternatives_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_price_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_price_source" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_realized_gainloss_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_realized_gainloss_source" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_related_party_role" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_report_param_access_report" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_report_param_mapping_report" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_template_report_report" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_report_param_access_report_param" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_report_param_mapping_report_param" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_template_report_report_param" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_user_group_member_role" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_strat_doc_samg_strat" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_attribute_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_classification_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_security_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_source" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_state" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_strategy_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_small_cap_trade_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_tax_lot_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_tax_lot_snap_security" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transaction_activity_security_1" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transactionsnap_security_1" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transactionsnap_security_12" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_snap_security_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_snap_state" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_strategy_strategy" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_type_sort_security_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_security_variant_security_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_tax_lot_snap_security_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transactionsnap_security_type_1" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transactionsnap_security_type_12" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_sma_strategy_strategy" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_small_cap_broker_broker_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_small_cap_trade_rnd_b_broker" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_small_cap_trade_rnd_bt_broker_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_small_cap_trade_rnd_b_trade" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_small_cap_trade_rnd_bt_trade" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transaction_comment_source" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_strat_alloc_tgt_strategy" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_strategy_drilldown_strat1" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_strategy_drilldown_strat2" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_strategy_rollup_strat1" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_strategy_rollup_strat2" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_strategy_translate_strategy" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_template_report_template" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_template_report_detail_template_report" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transactionsnap_transaction_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transactionsnap_transaction_type2" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_transaction_activity_transaction_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_acct_grp_mem_web_acct_grp" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_doc_fav_web_doc" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_documet_web_doc_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_document_del_web_doc_type" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_wead_wea" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_user_role_web_role" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_security_ans_ques" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.fk_web_strat_doc_fav_web_strat_doc" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.FK_HangFire_JobParameter_Job1" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.FK_HangFire_State_Job1" ManuallyRouted="false" />
+        <AssociationConnector Association="SLVR_DEVModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

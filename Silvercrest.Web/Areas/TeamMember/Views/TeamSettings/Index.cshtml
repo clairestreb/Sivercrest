@@ -1,0 +1,117 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model  Silvercrest.ViewModels.TeamMember.TeamSettingsViewModel
+
+@using Silvercrest.Web.Common
+@{
+    Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+    ViewBag.Title = "Team Settings";
+}
+
+<link href="~/Content/kenodDefault.css?v=@Url.GetVersion()" rel="stylesheet" />
+<script src="~/Scripts/jquery-2.0.3.min.js?v=@Url.GetVersion()"></script>
+<script src="~/Scripts/kendo-ui/kendo.all.min.js?v=@Url.GetVersion()"></script>
+
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-free pull-right">
+                <a role="button" href="javascript:window.history.go(-1);">
+                    <img src="~/img/return-arrow.png" alt="">
+                </a>
+                @Html.ActionLink("Back to Manager Home ", "Index", "Manager", new { Area = "TeamMember", firmUserGroupIdQuery = Hash.GetEncryptedValue(Model.FirmUserGroupId.ToString()) }, null)
+            </div>
+        </div>
+    </div>
+</section>
+<section id="title">
+    <div class="container">
+        <div class="row">
+            <h2 id="currentUserFullName">@Model.ManagerName</h2>
+            <h3></h3>
+        </div>
+    </div>
+</section>
+<section id="access">
+    <div class="container pt60">
+        <div class="row">
+            <div class="box">
+                <h3>team settings</h3>
+                <table id="table-family-ass" class="table contact_settings">
+                    <tbody>
+                        <tr>
+                            <td class="col1 col-md-6">
+                                Statement Upload to Portal
+                            </td>
+                            <td class="col2 col-md-6">
+                                @Html.RadioButtonFor(m => m.StatementUploadOnHold, true, new { id = "selectedOption1", @class = "contactSettingsRadioButton" })@Html.Label("HOLD", new { @class = "contactSettingsLabel" })
+                                @Html.RadioButtonFor(m => m.StatementUploadOnHold, false, new { id = "selectedOption2", @class = "contactSettingsRadioButton" })@Html.Label("RELEASE", new { @class = "contactSettingsLabel" })
+                                @Html.ValidationSummary("", new { @class = "text-danger", id = "validationMessageAsset" })
+                            </td>
+                            <td class="col3 last">
+                                <button id="saveUploadOnHoldBtn" class="btn btn-red" type="submit" onclick="updateTeamSettings()">Save</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col1 col-md-6">
+                                Email Notification
+                            </td>
+                            <td class="col2 col-md-6">
+                                @Html.RadioButtonFor(m => m.EmailNotification, true, new { id = "selectedEmailNotification1", @class = "contactSettingsRadioButton" })@Html.Label("SEND", new { @class = "contactSettingsLabel" })
+                                @Html.RadioButtonFor(m => m.EmailNotification, false, new { id = "selectedEmailNotification2", @class = "contactSettingsRadioButton" })@Html.Label("DO NOT SEND", new { @class = "contactSettingsLabel" })
+                                @Html.ValidationSummary("", new { @class = "text-danger", id = "validationMessageAsset" })
+                            </td>
+                            <td class="col3 last">
+                                <button id="saveEmailNotificationBtn" class="btn btn-red" type="submit" onclick="updateTSEmailNotification()">Save</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col1 col-md-6">
+                                Equity Write-Ups
+                            </td>
+                            <td class="col2 col-md-6">
+                                @Html.RadioButtonFor(m => m.EquityWriteUps, true, new { id = "selectedEquityWriteUps1", @class = "contactSettingsRadioButton" })@Html.Label("POST", new { @class = "contactSettingsLabel" })
+                                @Html.RadioButtonFor(m => m.EquityWriteUps, false, new { id = "selectedEquityWriteUps2", @class = "contactSettingsRadioButton" })@Html.Label("DO NOT POST", new { @class = "contactSettingsLabel" })
+                                @Html.ValidationSummary("", new { @class = "text-danger", id = "validationMessageAsset" })
+                            </td>
+                            <td class="col3 last">
+                                <button id="saveEquityWriteUpsBtn" class="btn btn-red" type="submit" onclick="updateTSEquityWriteUps()">Save</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col1 col-md-6">
+                                Economic Commentary
+                            </td>
+                            <td class="col2 col-md-6">
+                                @Html.RadioButtonFor(m => m.EconomicCommentary, true, new { id = "selectedEconomicCommentary1", @class = "contactSettingsRadioButton" })@Html.Label("POST", new { @class = "contactSettingsLabel" })
+                                @Html.RadioButtonFor(m => m.EconomicCommentary, false, new { id = "selectedEconomicCommentary2", @class = "contactSettingsRadioButton" })@Html.Label("DO NOT POST", new { @class = "contactSettingsLabel" })
+                                @Html.ValidationSummary("", new { @class = "text-danger", id = "validationMessageAsset" })
+                            </td>
+                            <td class="col3 last">
+                                <button id="saveEconomicCommentaryBtn" class="btn btn-red" type="submit" onclick="updateTSEconomicCommentary()">Save</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<input id="firmUserGroupId" value="" type="hidden" />
+
+<div class="popup-holder" style="display:none; margin-top: 300px;" popup id="popupActivateOrDeactivate">
+    <div class="popup">
+        <div class="popup-header">
+            <h2 id="activateMessage">Invalid Name</h2>
+        </div>
+        <div class="popup-content">
+            <p id="errorMessage"></p>
+        </div>
+        <div class="popup-footer">
+            <div class="btn-wrapper">
+                <button class="btn-main btn-close btn-activate">ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/app/TeamMember/TeamSettings/EditSettings.js?v=@Url.GetVersion()"></script>

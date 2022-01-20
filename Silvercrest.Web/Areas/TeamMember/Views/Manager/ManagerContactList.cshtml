@@ -1,0 +1,35 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model  Silvercrest.ViewModels.TeamMember.TeamMemberContactListViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+    ViewBag.Title = "Contact Lookup";
+}
+<link href="~/Content/kenodDefault.css?v=@Url.GetVersion()" rel="stylesheet" />
+<script src="~/Scripts/app/TeamMember/Home/ContactListIndex.js?v=@Url.GetVersion()"></script>
+
+<section id="find-user">
+    <div class="container pt30">
+        <div class="row">
+            <h3>contact list</h3>
+        </div>
+        <div class="row">
+            <div class="box">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="lookup contact" id="FieldFilter" style="font-family: copperplate; text-transform: uppercase">
+                        <div class="input-group-addon">  <i class="fa fa-caret-right" aria-hidden="true"></i> </div>
+                    </div>
+                </div>
+
+                <div id="ContactGrid">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var model = @Html.Raw(Json.Encode(Model));
+</script>
+
+

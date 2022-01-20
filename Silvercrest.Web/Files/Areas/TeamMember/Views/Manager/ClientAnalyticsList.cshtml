@@ -1,0 +1,26 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.TeamMember.ClientAnalyticsViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+    ViewBag.Title = "Client Analytics";
+}
+<link href="~/Content/kenodDefault.css?v=@Url.GetVersion()" rel="stylesheet" />
+<script src="~/Scripts/app/TeamMember/Home/ClientAnalytics.js?v=@Url.GetVersion()"></script>
+<section id="find-user">
+    <div class="container pt30">
+        <div class="row">
+            <h3>Client Analytics Overview</h3>
+        </div>
+        <div class="row">
+            <div class="box">
+
+                <div id="ContactGrid">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var model = @Html.Raw(Json.Encode(Model));
+</script>

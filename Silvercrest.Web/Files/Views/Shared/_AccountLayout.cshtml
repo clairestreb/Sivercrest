@@ -1,0 +1,104 @@
+﻿@using Silvercrest.Web.Helpers.Assembly
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if (ViewBag.Title != null)
+    {
+        <title>Silvercrest | @ViewBag.Title</title>}
+    else
+    {
+        <title>Silvercrest | Client Portal</title>}
+
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css?v=@Url.GetVersion()">
+    <link rel="stylesheet" type="text/css" href="~/Content/index.css?v=@Url.GetVersion()">
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css?v=@Url.GetVersion()">
+</head>
+<body>
+    <header class="wrapper">
+        <div class="container main-header">
+            @if (ViewBag.Title == "Login")
+            {
+                @*<a href="http://www.silvercrestgroup.com"><img src="~/img/logo.png" alt=""></a>*@
+            }
+            @if (ViewBag.Title == "Forgot Password")
+            {
+                @*<img src="~/img/logo.png" alt="">*@
+            }
+        </div>
+    </header>
+    <section id="login" class="wrapper">
+        <div class="container pt60 pb100">
+            <div class="shadow">
+                @if (ViewBag.Title.ToUpper().Contains("SETUP"))
+                {<h3>USER SETUP</h3>}
+                else if (ViewBag.Title.ToUpper().Contains("PASSWORD"))
+                {<h3>Password Reset</h3>}
+                else
+                {<h3>Please Sign in</h3>}
+                <div class="users form">
+
+                    @RenderBody()
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="wrapper">
+        <div class="container">
+            <div class="center">
+                <span>Copyright © @DateTime.Now.Year </span>
+                <span>Silvercrest Asset Management Group LLC. </span>
+                <span>All Rights Reserved. </span>
+                <a href="@Url.Action("TermsOfUse", "Home", new { Area = "" })">Terms of Use</a>
+                <a href="http://www.silvercrestgroup.com/privacy-policy" target="_blank">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Scripts/jquery-2.0.3.min.js?v=@Url.GetVersion()"></script>
+    <script src="~/Scripts/bootstrap.min.js?v=@Url.GetVersion()"></script>
+    <script src="~/Scripts/index.js?v=@Url.GetVersion()"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js?v='@Url.GetVersion()'"></script>
+</body>
+</html>
+<script>
+
+    $.each($('*'), function () {
+        if ($(this).width() > $('body').width()) {
+            console.log("Wide Element: ", $(this), "Width: ", $(this).width());
+        }
+    });
+
+    function reload() {
+        location.reload();
+    }
+
+    $(document).ready(function () {
+        if ($("#Email").length) {
+            if ($('#Email').val().length > 0) {
+                $('#Password').focus();
+            }
+        }
+
+
+        $('[data-toggle="tooltip"]').tooltip({
+            placement: 'top'
+        });
+
+    });
+
+    var $buoop = { vs: { i: 10, f: -4, o: -4, s: 8, c: -4 }, api: 4 };
+    function $buo_f() {
+        var e = document.createElement("script");
+        e.src = "//browser-update.org/update.min.js?v=@Url.GetVersion()";
+        document.body.appendChild(e);
+    };
+    try { document.addEventListener("DOMContentLoaded", $buo_f, false) }
+    catch (e) { window.attachEvent("onload", $buo_f) }
+
+</script>

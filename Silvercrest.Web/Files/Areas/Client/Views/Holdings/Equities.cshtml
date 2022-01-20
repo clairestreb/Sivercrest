@@ -1,0 +1,582 @@
+﻿@*@model Silvercrest.ViewModels.Client.Holdings.Index.TopSectionViewModel*@
+@using Silvercrest.Web.Helpers.Assembly
+@model Silvercrest.ViewModels.Client.Holdings.HoldingsIncomeViewModel
+@{
+    ViewBag.Title = "Equities";
+}
+<link href="~/Content/kendoStyle.css?v=@Url.GetVersion()" rel="stylesheet" />
+<script src="//kendo.cdn.telerik.com/2016.3.1028/js/jszip.min.js?v=@Url.GetVersion()"></script>
+<script src="//kendo.cdn.telerik.com/2016.3.1118/js/pako_deflate.min.js" ?v=@Url.GetVersion()></script>
+<script>
+                var model = @Html.Raw(Json.Encode(Model));
+</script>
+<script type="text/javascript" src="~/Scripts/app/Client/AccountsController/AccountController.js?v=@Url.GetVersion()"></script>
+<input id="contactId" type="hidden" value="@Model.PageData.ClientId" />
+<input id="entityId" type="hidden" value="@Model.PageData.EntityId" />
+<input id="isGroup" type="hidden" value="@Model.PageData.IsGroup.ToString()" />
+<input id="isClientGroup" type="hidden" value="@Model.PageData.IsClientGroup.ToString()" />
+
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-free"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><span class="arrow-right"></span>View Accounts</a></div>
+            <div class="col-free"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><span class="arrow-right"></span>View Groups</a></div>
+            @if (Model.PageData.IsGroup == true)
+            {
+                <div class="col-free"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span class="arrow-right"></span>View Accounts Within Group</a></div>
+            }
+            <div class="col-free pull-right">
+                
+                <a role="button" href="#" onclick="goTo('Holdings/ViewAccount'); return false;">
+                    <img src="~/img/return-arrow.png" alt="">Back to Holdings Overview
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="bread-panel">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                <div class="panel panel-default">
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+                        <strong>Accounts</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+
+                        <strong>Groups</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+
+                        <strong>Accounts Within Groups</strong>
+                        <div class="moreArrows">
+                            <a href="#"><i class="fa fa-caret-left fa-lg" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="user_info">
+    <div class="container">
+        <div id="info" class="row">
+            <span class="pull-left">
+                @Model.PageData.CustodianAccount
+            </span>
+            <span class="pull-right">
+                @Model.PageData.DateString
+            </span>
+        </div>
+    </div>
+</section>
+<section id="title">
+    <div class="container">
+        <div class="row">
+            <h2>@Model.PageData.Name</h2>
+            <h3>EQUITIES HOLDINGS</h3>
+        </div>
+    </div>
+</section>
+<section id="table3">
+    <article class="container pb10">
+        <div class="row">
+            <table class="table table-no-borders">
+                <tbody>
+                    <tr class="row header">
+                        <td class="col1"></td>
+                        <td class="col2">TOTAL <br />MARKET VALUE</td>
+                        <td class="col3">EQUITY<br /> MARKET VALUE</td>
+                        <!--                        <td class="col4">EQUITY <br />UNREALIZED GAIN/LOSS</td>-->
+                    </tr>
+                    <tr class="row blue">
+                        <td class="col1">@Model.PageData.Name</td>
+                        <td class="col2">@Model.PageData.TotalMarketValue.ToString("N0", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))</td>
+                        <td class="col3">@Model.PageData.MarketValue.ToString("N0", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))</td>
+                        <!--                     <td class="col4">@Model.PageData.UnrealizedGL.ToString("N0", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))</td>-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+</section>
+<section id="graph">
+    <div class="container pb20 pt10">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 ">
+                <!-- Dave added chart -->
+                <div class="pieChartContainer Center">
+                    <div class="title">ALLOCATION BY TYPE</div>
+                    <div class="chart-wrapper-flex">
+                        <div class="" id="piechart"></div>
+                        <div class="legend-wrapper">
+                            <div class="legendCenter" id="legend"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="  col-lg-6 col-md-6 col-xs-12 ">
+                <div class="pieChartContainer Center">
+                    <div class="title" id="titleToChange"></div>
+                    <div class="chart-wrapper-flex">
+                        <div class="" id="piechart2"></div>
+                        <div class="legend-wrapper">
+                            <div class="legendCenter" id="legend2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section id="table5" class="page8">
+    <article class="container">
+        <div class="row">
+            <button id="switch">Ungroup</button>
+
+            <div id="groupTable">
+                <div id="equitiesGroupTable" class="pdf-page">
+                </div>
+
+                <div class="row" style="margin:0; height:100px;">
+                    <div class="pull-right download-wrapper">
+                        <!-- Dave added everything in here -->
+                        <div class="btnShadow"></div>
+                        <div class="dwnLoadAll">
+                            <div class="btnSlider" style="display: none;">
+                                <div class="btn btn-exl"><a href="" class="k-grid-excel" onclick="saveExcel()"><img src="/img/excel.png"><br>EXCEL</a></div>
+                            </div>
+                            <a class="btn btn-download"><span>DOWNLOAD REPORT</span><span class="arrow-down"></span></a>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div id="nogroupTable">
+                <div id="equitiesNoGroupTable" class="pdf-page">
+                </div>
+
+                <div class="row" style="margin:0; height:100px;">
+                    <div class="pull-right download-wrapper">
+
+                        <div class="btnShadow"></div>
+                        <div class="dwnLoadAll">
+                            <div class="btnSlider" style="display: none;">
+                                <div id="equitiesExcel" class="btn btn-exl"><a href="" class="k-grid-excel" onclick="saveExcel()"><img src="/img/excel.png"><br>EXCEL</a></div>
+                            </div>
+                            <a class="btn btn-download"><span>DOWNLOAD REPORT</span><span class="arrow-down"></span></a>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" id="dialog" role="document">
+        <div class="modal-content" id="modalWindow">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalHeader"></h4>
+            </div>
+            <div id="groupTable">
+                <div id="equitiesLinkTable" class="pdf-page" style="background:#e9dfcd;">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="width:50%;">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Script{
+
+    <script json-url1="/Client/Holdings/GetEquitiesChartType" destination-id1="piechart" json-url2="/Client/Holdings/GetEquitiesChartMunicBound" destination-id2="piechart2" src="~/Scripts/chart_home_2.js"></script>
+
+    <!--<script type="text/javascript" src="~/Scripts/app/Client/HoldingsController/EquitiesTypePie.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/Client/HoldingsController/EquitiesMunicBoundPie.js"></script>-->
+    <script type="text/javascript" src="~/Scripts/app/Client/HoldingsController/EquitiesInitGroups.js?v=1"></script>
+    <script type="text/javascript" src="~/Scripts/app/Client/HoldingsController/EquitiesInitNoGroups.js?v=@Url.GetVersion()"></script>
+
+
+}
+<script>
+    $("#nogroupTable").hide();
+    $("#switch").text("Ungroup");
+
+    $("#switch").click(function () {
+        if ($(this).text() == "Ungroup") {
+            $(this).text("Group");
+        }
+        else {
+            $(this).text("Ungroup");
+        }
+
+        $("#groupTable").toggle();
+        $("#nogroupTable").toggle();
+
+        $("#groupTable").css({
+            "overflow-y": "hidden"
+        });
+
+    });
+
+    function getUrlParam(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+    }
+
+    function tableBound(sId) {
+        $("#equitiesLinkTable th.k-header").children().each(function (index, elem) {
+            if ($(elem).is("span")) {
+                if (index > 0) {
+                    $(elem).css("display", "none");
+                }
+            }
+        });
+
+        $("#equitiesLinkTable div.k-grid-content").remove();
+
+        var cI = getUrlParam("contactIdQuery");
+        var eI = getUrlParam("entityIdQuery");
+        var iG = getUrlParam("isGroupQuery");
+        var iCG = getUrlParam("isClientGroupQuery");
+
+
+
+        $.ajax({
+            url: "/Client/Holdings/GetModalTable",
+            method: "POST",
+            data: { securityId: sId, contactIdQuery: cI, entityIdQuery: eI, isGroupQuery: iG, isClientGroupQuery: iCG },
+            dataType: "json",
+            success: function (data) {
+                var dataTable = data;
+                $("#modalHeader").text(data[0].Symbol + " - " + data[0].SecurityName);
+                $("#equitiesLinkTable").kendoGrid({
+                    sortable: {
+                        allowUnsort: false, mode: "single"
+                    },
+                    //                    height:250,
+                    scrollable: true,
+                    columns: [
+                        {
+                            field: "Holdings", title: "ACCOUNT", width: 280,
+                            groupFooterTemplate: "TOTAL",
+                            template: function (data) {
+                                var division = data.Holdings.indexOf("\n", 0);
+                                var firstStr = data.Holdings.substring(0, division);
+                                var secondStr = data.Holdings.substring(division + 1, data.Holdings.length);
+                                return firstStr + secondStr;
+                            },
+                            attributes: {
+                                "class": "col2 first"
+                            },
+                            sortable: {
+                                allowUnsort: false, mode: "single"
+                            }
+                        },
+                        {
+                            field: "Quantity", title: "QUANTITY", width: 70,
+                            template: "<div align='center'>#= kendo.toString(Quantity,'n0' )#</div>"
+                            , attributes: { "class": "col2" },
+                            sortable: {
+                                allowUnsort: false, mode: "single"
+                            }
+
+                        },
+
+                        {
+                            title: "ADJUSTED COST",
+                            columns: [
+                                {
+                                    field: "AdjustedCostDate", title: "DATE", width: 90,
+                                    format: "{0:MM/dd/yyyy}",
+                                    attributes: { "class": "col2", "style": "text-align: center" },
+                                    headerAttributes: { style: "text-align: center;  border-left-width: 2px !important" },
+                                    sortable: {
+                                        allowUnsort: false, mode: "single"
+                                    }
+                                },
+                                {
+                                    field: "AdjustedCostUnit", title: "UNIT", width: 50,
+                                    template: "<div align='center'>#= kendo.toString( AdjustedCostUnit,'n2' )#</div>"
+                                    , attributes: { "class": "col2" },
+                                    sortable: {
+                                        allowUnsort: false, mode: "single"
+                                    }
+
+                                },
+                                {
+                                    field: "AdjustedCostTotal", title: "TOTAL", width: 70,
+                                    template: "<div align='center'>#= kendo.toString( AdjustedCostTotal,'n0' )#</div>",
+                                    groupFooterTemplate: "<div align='center'>#= kendo.toString( sum ,'n0' )#</div>",
+                                    attributes: { "class": "col2" },
+                                    sortable: {
+                                        allowUnsort: false, mode: "single"
+                                    }
+
+                                }], headerAttributes: { style: "text-align: center; cursor:default;" }
+                        },
+                        {
+                            title: "MARKET VALUE",
+                            columns: [
+                                {
+                                    field: "MarketValueUnits", title: "UNIT", width: 50,
+                                    template: "<div align='center'>#= kendo.toString( MarketValueUnits,'n2' )#</div>",
+                                    attributes: { "class": "col2" },
+                                    sortable: {
+                                        allowUnsort: false, mode: "single"
+                                    }
+
+                                },
+                                {
+                                    field: "MarketValueTotal", title: "TOTAL", width: 70,
+                                    groupFooterTemplate: "<div align='center'>#= kendo.toString(sum, 'n0') #</div>",
+                                    template: "<div align='center'>#= kendo.toString( MarketValueTotal,'n0' )#</div>",
+                                    attributes: { "class": "col2" },
+                                    sortable: {
+                                        allowUnsort: false, mode: "single"
+                                    }
+                                }
+                            ], headerAttributes: { style: "text-align: center; cursor:default;" }
+                        }
+                        /*                        ,
+                                                {
+                                                    field: "MarketValuePercentOfAssets", title: "% OF<br/>ASSET<br/>CLASS", width: 70,
+                                                    groupFooterTemplate: "<div align='center'>#= kendo.toString(sum, 'n1') #</div>",
+                                                    template: "<div align='center'>#= kendo.toString( MarketValuePercentOfAssets,'n1' )#</div>",
+                                                    attributes: { "class": "col2" },
+                                                    sortable: {
+                                                        allowUnsort: false, mode: "single"
+                                                    }
+                                                },
+
+                                                {
+                                                    field: "AnnualIncome", title: "EST.<br/>ANNUAL<br/>INCOME", width: 70,
+                                                    template: "<div align='center'>#= kendo.toString( AnnualIncome,'n0' )#</div>",
+                                                    groupFooterTemplate: "<div align='center'>#= kendo.toString( sum,'n0' )#</div>",
+                                                    attributes: { "class": "col2" },
+                                                    sortable: {
+                                                        allowUnsort: false, mode: "single"
+                                                    }
+                                                },
+                                                {
+                                                    field: "CurrentYield", title: "CURRENT<br/>YIELD", width: 70,
+                                                    template: "<div align='center'>#= kendo.toString( CurrentYield,'n1' )#</div>",
+                                                    groupFooterTemplate: "<div align='center'>#= kendo.toString(window.calculateGrpWeightedAverage(),'n1')#</div>",
+                                                    attributes: { "class": "col2" },
+                                                    sortable: {
+                                                        allowUnsort: false, mode: "single"
+                                                    }
+                                                },
+                        */
+
+                    ],
+
+                    dataSource: {
+                        data: dataTable,
+                        schema: {
+                            model: {
+                                fields: {
+                                    AdjustedCostDate: {
+                                        type: "date"
+                                    },
+                                }
+                            }
+                        },
+                        sort: {
+                            field: "AdjustedCostDate",
+                            dir: "asc"
+                        },
+                    },
+                    dataBound: grid_dataBound
+                });
+
+            },
+        });
+        //                $('#modalWindow').css("position", "absolute");
+        //        $('#modalWindow').css("left", "50%");
+        //       $('#modalWindow').css("left", "50%");
+        //        $('#dialog').css("transform", "translate(-50%, -50%)");
+        //     $('#modalWindow').css("position", "absolute");
+        //        $('#dialog').css("left", -$(window).width()*0.12);
+        //      $("#dialog").css({"padding-Left": "10%"});
+        //        $("#dialog").css({"width": $(window).width()});
+        //        $("#dialog").css({"height": $(window).height()});
+        //        $("#modalWindow").css("width", "60%");
+        //        $("#modalWindow").css("height", "30%");
+        //        $("#modalWindow").css({"min-width": $(window).width()*0.45});
+        //        $("#dialog").css({"width": $(window).width()*0.60});
+        //        $("#modalWindow").css({"height": $(window).height()*0.30});
+        //        $("#dialog").css("max-height", "40%");
+        //        $("#dialog").css("max-height", "40%");
+
+
+
+    }
+
+    function grid_dataBound(e) {
+        /*
+                $("#equitiesLinkTable").find(".k-group-col,.k-group-cell").remove();
+                var spanCells = $("#equitiesLinkTable").find(".k-grouping-row").children("td");
+                if (numColumns <= 0) {
+                    numColumns = spanCells.attr("colspan") - 2;
+                }
+                spanCells.attr("colspan", numColumns);
+        */
+        sortLinkTable();
+        var rows = e.sender.tbody.children();
+        for (var j = 0; j < rows.length; j++) {
+            var row = $(rows[j]);
+            row.addClass("row black tab2");
+        }
+
+
+        // To put arrow below text when page Loads
+        var linkTableSortedColumn = $("#equitiesLinkTable .k-grid-header tr th[data-field='AdjustedCostDate']");
+        $('<span class="arrow-down" style="display:block; transform: rotate(180deg);"></span>').appendTo(linkTableSortedColumn);
+
+        resizeTaxLotTable();
+
+
+    }
+
+    function sortLinkTable() {
+        $("#equitiesLinkTable").find("th:has(a.k-link)").css("text-align", "center");
+        $("#equitiesLinkTable").find("th:has(a.k-link)").css("vertical-align", "top");
+        $("#equitiesLinkTable").find("a.k-link").css("color", "#163574");
+        $("#equitiesLinkTable").find("th:has(a.k-link)").bind("click", onClickSortLinkTable);
+        //        $("#equitiesLinkTable").find(".k-link").bind("click", onClickSortLinkTable);
+
+        //        		("th:has(a.k-link)").click(onClickSortLinkTable);
+
+        $('<span style="display:none">&nbsp;</span>').appendTo("th:has(a.k-link)");
+        $('<span class="arrow-down" style="transform: rotate(180deg);display:none"></span>').appendTo("th:has(a.k-link)");
+        $('<span class="arrow-down" style="display:none"></span>').appendTo("th:has(a.k-link)");
+
+        $("#equitiesLinkTable a.k-link").removeClass("k-link");
+
+    }
+
+    function onClickSortLinkTable(e) {
+        var target = $(this);
+
+        //remove from another
+        $("#equitiesLinkTable th.k-header").children().each(function (index, elem) {
+            if ($(elem).is("span")) {
+                if (index > 0) {
+                    $(elem).css("display", "none");
+                }
+                if (index == 1 && dir != "asc" && dir != "desc") {
+                    $(elem).css("display", "block");
+
+                }
+            }
+        });
+        //        $('#equitiesLinkTable .k-grid-content').css({"height": vph + "px"});
+
+        // in case if it's redirect from children
+        if (!$(target).is("th")) {
+            target = $(target).parent();
+        }
+
+        var set = $(target).children();
+        var dir = $(target).attr("data-dir");
+
+        set.each(function (index, elem) {
+
+            if (index > 0) {
+                $(this).css("display", "none");
+            }
+            if (dir == "asc") {
+                set.eq(2).css("display", "block");
+
+            }
+            if (dir == "desc") {
+                set.eq(3).css("display", "block");
+
+            }
+            if (dir != "asc" && dir != "desc") {
+                set.eq(1).css("display", "block");
+
+            }
+
+        });
+    }
+
+    window.onresize = function (event) {
+        resizeTaxLotTable();
+    }
+
+    function resizeTaxLotTable() {
+
+        var vpw = $(window).width();
+        var vph = $(window).height();
+
+        var tableHeight = Math.round(0.24 * vph);
+        var tableWidth = Math.round(0.55 * vpw);
+
+        if (tableHeight > 230) {
+            tableHeight = 230;
+        }
+
+        //        $(‘#somediv’).css({‘height’: vph + ‘px’});
+        if (tableWidth < 700) {
+            $('#dialog').css({ "margin-left": "0" });
+            tableWidth = vpw;
+        }
+        else {
+            $('#dialog').css({ "margin-left": Math.round(vpw * 0.21) });
+        }
+
+        $('#equitiesLinkTable .k-grid-content').css({ "height": tableHeight + "px" });
+        $('#modalWindow').css({ "width": tableWidth + "px" });
+
+    }
+
+
+    $(document).ready(function () {
+        resizeTaxLotTable();
+
+        $("#navigatino-item-active ul li:nth-child(2)").addClass('active');
+        $("#bs-example-navbar-collapse-1 ul li:nth-child(2)").addClass('active');
+    })
+
+</script>

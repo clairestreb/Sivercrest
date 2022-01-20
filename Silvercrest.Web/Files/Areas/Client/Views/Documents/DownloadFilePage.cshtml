@@ -1,0 +1,37 @@
+﻿@model Silvercrest.ViewModels.Client.Documents.DownloadDocumentPage
+<script type="text/javascript" src="~/Scripts/app/Client/DocumentsController/DownloadFilePage.js"></script>
+@{
+    ViewBag.Title = "Download File";
+    if (Request.Cookies["UserRole"] != null && (Request.Cookies["UserRole"].Value == "SuperUser" || Request.Cookies["UserRole"].Value == "Administrator"))
+    {
+        Layout = "~/Views/Shared/_LayoutNoBar.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+<div class="container pb50 pt50">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-lg-offset-4">
+            <h2 class="custom-font">Thank you for downloading a file</h2>
+        </div>
+        <div class="col-lg-6 col-lg-offset-4">
+            <h2 class="custom-font">
+                To retry click here:
+                @Html.ActionLink("Retry", "DownloadFile", "Documents", new { fileId = Model.FileId, asOf = Model.AsOf }, new { id = "downloadDocument" , @class="red-link"})
+            </h2>
+        </div>
+    </div>
+</div>
+<style>
+    .red-link {
+        color: #841e36;
+        text-decoration:underline;
+    }
+    .custom-font {
+        font-family: 'goudyosSC', sans-serif;
+        color: black;
+    }
+</style>
+
